@@ -1,5 +1,8 @@
 # Focus Garden Next
 
+> [!IMPORTANT]
+> **Moved.** This rebuild now lives in [`salemkode/crypto-focus-garden`](https://github.com/salemkode/crypto-focus-garden) as `packages/mobile`, and all further work happens there. Its history and documents are kept in that repository under [`docs/history/expo-rebuild-2026-11-17`](https://github.com/salemkode/crypto-focus-garden/tree/master/docs/history/expo-rebuild-2026-11-17). This repository is kept for reference only.
+
 A separate Expo rebuild of [Crypto Focus Garden](https://github.com/salemkode/crypto-focus-garden), Salem's original hackathon project. Focus sessions grow a local 3D valley; the native apps also contain the existing Chipnet wallet and verified-reward integration.
 
 **Review candidate, not a production deployment.** The fork preserves the current hybrid-credit policy. Live chain acceptance, browser transaction signing, store distribution and mainnet approval are outstanding. See [verification and limits](docs/VERIFICATION.md).
