@@ -13,7 +13,7 @@ import { formatDuration } from '../../../features/focus/stats';
 import { nftTree } from '../../../features/forest/nft-style';
 import { useRewards } from '../../../features/rewards/RewardProvider';
 import { useShield } from '../../../features/shield/useShield';
-import { connectWallet } from '../../../features/wallet/wallet';
+import { BROWSER_HOT_WALLET, createAppWallet } from '../../../features/wallet/appWallet';
 import { fetchProfile } from '../../../services/community';
 import { readDisplayName, saveDisplayName } from '../../../features/profile/local';
 import { forestTrees } from '../../../services/garden';
@@ -74,7 +74,7 @@ export default function ProfileScreen() {
   }
   async function openWallet() {
     setNotice('');
-    try { await connectWallet(); await rewards.selectWallet('xo'); await rewards.open(); void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); }
+    try { await rewards.selectWallet(await createAppWallet()); await rewards.open(); void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); }
     catch (cause) { setNotice(cause instanceof Error ? cause.message : 'Could not open the wallet. Existing keys have not been replaced.'); }
   }
 
@@ -83,6 +83,8 @@ export default function ProfileScreen() {
   const fees = rewards.data.state === 'connected'
     ? `Focus Garden wallet: ${rewards.data.balanceSatoshis.toLocaleString()} sats for network fees.`
     : 'The Focus Garden wallet pays network fees for your trees.';
+  // On the web, the fee wallet's key lives in this browser, so it should only ever hold a little BCH.
+  const footer = BROWSER_HOT_WALLET ? `${fees} This browser keeps its key: hold only a little BCH here.` : fees;
 
   return <Screen title="Profile">
     <View className="flex-row items-center gap-4">
@@ -107,7 +109,7 @@ export default function ProfileScreen() {
 
     <PendingOperation />
 
-    <Group title="Wallet" footer={fees}>
+    <Group title="Wallet" footer={footer}>
       <Row title="Your wallet" icon={icons.wallet} value={rewards.recipient ? readLinkInfo(rewards.recipient)?.walletName ?? short(rewards.recipient) : 'Not linked'} onPress={() => router.push('/link-wallet')} chevron />
       <Row title="Focus Garden wallet" icon={icons.key} iconTint={color.ink2} value={rewards.account ? copied ? 'Copied' : short(rewards.account.address) : 'Set up'}
         accessibilityLabel={rewards.account ? 'Focus Garden wallet. Copy address' : 'Set up your Focus Garden wallet'}

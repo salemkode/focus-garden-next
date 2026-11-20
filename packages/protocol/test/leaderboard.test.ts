@@ -75,6 +75,13 @@ describe('on-chain leaderboard', () => {
     expect(rankLeaders(scan, 'all', NOW)[0].points).toBe(15);
   });
 
+  test('a stamp in the future does not keep a tree on the weekly board', () => {
+    const history = [register(alice, 'Alice'), plant(alice, NOW + 30 * DAY, 11, 4).transaction, plant(alice, NOW - DAY, 3, 2).transaction];
+    const scan = scanForest(history, forest, directory);
+    expect(rankLeaders(scan, 'week', NOW)[0].points).toBe(3);
+    expect(rankLeaders(scan, 'all', NOW)[0].points).toBe(15);
+  });
+
   test('members without a profile card stay private', () => {
     const history = [register(alice, 'Alice'), plant(alice, NOW, 3, 2).transaction, plant(bob, NOW, 11, 4).transaction];
     expect(rankLeaders(scanForest(history, forest, directory), 'all', NOW).map((entry) => entry.name)).toEqual(['Alice']);

@@ -1,0 +1,13 @@
+{
+  "$comment": "BCH BLAZE 2026 top-of-page banner for the web build (scripts/web-phone-frame.mjs) and the landing page. Public links only. deck is the Widget Factory deck exported to PDF and hosted on focus.salemkode.com.",
+  "event": "BCH BLAZE 2026 entry",
+  "deck": "https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf",
+  "source": "https://github.com/salemkode/focus-garden-next",
+  "before": {
+    "source": "https://github.com/salemkode/crypto-focus-garden/tree/de708cd",
+    "demo": "https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s",
+    "entry": "https://dorahacks.io/buidl/36811"
+  },
+  "votingAddress": "bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd",
+  "guide": "https://focus.salemkode.com/#blaze"
+}

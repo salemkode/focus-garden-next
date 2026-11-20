@@ -121,16 +121,22 @@ export function scanForest(transactions: readonly ChainTransaction[], forest: Co
   return { plantings, profiles };
 }
 
+/** How far ahead of this clock a planting stamp may be and still count this week (clock skew). */
+const FUTURE_STAMP_SLACK_SECONDS = 2 * 60 * 60;
+
 /** Ranks members by verified focus for one period. */
 export function rankLeaders(scan: ForestScan, period: LeaderPeriod, nowSeconds = Math.floor(Date.now() / 1000), network: 'bchtest' | 'bitcoincash' = 'bchtest'): LeaderEntry[] {
   const since = period === 'week' ? nowSeconds - WEEK_SECONDS : 0;
+  // The stamp is the planter's own claim (the contract doesn't check it), so a stamp in the future
+  // can't keep a tree on the weekly board forever: it counts for all time only.
+  const until = period === 'week' ? nowSeconds + FUTURE_STAMP_SLACK_SECONDS : Number.POSITIVE_INFINITY;
   const latestOwner = new Map<string, { stamp: number; ownerBytecode: string }>();
   for (const planting of scan.plantings) {
     const latest = latestOwner.get(planting.planterTag);
     if (!latest || planting.stamp >= latest.stamp) latestOwner.set(planting.planterTag, planting);
   }
   const entries = [...scan.profiles].map(([id, profile]) => {
-    const trees = scan.plantings.filter((planting) => planting.planterTag === id && planting.stamp >= since);
+    const trees = scan.plantings.filter((planting) => planting.planterTag === id && planting.stamp >= since && planting.stamp <= until);
     const owner = latestOwner.get(id)?.ownerBytecode;
     const tip = owner ? lockingBytecodeToCashAddress({ bytecode: hexToBin(owner), prefix: network }) : null;
     return {

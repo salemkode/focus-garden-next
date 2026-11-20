@@ -33,7 +33,7 @@ This year we solved that and rebuilt the product around it.
 | Time check | Relaxed for the demo | Enforced on-chain: a time lock holds the tree for the full session |
 | Staying focused | A timer on a web page | Leaving the app withers the tree; Screen Time (iOS) and usage access (Android) block chosen apps |
 | Rewards | One NFT per finished session | Trees grow by session length (sprout, tree, big tree, house), come in six styles, and merge into bigger ones |
-| Wallets | WalletConnect in the browser | Selene, Paytaca, WalletConnect, WizardConnect or a pasted address, plus an on-device wallet for fees |
+| Wallets | WalletConnect in the browser | Selene, Paytaca, WalletConnect or WizardConnect, plus an on-device wallet for fees |
 | World | A Three.js scene | A voxel valley rendered natively, shared with the web |
 | Social | None | On-chain leaderboard, public profile cards and tips |
 | Libauth on mobile | Blocked (no React Native support) | Runs natively through `libauth-native` |
@@ -52,7 +52,7 @@ Inside the app:
 - **Focus:** pick a length and a tree style, plant, and stay. The tree withers if you leave for more than 10 seconds.
 - **App blocking:** Screen Time on iOS and a usage-access guard on Android block chosen apps while a tree grows.
 - **Verified trees:** a session can be locked in the Focus Forest contract. When the lock matures, the tree is released to the wallet you linked.
-- **Wallets:** link your own wallet (Selene, Paytaca, WalletConnect, WizardConnect, or a pasted address). A separate on-device Focus Garden wallet pays the network fees; you fund it with a little BCH.
+- **Wallets:** link your own wallet (Selene, Paytaca, WalletConnect, or WizardConnect). A separate on-device Focus Garden wallet pays the network fees; you fund it with a little BCH.
 - **Leaders and stats:** a leaderboard of verified focus, tips by name, and your own focus history.
 
 ## Getting started

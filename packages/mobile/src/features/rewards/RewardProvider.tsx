@@ -11,7 +11,7 @@ import { AppState } from 'react-native';
 import { cachedGardenSchema, gardenCacheKey, loadGarden } from '../../services/garden';
 import { assertNameAvailable, rewardOwners } from '../../services/community';
 import { DEPLOYMENT } from '../../services/network';
-import { consentsSchema, newConsent, nextRelease, RELEASE_FEE_CEILING_SATS, spendConsent, type ReleaseConsent } from './auto-release';
+import { consentsSchema, forfeitWithered, newConsent, nextRelease, RELEASE_FEE_CEILING_SATS, spendConsent, type ReleaseConsent } from './auto-release';
 
 const CONSENTS_KEY = 'focusgarden.autorelease.v1';
 function readConsents(): ReleaseConsent[] {
@@ -209,6 +209,12 @@ function useRewardStore() {
     const consent = newConsent({ id: `${approvedAt}-${Math.random().toString(36).slice(2, 8)}`, recipientBytecode: parseRewardAddress(recipient).lockingBytecode, units: input.units, approvedAt });
     return transact({ action: 'plant', ...input }, () => writeConsents([...readConsents(), consent]));
   }
+  /** Sessions that withered give up their automatic release (see forfeitWithered). */
+  function forfeitReleases(witheredStarts: readonly number[]) {
+    const consents = readConsents();
+    const next = forfeitWithered(consents, witheredStarts);
+    if (next !== consents) writeConsents([...next]);
+  }
   // Release grown trees covered by a Plant-time consent, one at a time. Never retried: the consent
   // is spent before the claim starts, and any unresolved operation blocks the next one.
   useEffect(() => {
@@ -221,7 +227,7 @@ function useRewardStore() {
     // transact is recreated each render; data/status/pending capture every input it needs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, status, pending]);
-  return { account, recipient, data, status, notice, pending, transact, plantAndRelease, open, selectWallet, checkedAt, freshness, saveRecipient, refresh };
+  return { account, recipient, data, status, notice, pending, transact, plantAndRelease, forfeitReleases, open, selectWallet, checkedAt, freshness, saveRecipient, refresh };
 }
 const RewardContext = createContext<ReturnType<typeof useRewardStore> | null>(null);
 export function RewardProvider({ children }: { children: ReactNode }) {

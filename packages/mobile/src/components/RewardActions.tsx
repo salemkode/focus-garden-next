@@ -80,7 +80,7 @@ export const RewardActions = nativeAware(function RewardActions() {
   return <>
     <PendingOperation />
     {rewards.pending ? null : <>
-      <Group title="Plant a verified tree">
+      <Group title="Lock a tree without a session" footer="A plain time lock: nothing checks that you focus. Trees from the Focus tab are the ones that track whether you stayed.">
         <Segmented options={TIER_OPTIONS} value={String(tier)} onChange={(next) => setTier(Number(next))} />
         <MenuPicker title="Style" options={SPECIES_OPTIONS} value={String(species)} onChange={(next) => setSpecies(Number(next))} />
         <View className="p-3"><Stage style={{ height: 168 }}><ItemView tier={chosen.key} species={look.localSpecies} seed={5} size={120} /></Stage></View>

@@ -92,6 +92,15 @@ export default function FocusScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timer.status, storage]);
 
+  // Leaving withers the tree: a withered session's verified tree is not sent to the wallet.
+  // Runs on every load too, so a session that withered while the app was closed also counts.
+  useEffect(() => {
+    if (storage !== 'ready') return;
+    rewards.forfeitReleases(garden.records.filter((record) => record.outcome === 'withered').map((record) => record.startedAt));
+    // The records are the only input; rewards is recreated each render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [garden.records, storage]);
+
   function start() {
     // Every tree belongs to a wallet: there is no planting before one is linked.
     if (!linked) return;
@@ -174,7 +183,8 @@ export default function FocusScreen() {
               <Text numberOfLines={1} className="text-footnote text-ink-2">Growing a {size} · {tag.label}{blocking ? ' · apps blocked' : ''}</Text>
             </View>
           </View>
-          {onChain === 'failed' ? <Notice tone="error">{`Not verified on Bitcoin Cash. Your ${size} still grows here.`}</Notice> : null}
+          {/* Say why, so a missing fee coin can be fixed before the next plant. */}
+          {onChain === 'failed' ? <Notice tone="error">{`Not verified on Bitcoin Cash. Your ${size} still grows here.${rewards.notice ? ` ${rewards.notice}` : ''}`}</Notice> : null}
           <Button variant="destructive" size="medium" label="Give up" onPress={confirmGiveUp} />
         </Animated.View> : null}
 

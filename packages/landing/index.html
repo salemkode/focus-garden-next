@@ -8,7 +8,7 @@
 	<meta name="theme-color" content="#F1F5EE" media="(prefers-color-scheme: light)" />
 	<meta name="theme-color" content="#0F1712" media="(prefers-color-scheme: dark)" />
 	<meta property="og:title" content="Focus Garden" />
-	<meta property="og:description" content="Keep your word, grow your forest. Every tree is proof on Bitcoin Cash." />
+	<meta property="og:description" content="Keep your word, grow your forest. Every tree is a time-locked promise on Bitcoin Cash." />
 	<meta property="og:image" content="/icon.png" />
 	<link rel="icon" href="./public/favicon.png" />
 	<link rel="apple-touch-icon" href="./public/icon.png" />
@@ -19,6 +19,8 @@
 </head>
 <body>
 	<a class="skip" href="#main">Skip to content</a>
+	<!-- BCH BLAZE 2026 banner, filled from packages/mobile/blaze-banner.json (main.ts). -->
+	<div class="blaze-banner" data-blaze-banner role="region" aria-label="BCH BLAZE 2026 entry"></div>
 
 	<header class="nav">
 		<div class="nav-inner clay">
@@ -65,6 +67,24 @@
 			</figure>
 		</section>
 
+
+		<!-- BCH BLAZE 2026: a short path for judges, on Bitcoin Cash mainnet. -->
+		<section class="blaze" id="blaze" aria-labelledby="blaze-title">
+			<div class="blaze-panel clay reveal">
+				<p class="flag-tag"><span class="icon-inline" data-icon="flag"></span>BCH BLAZE 2026 · Mainnet</p>
+				<h2 id="blaze-title">Try it on mainnet.</h2>
+				<p>Everything below happens on Bitcoin Cash mainnet with real BCH. You need a BCH wallet (Selene or Paytaca) and about 15,000 sats.</p>
+				<ol class="blaze-steps">
+					<li><b>Open the web app</b> at <a href="https://focus-app.salemkode.com" target="_blank" rel="noopener">focus-app.salemkode.com</a>, or install the iPhone or Android app below.</li>
+					<li><b>Connect your wallet.</b> Selene opens through WizardConnect; Paytaca and other wallets through WalletConnect, or scan the code. The app takes your wallet's receive address and never asks it to sign. Your trees are sent there.</li>
+					<li><b>Fund the Focus Garden wallet.</b> In Profile, set up the Focus Garden wallet, copy its address and send it about 15,000 sats in one payment. It pays the network fees; on the web its key stays in your browser.</li>
+					<li><b>Quickest transaction: your profile card.</b> Profile → Public profile → Join mints it on chain (about 3,000 sats). It confirms in about ten minutes. Your name shows on the leaderboard once you have a planted tree.</li>
+					<li><b>Plant a tree.</b> Next session → 9 min → turn on <i>Verify on Bitcoin Cash</i> → Plant. The transaction id appears in the app. Keep this tab in front: open the explorer on another device, because leaving for more than 10 seconds withers the tree and it isn't delivered automatically.</li>
+					<li><b>Get the tree.</b> When the lock matures, the app sends the grown tree to your wallet as a CashTokens NFT. Locks follow median block time, so this can take up to about an hour after the session, and the app must be open.</li>
+				</ol>
+			</div>
+		</section>
+
 		<!-- How it works: three steps on one growth line. -->
 		<section class="how" id="how" aria-labelledby="how-title">
 			<h2 id="how-title" class="reveal">Three rules. No excuses.</h2>
@@ -77,7 +97,7 @@
 				<li class="step clay reveal">
 					<span class="step-icon step-icon-sun" data-icon="trophy"></span>
 					<h3>Show it off</h3>
-					<p>Grown trees land in your wallet and on a public leaderboard read straight from the chain. Your garden is proof anyone can check.</p>
+					<p>Grown trees land in your wallet and on a public leaderboard read straight from the chain. Anyone can check the time locks behind it.</p>
 				</li>
 				<li class="step clay reveal">
 					<span class="step-icon step-icon-ember" data-icon="hourglass"></span>
@@ -159,7 +179,7 @@
 			<div class="leaders-layout">
 				<div class="leaders-copy reveal">
 					<h2 id="leaders-title">Show off your garden.</h2>
-					<p>Every point is a tree the chain kept locked for a full session. The board is read live from Bitcoin Cash in your browser, so nobody can edit it, including us.</p>
+					<p>Every point is a tree time-locked on Bitcoin Cash for its session. The board is read live from Bitcoin Cash in your browser, so nobody can edit it, including us.</p>
 					<p>Claim a name in the app to appear here. Without a name, your trees stay private.</p>
 				</div>
 				<div class="leader-board clay reveal" data-leaderboard></div>
@@ -170,7 +190,7 @@
 		<section class="chain" id="chain" aria-labelledby="chain-title">
 			<div class="chain-panel reveal">
 				<div class="chain-copy">
-					<h2 id="chain-title">No servers. Just Bitcoin Cash.</h2>
+					<h2 id="chain-title">No backend of ours. Just Bitcoin Cash.</h2>
 					<ul class="facts">
 						<li><span class="step-icon" data-icon="plant"></span><div><b>The app talks to the chain directly.</b> No account to create and nothing of yours on our computers.</div></li>
 						<li><span class="step-icon" data-icon="lock"></span><div><b>Two small contracts set the rules.</b> They check every tree, merge and claim, and nobody can change them.</div></li>
@@ -211,7 +231,7 @@
 					<p class="flag-tag"><span class="icon-inline" data-icon="flag"></span>Upgrade of a 2025 hackathon project</p>
 					<h2 id="origin-title">Where it started.</h2>
 					<p>Focus Garden began as Crypto Focus Garden, a web dApp we built for last year's hackathon in November 2025. It proved the idea: finish a focus timer, get a token. This year we rebuilt it into the app on this page.</p>
-					<a class="button button-secondary" href="https://github.com/salemkode/crypto-focus-garden" target="_blank" rel="noopener">See the 2025 version<span class="icon-inline" data-icon="open"></span></a>
+					<a class="button button-secondary" href="https://github.com/salemkode/crypto-focus-garden/tree/de708cd" target="_blank" rel="noopener">See the 2025 version<span class="icon-inline" data-icon="open"></span></a>
 				</div>
 				<div class="origin-compare">
 					<div class="era clay">
@@ -282,7 +302,6 @@
 
 	<footer class="footer">
 		<p>Focus Garden <span data-network-footer></span></p>
-		<p class="blaze-vote">EMBER2026 voting on Bitcoin Cash Mainnet: <a href="bitcoincash:zzm8exh8lcxre37pduausrqgpns57acsmc0fswlr7s"><code>bitcoincash:zzm8exh8lcxre37pduausrqgpns57acsmc0fswlr7s</code></a></p>
 		<p><a href="#origin">2025 version</a><a href="#chain">Contracts</a><a href="#faq">FAQ</a></p>
 	</footer>
 

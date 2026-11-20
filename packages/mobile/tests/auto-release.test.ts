@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 import { mergedCommitment, plantedCommitment } from '@focus-garden/protocol/forest';
-import { newConsent, nextRelease, PLANT_WINDOW_MS, RELEASE_FEE_CEILING_SATS, spendConsent } from '../src/features/rewards/auto-release';
+import { FORFEITED, forfeitWithered, newConsent, nextRelease, PLANT_WINDOW_MS, RELEASE_FEE_CEILING_SATS, spendConsent } from '../src/features/rewards/auto-release';
 
 const wallet = `76a914${'5f'.repeat(20)}88ac`;
 const stranger = `76a914${'7a'.repeat(20)}88ac`;
@@ -51,4 +51,16 @@ test('the oldest grown tree goes first and each consent covers one tree', () => 
   const pick = nextRelease([consent()], [newer, older], fee);
   expect(pick?.commitment).toBe(older.commitment);
   expect(nextRelease(spendConsent([consent()], 'plant-1', older.commitment), [newer, older], fee)).toBeNull();
+});
+
+test('a withered session forfeits its release; the tree stays in the contract', () => {
+  const sessions = [{ commitment: tree(wallet), state: 'claimable', plantedAt: tapAt + 30_000 }];
+  // The focus timer started a moment before the Plant consent was written.
+  const forfeited = forfeitWithered([consent()], [tapAt - 200]);
+  expect(forfeited[0].usedFor).toBe(FORFEITED);
+  expect(nextRelease(forfeited, sessions, fee)).toBeNull();
+  // Another session's wither leaves this consent alone, and nothing changes twice.
+  const untouched = [consent()];
+  expect(forfeitWithered(untouched, [tapAt + 3_600_000])).toBe(untouched);
+  expect(forfeitWithered(forfeited, [tapAt])).toBe(forfeited);
 });
