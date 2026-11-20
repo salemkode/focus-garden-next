@@ -7,12 +7,13 @@ const bytecode = (pattern: RegExp) => z.string().regex(pattern);
 const p2pkh = bytecode(/^76a914[0-9a-f]{40}88ac$/);
 const policySchema = z.object({
   category: z.string().regex(/^[0-9a-f]{64}$/),
-  contractBytecode: bytecode(/^a914[0-9a-f]{40}87$/),
+  /** P2SH32 locking bytecode of the pinned Focus Forest contract. */
+  contractBytecode: bytecode(/^aa20[0-9a-f]{64}87$/),
   internalBytecode: p2pkh,
   /** The external wallet receiving trees (plant/claim/merge) or the tip recipient. */
   rewardBytecode: p2pkh.optional(),
   directoryCategory: z.string().regex(/^[0-9a-f]{64}$/).optional(),
-  directoryBytecode: bytecode(/^a914[0-9a-f]{40}87$/).optional(),
+  directoryBytecode: bytecode(/^aa20[0-9a-f]{64}87$/).optional(),
   nowSeconds: z.number().int().positive(),
   requestedAtSeconds: z.number().int().positive().default(500000000),
 });
@@ -57,7 +58,7 @@ export function validateRewardTransaction(prepared: z.input<typeof preparedSchem
     token(transaction.outputs[0], policy.directoryCategory!, 'minting', '');
     require(binToHex(transaction.outputs[0].lockingBytecode) === policy.directoryBytecode! && transaction.outputs[0].valueSatoshis === sourceOutputs[0].valueSatoshis, 'The directory must keep its minting baton.');
     const card = profileCommitment(intent.name);
-    token(transaction.outputs[1], policy.directoryCategory!, 'mutable', card);
+    token(transaction.outputs[1], policy.directoryCategory!, 'none', card);
     require(binToHex(transaction.outputs[1].lockingBytecode) === policy.internalBytecode && transaction.outputs[1].valueSatoshis === DEPOSIT, 'Your profile card must stay in this app wallet.');
     if (transaction.outputs.length === 4) {
       require(intent.about.trim().length > 0 && binToHex(transaction.outputs[2].lockingBytecode) === aboutOutputBytecode(intent.about) && transaction.outputs[2].valueSatoshis === 0n, 'The "about me" text differs from your request.');
@@ -87,6 +88,7 @@ export function validateRewardTransaction(prepared: z.input<typeof preparedSchem
     require(transaction.inputs.length === 2 && transaction.outputs.length === 2 && transaction.locktime === 0, 'Unexpected claim structure.');
     require(funding.valueSatoshis >= 4000n, 'Insufficient release funding.');
     require(tree.ownerBytecode === policy.rewardBytecode, 'Reward destination differs from planting.');
+    require(tree.planterTag === planterTag(policy.internalBytecode), 'Only the app wallet that planted this tree can release it here.');
     require(transaction.inputs[0].sequenceNumber === 4194304 + tree.units, 'Incorrect time lock sequence.');
     token(sourceOutputs[0], policy.category, 'mutable', commitment);
     token(transaction.outputs[0], policy.category, 'none', commitment);
@@ -109,6 +111,7 @@ export function validateRewardTransaction(prepared: z.input<typeof preparedSchem
     require(transaction.inputs[index].sequenceNumber === 4194304 + parseTree(commitment)!.units, 'Incorrect time lock sequence.');
   });
   token(transaction.outputs[0], policy.category, 'mutable', checked.result);
-  require(binToHex(transaction.outputs[0].lockingBytecode) === policy.contractBytecode && transaction.outputs[0].valueSatoshis === DEPOSIT, 'The merged tree must stay in the contract with one deposit.');
+  const deposits = sourceOutputs.slice(0, count).reduce((sum, output) => sum + output.valueSatoshis, 0n);
+  require(binToHex(transaction.outputs[0].lockingBytecode) === policy.contractBytecode && transaction.outputs[0].valueSatoshis === deposits, 'The merged tree must stay in the contract with every deposit.');
   return { ...resolved, commitment: checked.result };
 }

@@ -1,67 +1,84 @@
-# Focus Garden Next
+# Focus Garden
 
 > [!IMPORTANT]
-> **Moved.** This rebuild now lives in [`salemkode/crypto-focus-garden`](https://github.com/salemkode/crypto-focus-garden) as `packages/mobile`, and all further work happens there. Its history and documents are kept in that repository under [`docs/history/expo-rebuild-2026-11-17`](https://github.com/salemkode/crypto-focus-garden/tree/master/docs/history/expo-rebuild-2026-11-17). This repository is kept for reference only.
+> 🚩 **This is an upgrade of our 2025 hackathon project.** Focus Garden started as *Crypto Focus
+> Garden*, a Next.js web dApp we built for last year's hackathon (1–23 November 2025). That
+> submission stays unchanged in its own repository,
+> [salemkode/crypto-focus-garden](https://github.com/salemkode/crypto-focus-garden) (last 2025
+> commit [`de708cd`](https://github.com/salemkode/crypto-focus-garden/tree/de708cd)). This
+> repository keeps that history and adds this year's work on top: everything after `de708cd` is
+> new. See [Before and after](#before-and-after-2025-hackathon--now).
 
-A separate Expo rebuild of [Crypto Focus Garden](https://github.com/salemkode/crypto-focus-garden), Salem's original hackathon project. Focus sessions grow a local 3D valley; the native apps also contain the existing Chipnet wallet and verified-reward integration.
+Focus Garden is a focus timer that grows a tree while you stay off your phone. Leave the app and the
+tree withers. Verified sessions are locked on Bitcoin Cash, and the grown tree is sent to your own
+wallet as a collectible. Longer focus grows bigger trees (sprout, tree, big tree, house), and
+smaller ones merge into bigger ones.
 
-**Review candidate, not a production deployment.** The fork preserves the current hybrid-credit policy. Live chain acceptance, browser transaction signing, store distribution and mainnet approval are outstanding. See [verification and limits](docs/VERIFICATION.md).
+> There is no Focus Garden server. The app talks to Bitcoin Cash directly through public Electrum
+> servers, and the contracts on chain are the whole backend. The contracts are live on mainnet
+> ([`packages/contracts/deployments/mainnet.json`](packages/contracts/deployments/mainnet.json)).
 
-## Starting point and rebuilt app
+## Before and after (2025 hackathon → now)
 
-- `main` preserves original commit `de708cdfdce688e2b41465861ab6e011e26d97a3`.
-- `feat/expo-rebuild` contains this application and the current contracts.
-- [Compare the starting point and rebuilt app](https://github.com/salemkode/focus-garden-next/compare/main...feat/expo-rebuild).
-- The full original Git history is retained. [Provenance](docs/FORK-PROVENANCE.json) also identifies the later, uncommitted development source used for the migration.
-- GitHub returned the existing repository when asked for another fork in the same account. This is a separate repository with preserved ancestry and an `upstream` remote; it does not have a second native GitHub fork badge.
+Last year's version proved the idea: finish a focus timer, receive a CashTokens NFT. It was a web
+page on Chipnet, and its contract skipped the real time check so the demo could mint quickly. We
+wanted a phone app, but Libauth, the library the contracts depend on, did not run on React Native.
+This year we solved that and rebuilt the product around it.
 
-The original local application remains separate. This app uses bundle/package ID `com.arquebus.focusgarden.next`, URL scheme `focusgardennext`, a separate storage sandbox and Metro port **8183**.
+| | 2025 hackathon version | Now |
+|---|---|---|
+| Platform | Web dApp (Next.js) in the browser | One Expo app for iOS, Android and web |
+| Network | Chipnet (test coins) | Bitcoin Cash mainnet |
+| Contracts | One `PomodoroRewards` contract | `FocusForest` (plant, grow, merge, claim) and `FocusDirectory` (public profiles) |
+| Time check | Relaxed for the demo | Enforced on-chain: a time lock holds the tree for the full session |
+| Staying focused | A timer on a web page | Leaving the app withers the tree; Screen Time (iOS) and usage access (Android) block chosen apps |
+| Rewards | One NFT per finished session | Trees grow by session length (sprout, tree, big tree, house), come in six styles, and merge into bigger ones |
+| Wallets | WalletConnect in the browser | Selene, Paytaca, WalletConnect, WizardConnect or a pasted address, plus an on-device wallet for fees |
+| World | A Three.js scene | A voxel valley rendered natively, shared with the web |
+| Social | None | On-chain leaderboard, public profile cards and tips |
+| Libauth on mobile | Blocked (no React Native support) | Runs natively through `libauth-native` |
 
-| Android | iOS |
-| --- | --- |
-| <img src="docs/evidence/android-valley.png" alt="New Android app and native valley" width="240" /> | <img src="docs/evidence/ios-valley.png" alt="New iOS app and native valley" width="240" /> |
+## What's in the repository
 
-These are recorded checkpoints. See the verification report for the tested scope and outstanding release work.
+| Package | What it is |
+|---|---|
+| [`packages/mobile`](packages/mobile/README.md) | The app: Expo SDK 58, React Native 0.88, Expo Router. iOS, Android and web from one codebase. |
+| `packages/garden` | The voxel world: tree and house models, the floating valley, seasons and camera. Shared by native and web. |
+| `packages/contracts` | CashScript contracts: `FocusForest` (locks and grows trees), `FocusDirectory` (public profiles), and the earlier `PomodoroRewards`. |
+| `packages/protocol` | Shared rules and the on-device chain code: reward sizes, tree styles, the on-chain data format, transaction building, garden reading and the leaderboard. |
 
-## Run
+Inside the app:
 
-Use Bun 1.4.4 or compatible, Node 22+, and the platform SDKs for native builds. This is an Expo SDK 58 / React Native 0.88 development-build app; its custom native modules require a native build rather than Expo Go.
+- **Focus:** pick a length and a tree style, plant, and stay. The tree withers if you leave for more than 10 seconds.
+- **App blocking:** Screen Time on iOS and a usage-access guard on Android block chosen apps while a tree grows.
+- **Verified trees:** a session can be locked in the Focus Forest contract. When the lock matures, the tree is released to the wallet you linked.
+- **Wallets:** link your own wallet (Selene, Paytaca, WalletConnect, WizardConnect, or a pasted address). A separate on-device Focus Garden wallet pays the network fees; you fund it with a little BCH.
+- **Leaders and stats:** a leaderboard of verified focus, tips by name, and your own focus history.
+
+## Getting started
+
+Requires [Bun](https://bun.sh) 1.4 or newer (1.3 runs out of memory installing this workspace), Xcode for iOS, and Android Studio for Android.
 
 ```sh
 bun install --frozen-lockfile
-bun run web
+bun run mobile:start      # Metro on port 8083
+bun run mobile:ios        # native iOS build
+bun run mobile:android    # native Android build
+bun run check             # types, lint and all tests
 ```
 
-For native development, select an available owned simulator/emulator, then run `bun run ios` or `bun run android`. Xcode and CocoaPods are required for iOS; Android SDK, NDK and JDK are required for Android. `bun run start` reuses an installed compatible development build. Native projects are generated by Expo and ignored by Git.
+Expo Go is not supported; the app needs a development build because it ships native modules
+(crypto, app blocking and the Filament 3D renderer).
 
-No service configuration is needed for local sessions. Copy `.env.example` only when configuring optional integrations; it contains no credentials. Read [configuration](docs/CONFIGURATION.md) before enabling verified transactions or app blocking.
+## Documentation
 
-## Source layout
+- [Design system](docs/design-system.md)
+- [Focus Forest v5 product and contract rules](docs/focus-forest-v5.md) (v4: [docs/focus-forest-v4.md](docs/focus-forest-v4.md))
+- [Valley design](docs/valley-design.md)
+- [Hybrid wallet architecture](docs/native-hybrid-wallet.md) and [wallet linking](docs/wallet-linking.md)
+- [Garden rules and migration](docs/garden-rules-and-migration.md)
+- [Expo consolidation](docs/expo-consolidation.md)
 
-| Location | Responsibility |
-| --- | --- |
-| `src/app` | Expo Router screens and composition; one app for iOS, Android and web |
-| `src/features` | Focus, valley history, rewards, wallet linking, recovery, profile and blocking |
-| `src/components/valley` | Native Filament and web three.js rendering adapters; no wallet/service imports |
-| `src/ui` | Shared design tokens and platform UI; native bottom tabs retained |
-| `packages/garden` | Deterministic geometry, layout, merge planning and pure local progression |
-| `packages/protocol` | Validated wire formats, on-chain rules and transaction policy |
-| `packages/contracts` | Current CashScript source, deterministic artifacts and adversarial tests |
-| `packages/service` | Existing bounded hybrid-credit service and durable operation ledger |
-| `modules`, `plugins`, `targets` | Source-only native crypto/blocking integrations and Expo configuration |
+## License
 
-[Architecture and reading order](docs/ARCHITECTURE.md) explains the boundaries and compatibility code. [Migration map](docs/MIGRATION.md) identifies what moved, what changed and what remains to be decided.
-
-## Verify
-
-```sh
-bun run check
-bun run export
-bun run test:native-core
-```
-
-`check` runs application and service type checks, lint, generated-valley freshness, and app, geometry, service and contract tests. `export` produces all three platform bundles. `test:native-core` compiles the C crypto harness and compares it with libauth WASM. Native compilation and device acceptance are separate checks; exact results and recordings are documented in [VERIFICATION.md](docs/VERIFICATION.md).
-
-For contracts, read [FocusForest.cash](packages/contracts/contracts/FocusForest.cash) and [FocusDirectory.cash](packages/contracts/contracts/FocusDirectory.cash) first. Run `bun run contracts:compile` to regenerate the checked-in artifacts. Compiling does not deploy or create a token category.
-
-MIT licensed. Retained upstream/vendor notices remain with their source.
+[MIT](LICENSE)

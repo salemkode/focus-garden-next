@@ -5,8 +5,25 @@ import { binToHex, hash160, hash256, hexToBin, utf8ToBin, binToUtf8 } from '@bit
  * Commitment (39 bytes): 05 | owner pkh (20) | planter tag (12) | stamp (4, LE) | units (1) | look (1)
  * look = tier * 16 + species. More verified focus grows a bigger reward.
  */
-import { UNIT_SECONDS, MAX_UNITS, FOREST_TIERS, FOREST_SPECIES, type ForestTier } from './rules';
-export * from './rules';
+export const UNIT_SECONDS = 512;
+export const MAX_UNITS = 24;
+
+export interface ForestTier { code: number; key: 'sprout' | 'tree' | 'bigTree' | 'house'; name: string; minUnits: number; points: number; mergeCount?: number }
+export const FOREST_TIERS: readonly ForestTier[] = [
+  { code: 1, key: 'sprout', name: 'Sprout', minUnits: 1, points: 1, mergeCount: 3 },
+  { code: 2, key: 'tree', name: 'Tree', minUnits: 3, points: 3, mergeCount: 2 },
+  { code: 3, key: 'bigTree', name: 'Big Tree', minUnits: 6, points: 6, mergeCount: 2 },
+  { code: 4, key: 'house', name: 'House', minUnits: 11, points: 12 },
+];
+export interface ForestSpecies { code: number; key: 'oak' | 'cherry' | 'pine' | 'maple' | 'birch' | 'cash'; name: string }
+export const FOREST_SPECIES: readonly ForestSpecies[] = [
+  { code: 1, key: 'oak', name: 'Meadow Oak' },
+  { code: 2, key: 'cherry', name: 'Blossom Cherry' },
+  { code: 3, key: 'pine', name: 'Ridge Pine' },
+  { code: 4, key: 'maple', name: 'Ember Maple' },
+  { code: 5, key: 'birch', name: 'Silver Birch' },
+  { code: 6, key: 'cash', name: 'Cash Tree' },
+];
 
 export const TREE_COMMITMENT = /^05([0-9a-f]{40})([0-9a-f]{24})([0-9a-f]{8})([01][0-9a-f])([1-4][1-6])$/;
 
@@ -94,7 +111,11 @@ export function profileCommitment(name: string) {
 }
 export function parseProfile(commitment: string) {
   if (!/^01([0-9a-f]{2}){3,32}$/.test(commitment)) return null;
-  return { name: binToUtf8(hexToBin(commitment.slice(2))) };
+  // The contract checks only the byte length; reject names that are not valid UTF-8.
+  const bytes = hexToBin(commitment.slice(2));
+  const name = binToUtf8(bytes);
+  if (binToHex(utf8ToBin(name)) !== binToHex(bytes)) return null;
+  return { name };
 }
 /** OP_RETURN with the "about me" text: OP_RETURN <FGP1> <utf8>. */
 export function aboutOutputBytecode(about: string) {
