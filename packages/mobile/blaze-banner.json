@@ -1,0 +1,13 @@
+{
+  "$comment": "BCH BLAZE 2026 top-of-page banner for the web build (scripts/web-phone-frame.mjs). Public links only. Set deck to the read-only Widget Factory deck link once it is shared.",
+  "event": "BCH BLAZE 2026 entry",
+  "deck": null,
+  "source": "https://github.com/salemkode/focus-garden-next",
+  "before": {
+    "source": "https://github.com/salemkode/crypto-focus-garden/tree/de708cd",
+    "demo": "https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s",
+    "entry": "https://dorahacks.io/buidl/36811"
+  },
+  "votingAddress": "bitcoincash:zzm8exh8lcxre37pduausrqgpns57acsmc0fswlr7s",
+  "guide": "https://focus.salemkode.com/#blaze"
+}
