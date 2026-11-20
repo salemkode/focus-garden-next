@@ -76,6 +76,32 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
     browser, check that the deck link, demo, judge guide and source commit all open, and that the
     BUIDL shows the Mainnet track.
 
+## 🧑 Telegram leaderboard bot: needs the user's bot token
+
+Built on 21 Nov at the coordinator's request (`packages/telegram-bot`). It's a Cloudflare Worker,
+`focus-garden-telegram`, deployed **inactive**: until both secrets exist, its hourly cron only logs
+"not configured". It reads the same public leaderboard the app shows (Focus Forest and Focus
+Directory on Bitcoin Cash, ranked by `@focus-garden/protocol`). It posts at most once a day, and only
+when the top 5 changed. No bot was created and no Telegram message has been sent.
+
+Dry run against live data, 21 Nov (`bun run dry-run` in `packages/telegram-bot`, which sends nothing):
+
+```
+🌳 Focus Garden leaderboard (this week)
+1. BLAZE Demo: 17 min
+https://focus-app.salemkode.com
+Built with React Native (Expo) on Bitcoin Cash.
+```
+
+To activate:
+
+1. In Telegram, message **@BotFather**, send `/newbot`, and keep the bot token.
+2. Add the bot to the target chat (group, or channel as an admin), send a message there, and read
+   the chat id from `https://api.telegram.org/bot<token>/getUpdates` (`chat.id`).
+3. Set the two secrets on the Worker: `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` (Cloudflare
+   dashboard → Workers → focus-garden-telegram → Settings → Variables and secrets). The next hourly
+   run posts.
+
 ## ✅ React Native line saved on BUIDL #51334 (21 Nov, 06:00 UTC)
 
 DoraHacks was signed in again (the coordinator's Venn thread used "Continue with GitHub"; no

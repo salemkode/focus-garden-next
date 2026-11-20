@@ -11,7 +11,7 @@
 		"compile": "bun run --filter='*' compile",
 		"dev": "bun run mobile:start",
 		"build": "bun run --filter='*' compile",
-		"test": "bun run test:contracts && bun run test:protocol && bun run test:mobile",
+		"test": "bun run test:contracts && bun run test:protocol && bun run test:mobile && bun run test:telegram",
 		"clean": "rm -rf packages/**/dist",
 		"mobile:start": "cd packages/mobile && bun run start",
 		"mobile:ios": "cd packages/mobile && bun run ios",
@@ -27,7 +27,8 @@
 		"typecheck:protocol": "cd packages/protocol && bun run typecheck",
 		"contracts:deploy": "cd packages/contracts && bun run deploy",
 		"landing:dev": "cd packages/landing && bun run dev",
-		"landing:build": "cd packages/landing && bun run build"
+		"landing:build": "cd packages/landing && bun run build",
+		"test:telegram": "cd packages/telegram-bot && bun run test"
 	},
 	"dependencies": {
 		"@bch-wc2/interfaces": "^0.0.16",
