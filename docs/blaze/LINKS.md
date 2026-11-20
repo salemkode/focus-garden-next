@@ -46,4 +46,4 @@ The choice is remembered in the browser. Phones and narrow windows start collaps
 | 2025 demo | https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s |
 | 2025 entry | https://dorahacks.io/buidl/36811 |
 | Judge guide | https://focus.salemkode.com/#blaze |
-| EMBER2026 address | `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`. Confirmed by the owner on 20 Nov 2026 for both Focus Garden and Venn. Valid mainnet CashTokens-aware (P2PKH with tokens) address. |
+| EMBER2026 address | `bitcoincash:zzzyq9g0n2ywatt0eajwre5h89aju3kk0svl94s4k9`. Chosen by the owner on 21 Nov 2026: the wallet from the 2025 entry (build 36811). Replaces `zzxajy…9wgrd`. Valid mainnet CashTokens-aware (P2PKH with tokens) address. |

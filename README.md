@@ -9,6 +9,12 @@
 > repository keeps that history and adds this year's work on top: everything after `de708cd` is
 > new. See [Before and after](#before-and-after-2025-hackathon--now).
 
+> [!NOTE]
+> 🔥 **BCH BLAZE 2026 entry (Mainnet track).** Try it at https://focus-app.salemkode.com · judge
+> guide https://focus.salemkode.com/#blaze · slides
+> https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf · EMBER2026 votes (Mainnet
+> CashTokens): `bitcoincash:zzzyq9g0n2ywatt0eajwre5h89aju3kk0svl94s4k9`
+
 Focus Garden is a focus timer that grows a tree while you stay off your phone. Leave the app and the
 tree withers. Verified sessions are locked on Bitcoin Cash, and the grown tree is sent to your own
 wallet as a collectible. Longer focus grows bigger trees (sprout, tree, big tree, house), and

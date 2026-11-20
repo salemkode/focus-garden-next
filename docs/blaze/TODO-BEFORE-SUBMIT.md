@@ -8,7 +8,11 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
 
 ## In order
 
-1. ✅ **EMBER2026 voting address confirmed** (20 Nov): `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`, shared with Venn. It is in the banner, the deck and the BUIDL draft.
+1. ✅ **EMBER2026 voting address** (changed 21 Nov by the owner): `bitcoincash:zzzyq9g0n2ywatt0eajwre5h89aju3kk0svl94s4k9`,
+   the wallet from the 2025 entry (https://dorahacks.io/build/36811). Plain form
+   `bitcoincash:qzzyq9g0n2ywatt0eajwre5h89aju3kk0st4kt7nfk`, hash160 `8440150f…d67c` (checked with libauth).
+   It is in the banners, the deck and its PDF, the BUIDL and the README. The earlier address
+   `zzxajy…9wgrd` is no longer used for votes. The refund already sent to its plain form `qzxajy…` stays there.
 
 2. ✅ **Judge-path run on mainnet** (20 Nov), funded by you and run from the live site: plant
    `814ded89…d9db` (block 978132), release of the grown tree to the linked test wallet

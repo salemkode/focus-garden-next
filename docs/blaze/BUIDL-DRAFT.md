@@ -34,7 +34,7 @@ Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phon
 Judge guide (5 minutes): https://focus.salemkode.com/#blaze
 Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf
 Source (2026): https://github.com/salemkode/focus-garden-next/tree/5f5a52ea3c83d9b6df178d53d7eab5c26a32ab56
-EMBER2026 votes: bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd
+EMBER2026 votes: bitcoincash:zzzyq9g0n2ywatt0eajwre5h89aju3kk0svl94s4k9
 
 Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest contract mints a tree NFT and time-locks it for the session. The app tracks whether you stay: leave for more than 10 seconds and the tree withers and skips automatic delivery. Stay, and when the lock matures the grown tree is sent to your own wallet as a CashTokens NFT. Longer sessions grow bigger trees, small trees merge into bigger ones, and a second contract, FocusDirectory, gives everyone a public profile card for the on-chain leaderboard and tips. There is no backend of our own: the app builds, checks (in the BCH 2026 VM) and signs every transaction itself and talks to public Electrum servers.
 
