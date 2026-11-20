@@ -36,7 +36,7 @@ const parts = [
 const copy = (label) =>
 	`<button type="button" class="copy" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.dataset.a);this.textContent='Copied'" data-a="${esc(config.votingAddress)}">${label}</button>`;
 const vote = config.votingAddress
-	? `<span class="vote">EMBER2026 votes (Mainnet CashTokens): <code>${esc(config.votingAddress)}</code> ${copy("Copy")}</span>`
+	? `<span class="vote">EMBER2026 votes (CashTokens): <code>${esc(config.votingAddress)}</code> ${copy("Copy")}</span>`
 	: "";
 // Collapsing is remembered in localStorage; phones start collapsed so the app keeps its height.
 const toggle = (label, title) =>
