@@ -27,8 +27,16 @@ Source: `packages/mobile/blaze-banner.json`, used by the web app (`scripts/web-p
 and the landing page (`packages/landing/src/main.ts`).
 
 ```
-🔥 BCH BLAZE 2026 entry  Slides | Source (2026) | 2025 version: source · demo · entry | Judge guide | EMBER2026 votes (Mainnet CashTokens): <address> [Copy]
+🔥 BCH BLAZE 2026 entry  Slides | Source (2026) | 2025 version: source · demo · entry | Judge guide | EMBER2026 votes (Mainnet CashTokens): <address> [Copy]  [Less ▴]
 ```
+
+The **Less / More** toggle collapses the banner to one line:
+
+```
+🔥 BCH BLAZE 2026  Slides · Source · 2025 · Judge guide   [Copy vote address] [More ▾]
+```
+
+The choice is remembered in the browser. Phones and narrow windows start collapsed, so the app keeps its height.
 
 | Field | Value |
 |---|---|
