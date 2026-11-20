@@ -14,8 +14,8 @@ runs 23–27 November, and results are announced on 28 November.
 
 | Track | Verdict | One-line reason |
 |---|---|---|
-| **Mainnet** | **Eligible.** Recommended. | All requirements the repository can show are met, including a plant → release and a profile card made from the website on mainnet (20 Nov). Still needed: the BUIDL moved to the Mainnet track. |
-| Media | Eligible as an entry type, but not recommended | It would need its own media piece. The existing BUIDL is on the Media track, and its content is out of date. |
+| **Mainnet** | **Eligible.** Recommended. | All requirements the repository can show are met, including a plant → release and a profile card made from the website on mainnet (20 Nov). The BUIDL is on the Mainnet Track since 21 Nov. |
+| Media | Eligible as an entry type, but not recommended | It would need its own media piece. BUIDL #51334 moved from Media to Mainnet on 21 Nov. |
 | Community Choice | Eligible automatically once the Mainnet entry is valid | The voting address was confirmed on 20 Nov |
 | Build with XO | Not realistic | No new XO template or invitation exists, and the feedback must be personally written |
 | Migrate to XO | Not realistic by 22 Nov | It would mean porting FocusForest to an XO template and running an invitation on Chipnet or Mainnet. There are no Chipnet coins, and a faucet needs a CAPTCHA. |
@@ -37,7 +37,7 @@ reliable, not adding features. Skip the XO bounties this round.
 | Attended a preparation stream (roll call), or else the low-priority queue | **Unknown — owner only** | Not visible in the repository or on the BUIDL. Without it the entry still counts, but judges review it later. |
 | Confirmed "real" in the BCH BLAZE Telegram channel | **Unknown — owner only** | Owner action |
 | Team of 1–4, registered on DoraHacks | **Yes** | BUIDL #51334 lists 1 member, @salemkode. The account is registered (the hackathon page shows "Manage Submission / Unregister"). |
-| BUIDL linked to BCH BLAZE 2026 and to its track | **Linked, but to the Media track** | Manage Submission shows Focus Garden → **Media Track**. Switch it to **Mainnet Track** (owner approval). |
+| BUIDL linked to BCH BLAZE 2026 and to its track | **Met (21 Nov)** | Manage Submission shows Focus Garden → **Mainnet Track**; the public Builds grid shows it too. |
 
 ### Mainnet-track scoring (judges' four criteria)
 
