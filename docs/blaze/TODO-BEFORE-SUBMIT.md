@@ -76,6 +76,22 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
     browser, check that the deck link, demo, judge guide and source commit all open, and that the
     BUIDL shows the Mainnet track.
 
+## Overnight QA, 20–21 Nov (coordinator request; user asleep)
+
+| Area | Result |
+|---|---|
+| Voting address | Only `zzzyq9g0…4s4k9` on BUIDL #51334, both sites and the deck PDF (re-checked after every deploy). Note: the original address `zzm8exh8…wlr7s` is address #4 of your Cashonize wallet, labelled "Focus Garden BLAZE vote" there. It was yours after all; nothing needs to change. |
+| Downloads | Android was current (1.0.0 (4), same app code as `main`) and opened on the emulator. Rebuilt as **1.0.0 (5)** with tonight's fixes, installed from the public URL, checked, and `/android` now points at it. iPhone build 10 was from `30a3d0d` (same app code); **build 11** with the fixes is uploaded to the same AppDrop link (see LINKS.md). |
+| WizardConnect | Works with your Cashonize wallet on the web app and on Android. |
+| WalletConnect | **Was broken on the live site and is now fixed.** The Reown project (TestProject, ID `81628b35…71ce`) only allowed `memo-cash.vercel.app`, so the relay closed every connection from focus-app.salemkode.com with code 3000 "Unauthorized: origin not allowed". `https://focus-app.salemkode.com` is now on its domain allowlist, and Cashonize then linked over WalletConnect. If you add another web domain, add it there too. |
+| A real focus session for you | Done on Mainnet with BLAZE Demo's fee wallet and your Cashonize wallet: funding `859675aa…49a0`, plant `b4563d02…63ab`, release of the grown tree to Cashonize `ffda7e9b…3025`. The leaderboard shows BLAZE Demo at 17 min on the web and in the Android app. |
+| Leaderboard | Works. It used to need the Focus Garden wallet just to *view* it; it is now public (PR #10), and the wallet is only needed to join. |
+| Telegram | **Nothing was agreed beyond the check-in.** No Telegram bot, leaderboard posting or automatic messages appear in any Focus Garden thread, doc, memory or code. The only Telegram items are the "real project" check-in text in step 5 (you post it) and, in another session, a draft question to the XO team. |
+| App crash risk | Fixed in PR #10: a WebSocket send while the socket is still connecting threw `INVALID_STATE_ERR` inside the Electrum library (seen on the iOS simulator), which closes a release build. Sends now wait for the socket to open. |
+| Look and feel | Web at 1440 px and 390–400 px, the landing page, and Android all render correctly. Fixed: the expanded BLAZE banner wrapped onto two lines at 1440 px (PR #11). Status bar: no overlap on Android or iOS; the top buttons sit just below it. |
+| Not fixed (seen once) | In one web tab that had been open since the afternoon, the wallet screen stayed disabled (the app's wallet store was stuck in "busy"). A reload fixed it, and it did not come back in fresh tabs. Every chain request already has a 20 s timeout, so the cause is unknown. If a judge sees "Change wallet" greyed out, a reload clears it. |
+| Electrum keep-alive | The web app sends a `server.ping` every second. Harmless but chatty; left as is. |
+
 ## Already done ✅
 
 - Rules re-verified on 20 Nov from DoraHacks and bchblaze.com (`ELIGIBILITY.md`, `sources/`)
