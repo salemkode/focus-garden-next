@@ -30,23 +30,24 @@ export default function LeadersScreen() {
   const [refreshing, setRefreshing] = useState(false);
   /** Your own leaderboard entry, kept with the wallet it was read for so another wallet never shows it. */
   const [me, setMe] = useState<{ wallet: string; id: string; state: 'pending' | 'public' } | null>(null);
-  // The leaderboard is computed on this phone from the contracts' history on Bitcoin Cash.
+  // The leaderboard is computed on this phone from the contracts' history on Bitcoin Cash. It is
+  // public, so it loads without the Focus Garden wallet; that wallet is only needed to join it.
   const connected = rewards.data.state === 'connected';
   const useSamples = samples !== null && __DEV__;
   const wallet = connected ? rewards.account?.address : undefined;
-  // No fetch runs while disconnected (or on samples), so a pull cut short there must not spin forever.
-  if (refreshing && (useSamples || !connected)) setRefreshing(false);
+  // No fetch runs on samples, so a pull cut short there must not spin forever.
+  if (refreshing && useSamples) setRefreshing(false);
   // A different wallet (or none) is not "you" until its own profile has been read.
   if (me && me.wallet !== wallet) setMe(null);
   useEffect(() => {
-    if (useSamples || !connected) return;
+    if (useSamples) return;
     let active = true;
     fetchLeaderboard(period)
       .then((result) => { if (active) { setRemote(result); setFailed(false); } })
       .catch(() => { if (active) setFailed(true); })
       .finally(() => { if (active) setRefreshing(false); });
     return () => { active = false; };
-  }, [connected, period, useSamples, reload]);
+  }, [period, useSamples, reload]);
   useEffect(() => {
     if (useSamples || !wallet) return;
     let active = true;
@@ -54,18 +55,14 @@ export default function LeadersScreen() {
     return () => { active = false; };
   }, [wallet, useSamples, reload]);
 
-  const entries = useSamples ? sampleLeaderboard() : !connected ? [] : remote?.period === period ? remote.entries : null;
-  const opening = rewards.status === 'opening' || (Boolean(rewards.account) && !connected && rewards.status === 'busy');
-  const state = useSamples ? 'ready'
-    : !connected ? (opening ? 'loading' : rewards.account ? 'offline' : 'setup')
-    : failed ? 'offline' : entries === null ? 'loading' : 'ready';
+  const entries = useSamples ? sampleLeaderboard() : remote?.period === period ? remote.entries : null;
+  const state = useSamples ? 'ready' : failed ? 'offline' : entries === null ? 'loading' : 'ready';
   function load() {
-    if (connected) {
-      // Show progress at once: the retry row gives way to the spinner, a pull keeps its spinner.
-      setFailed(false);
-      setRefreshing(entries !== null);
-      setReload((value) => value + 1);
-    } else if (rewards.account) void rewards.refresh();
+    // Show progress at once: the retry row gives way to the spinner, a pull keeps its spinner.
+    setFailed(false);
+    setRefreshing(entries !== null);
+    setReload((value) => value + 1);
+    if (rewards.account && !connected) void rewards.refresh();
   }
 
   const list = entries ?? [];
@@ -77,7 +74,7 @@ export default function LeadersScreen() {
   }
 
   return <Screen title="Leaders" onRefresh={load} refreshing={refreshing || (state === 'loading' && entries !== null)}>
-    {state === 'ready' || (connected && state === 'loading') ? <Segmented options={PERIODS} value={period} onChange={setPeriod} /> : null}
+    {state === 'ready' || state === 'loading' ? <Segmented options={PERIODS} value={period} onChange={setPeriod} /> : null}
 
     {state === 'loading' && list.length === 0 ? <ActivityIndicator className="mt-10" color={color.moss} /> : null}
 
@@ -107,11 +104,11 @@ export default function LeadersScreen() {
       </Animated.View>)}
     </Group> : list.length ? <Footnote>Ranked by verified focus.</Footnote> : null}
 
-    {state === 'setup' ? <EmptyState icon={icons.wallet} title="Set up your Focus Garden wallet" detail="Needed to see the leaderboard" onPress={() => router.navigate('/profile')} /> : null}
+    {state === 'ready' && !rewards.account && !useSamples ? <EmptyState icon={icons.wallet} title="Set up your Focus Garden wallet" detail="Needed to join the leaderboard" onPress={() => router.navigate('/profile')} /> : null}
 
-    {state === 'offline' ? <EmptyState icon={icons.refresh} title="Try again" detail="The leaderboard didn't load" onPress={load} chevron={false} disabled={rewards.status === 'busy'} /> : null}
+    {state === 'offline' ? <EmptyState icon={icons.refresh} title="Try again" detail="The leaderboard didn't load" onPress={load} chevron={false} /> : null}
 
-    {state === 'ready' && list.length === 0 ? (me
+    {state === 'ready' && list.length === 0 && rewards.account ? (me
       ? <EmptyState icon={icons.tree} title="Plant a verified tree" detail={`Nobody is on the board ${period === 'week' ? 'this week' : 'yet'}`} onPress={() => router.navigate('/')} />
       : <EmptyState icon={icons.globe} title="Join the leaderboard" detail={`Nobody is on the board ${period === 'week' ? 'this week' : 'yet'}`} onPress={() => router.navigate({ pathname: '/profile', params: { join: '1' } })} />) : null}
   </Screen>;
