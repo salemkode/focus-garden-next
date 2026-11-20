@@ -1,0 +1,4 @@
+dist/
+.cloudflare/
+.dev.vars
+.env
