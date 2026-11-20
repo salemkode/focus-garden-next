@@ -32,9 +32,19 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    The BUIDL is already public, so Save publishes immediately. 🤖 I fill and save it in your browser
    once you approve.
 
-5. 🧑 **Roll call and Telegram.** Did someone on the team attend one of the five preparation streams?
-   That decides the priority queue. Have you confirmed the project is real in the BCH BLAZE Telegram
-   channel? Both are owner-only and not visible to me.
+5. 🧑 **Telegram "real project" check-in: do it now.** You weren't sure whether it's done, and no
+   record of it is reachable from here. The rules require it unless the organizers waive it. Post
+   this (or your own wording) in the BCH BLAZE Telegram group:
+
+   > Hi BLAZE team 👋 Focus Garden (@salemkode on DoraHacks, BUIDL #51334) is a real project for
+   > the Mainnet track: focus sessions that time-lock a tree NFT on Bitcoin Cash. Try it at
+   > https://focus-app.salemkode.com, with a judge guide at https://focus.salemkode.com/#blaze
+
+   Roll call (attending one of the five preparation streams) is unknown too. The bchblaze.cash
+   roll call isn't publicly readable, and nothing in the repository records it. Without it, the
+   entry is still eligible but goes into the low-priority judging queue. Rollcall has closed, so
+   nothing can change that now. Posting the project in the group also helps "word of mouth", which
+   the rules name as the way out of that queue.
 
 6. 🧑 **Keep the deployed build until judging ends (27 Nov).** focus-app.salemkode.com and
    focus.salemkode.com now run branch `docs/blaze-2026-submission`. A deploy from `main` drops the
@@ -50,12 +60,15 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    `DEMO.md` script. It's not required for the Mainnet track. You decide where it is hosted
    (YouTube or similar). Publishing it is your call.
 
-8b. 🧑 **Two disclosure questions from the reviews.** (a) Were `PomodoroRewards` v3 (with the
-    enforced lock) and the credit policy written before the 14 Nov kickoff? Git can't tell, because
-    all 2026 code first landed on 17 Nov. If yes, they join the pre-existing list. (b) The live BCMR
-    text says each tree came from "verified focus". Changing it means a BCMR republish, which is a
-    mainnet transaction signed with your metadata key. Leave it, or approve a republish with "a
-    time-locked focus pledge".
+8b. ✅ **Disclosure questions, settled from the files (20 Nov).**
+    (a) PomodoroRewards v3 and the credit policy were written **during** BLAZE. The 9–10 Nov
+    prototype (`focus-garden-native`) still holds the 2025 PomodoroRewards contract. The v3
+    contract, `FocusDirectory`, `src/sponsorship` and `CreditPolicy.test.ts` were first created on
+    15 Nov 2026 (file creation times in the main checkout), after the 14 Nov kickoff. The disclosure
+    stays as written.
+    (b) 🧑 The live BCMR text says each tree came from "verified focus". Changing it needs a BCMR
+    republish, which is a mainnet transaction signed with your metadata key. The suggestion is to
+    leave it for now.
 
 9. Not recommended: **Media-track entry** (a separate BUIDL and its own piece) and the **XO bounties**
    (no XO template or invitation, plus your personally written feedback; `XO-FEEDBACK.md` is a
