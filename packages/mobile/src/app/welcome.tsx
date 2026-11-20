@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { router } from 'expo-router';
-import { AccessibilityInfo, AppState, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, useWindowDimensions, View, type ScrollViewInstance } from 'react-native';
+import { AccessibilityInfo, AppState, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, useWindowDimensions, View, type ScrollViewInstance } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import { BlockDemo, LeaveDemo, PlantDemo, TiersDemo, type DemoProps } from '../components/onboarding/Demos';
@@ -38,13 +38,6 @@ export default function Welcome() {
   const scroller = useRef<ScrollViewInstance>(null);
   const [page, setPage] = useState(0);
   const [asking, setAsking] = useState(false);
-  /** While typing an address the footer steps aside, so the field's own Link button stays in view. */
-  const [typing, setTyping] = useState(false);
-  useEffect(() => {
-    const shown = Keyboard.addListener('keyboardDidShow', () => setTyping(true));
-    const hidden = Keyboard.addListener('keyboardDidHide', () => setTyping(false));
-    return () => { shown.remove(); hidden.remove(); };
-  }, []);
   /** Set once the permission prompt has been answered here; if access is still off, the page says so and moves on. */
   const [asked, setAsked] = useState(false);
   const rewards = useRewards();
@@ -140,7 +133,7 @@ export default function Welcome() {
           <WalletLink />
         </ScrollView>
       </ScrollView>
-      {typing ? null : <View className="gap-3 px-6 pb-2 pt-2">
+      <View className="gap-3 px-6 pb-2 pt-2">
         <View accessible accessibilityRole="adjustable" accessibilityLabel={`Page ${page + 1} of ${COUNT}`}
           accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
           onAccessibilityAction={(event) => go(page + (event.nativeEvent.actionName === 'increment' ? 1 : -1))}
@@ -153,7 +146,7 @@ export default function Welcome() {
           {asksPermission ? <Button variant="plain" size="medium" label="Not now" onPress={() => go(page + 1)} />
             : declined ? <Button variant="plain" size="medium" label="Try again" busy={asking} onPress={() => void allowBlocking()} /> : null}
         </View>
-      </View>}
+      </View>
     </KeyboardAvoidingView>
   </SafeAreaView>;
 }
