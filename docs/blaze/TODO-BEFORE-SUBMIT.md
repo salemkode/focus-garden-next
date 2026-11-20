@@ -76,9 +76,10 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
     browser, check that the deck link, demo, judge guide and source commit all open, and that the
     BUIDL shows the Mainnet track.
 
-## 🧑 Pending: React Native line on BUIDL #51334 (21 Nov)
+## 🧑 Needs the user's DoraHacks login
 
 The banners on focus.salemkode.com and focus-app.salemkode.com already carry it (PR #13).
+Optional: the live BUIDL already shows the 2025-wallet voting address and names React Native and react-native-libauth. This edit only makes it precise: the app uses its own in-repo adapter, and the two repos are related work.
 DoraHacks had signed this browser out, and signing back in with Google asks for **your passkey**, so
 the BUIDL wasn't saved. Sign in to DoraHacks and ask me to "save the BUIDL", or edit it yourself.
 In the Details text, add after the first paragraph:
