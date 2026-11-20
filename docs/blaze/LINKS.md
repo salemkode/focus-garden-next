@@ -27,7 +27,7 @@ Source: `packages/mobile/blaze-banner.json`, used by the web app (`scripts/web-p
 and the landing page (`packages/landing/src/main.ts`).
 
 ```
-🔥 BCH BLAZE 2026 entry  Slides | Source (2026) | 2025 version: source · demo · entry | Judge guide | EMBER2026 votes (Mainnet CashTokens): <address> [Copy]  [Less ▴]
+🔥 BCH BLAZE 2026 entry  Slides | Source (2026) | 2025 version: source · demo · entry | Judge guide | EMBER2026 votes (CashTokens): <address> [Copy]  [Less ▴]
 ```
 
 The **Less / More** toggle collapses the banner to one line:
