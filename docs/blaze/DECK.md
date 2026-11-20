@@ -139,7 +139,7 @@ Same table as v1, with these changes:
 - **THANK YOU!**
 - The largest line: **Plant a 9-minute tree → focus-app.salemkode.com**
 - Small: Judge guide focus.salemkode.com/#blaze · Source github.com/salemkode/focus-garden-next
-- `EMBER2026 votes: address to be confirmed` (unchanged until the owner confirms)
+- `EMBER2026 votes: bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd` (confirmed by the owner, 20 Nov)
 
 ## A1 — Mainnet transactions
 

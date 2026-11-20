@@ -3,7 +3,7 @@
 | What | Link | State on 20 Nov 2026 |
 |---|---|---|
 | **Deck (Widget Factory copy)**, edit | https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/edit | Private copy, 13 slides, v2 (after four reviews), 20 Nov. Thumbnails in `deck-renders/v2/`. |
-| **Deck read-only share link** | https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/view (works only after sharing is set to "Anyone with the link: Viewer") | **Not shared**: needs the owner's approval |
+| **Deck link (public, in the banner)** | https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf | Live since 20 Nov: the deck exported to PDF (13 pages, clickable links) and hosted on your Cloudflare site, as you asked. The Google deck itself stays private. |
 | **BUIDL** | https://dorahacks.io/buidl/51334 | Exists. Linked to BCH BLAZE 2026 on the **Media** track; switch to Mainnet. Its text points to old links. The replacement text is in `SUBMISSION.md`. |
 | 2025 BUIDL (before) | https://dorahacks.io/buidl/36811 | Public. 3rd place, BitcoinCash Innovation Award, BLAZE 2025 |
 | Duplicate 2025 BUIDL | https://dorahacks.io/buidl/36810 | Public, the same content as 36811 (2025). Leave it alone; mention it only if asked. |
@@ -40,10 +40,10 @@ The choice is remembered in the browser. Phones and narrow windows start collaps
 
 | Field | Value |
 |---|---|
-| Slides | `deck`: null until the read-only link exists. The link is hidden while it is null. |
+| Slides | https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf |
 | Source (2026) | https://github.com/salemkode/focus-garden-next. After the PR is merged, or for a pinned revision, point it at the submission commit. |
 | 2025 source | https://github.com/salemkode/crypto-focus-garden/tree/de708cd |
 | 2025 demo | https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s |
 | 2025 entry | https://dorahacks.io/buidl/36811 |
 | Judge guide | https://focus.salemkode.com/#blaze |
-| EMBER2026 address | `bitcoincash:zzm8exh8lcxre37pduausrqgpns57acsmc0fswlr7s` — **unconfirmed candidate**. It has been on the live landing footer since 19 Nov (commit 5a7ab57), but nothing records who controls it, and it has no history on chain. **The owner must confirm it or replace it.** |
+| EMBER2026 address | `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`. Confirmed by the owner on 20 Nov 2026 for both Focus Garden and Venn. Valid mainnet CashTokens-aware (P2PKH with tokens) address. |

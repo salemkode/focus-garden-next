@@ -8,11 +8,7 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
 
 ## In order
 
-1. 🧑 **Confirm the EMBER2026 voting address.** The banner and landing page show
-   `bitcoincash:zzm8exh8lcxre37pduausrqgpns57acsmc0fswlr7s`. It was added on 19 Nov (commit
-   5a7ab57), but nothing records who controls it, and it has never been used on chain. Reply either
-   "confirmed, it's mine" or with another **mainnet** CashTokens-capable (`z…`) address you control.
-   🤖 I then update `blaze-banner.json`, the deck and the BUIDL text, and redeploy.
+1. ✅ **EMBER2026 voting address confirmed** (20 Nov): `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`, shared with Venn. It is in the banner, the deck and the BUIDL draft.
 
 2. 🧑 **Approve and fund one judge-path run on mainnet.** This is the core Mainnet-track proof. No
    app-made transaction exists on mainnet yet (the FocusForest contract has only its genesis). My
@@ -27,9 +23,7 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    🤖 Either way, I then update the evidence (`SUBMISSION.md` #12), the deck chips ("mainnet
    pending" → "Done on Mainnet") and the BUIDL text.
 
-3. 🧑 **Approve sharing the deck** as "Anyone with the link → Viewer". 🤖 I set the share link, add
-   it to the banner (`deck` in `blaze-banner.json`), redeploy both sites, and check the link from a
-   signed-out browser.
+3. ✅ **Deck link** (20 Nov): as you asked, the Google deck stays private. Its PDF export is hosted on your Cloudflare site at https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf and linked from both banners. If the deck changes, ask Codex to export it again, then redeploy the landing page.
 
 4. 🧑 **Approve the DoraHacks changes** to BUIDL #51334:
    - switch the track **Media → Mainnet** (hackathon page → Manage Submission)

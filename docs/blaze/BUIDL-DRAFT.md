@@ -32,9 +32,9 @@ Replace the `<…>` placeholders before pasting.
 
 Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phone frame; needs a BCH wallet and about 15,000 sats)
 Judge guide (5 minutes): https://focus.salemkode.com/#blaze
-Slides: <deck read-only link>
+Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf
 Source (2026): https://github.com/salemkode/focus-garden-next/tree/<submission commit>
-EMBER2026 votes: <owner-confirmed voting address>
+EMBER2026 votes: bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd
 
 Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest contract mints a tree NFT and time-locks it for the session. The app tracks whether you stay: leave for more than 10 seconds and the tree withers and skips automatic delivery. Stay, and when the lock matures the grown tree is sent to your own wallet as a CashTokens NFT. Longer sessions grow bigger trees, small trees merge into bigger ones, and a second contract, FocusDirectory, gives everyone a public profile card for the on-chain leaderboard and tips. There is no backend of our own: the app builds, checks (in the BCH 2026 VM) and signs every transaction itself and talks to public Electrum servers.
 

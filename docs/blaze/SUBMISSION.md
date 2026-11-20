@@ -21,8 +21,8 @@ read straight from the chain.
 
 > **🔥 BCH BLAZE 2026 · Mainnet track**
 > Try it: **https://focus-app.salemkode.com** (web, with a five-minute judge guide at https://focus.salemkode.com/#blaze)
-> Slides: `<deck read-only link>` · Source: https://github.com/salemkode/focus-garden-next (branch `docs/blaze-2026-submission`)
-> EMBER2026 votes: `<owner-confirmed voting address>`
+> Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf · Source: https://github.com/salemkode/focus-garden-next (branch `docs/blaze-2026-submission`)
+> EMBER2026 votes: `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`
 
 **The problem.** Phones win the fight for attention. Focus timers lose because breaking one costs nothing
 and keeping one proves nothing.

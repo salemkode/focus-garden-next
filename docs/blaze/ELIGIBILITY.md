@@ -14,9 +14,9 @@ runs 23–27 November, and results are announced on 28 November.
 
 | Track | Verdict | One-line reason |
 |---|---|---|
-| **Mainnet** | **Reachable before the deadline.** Recommended. | The branch is deployed and most requirements are met. Still needed: one funded mainnet run that proves the judge journey, the shared deck link in the banner, the confirmed voting address, and the BUIDL moved to the Mainnet track. |
+| **Mainnet** | **Reachable before the deadline.** Recommended. | The branch is deployed and most requirements are met. Still needed: one funded mainnet run that proves the judge journey, and the BUIDL moved to the Mainnet track. |
 | Media | Eligible as an entry type, but not recommended | It would need its own media piece. The existing BUIDL is on the Media track, and its content is out of date. |
-| Community Choice | Eligible automatically once the Mainnet entry is valid and shows a confirmed voting address | Needs only the owner-confirmed EMBER2026 address |
+| Community Choice | Eligible automatically once the Mainnet entry is valid | The voting address was confirmed on 20 Nov |
 | Build with XO | Not realistic | No new XO template or invitation exists, and the feedback must be personally written |
 | Migrate to XO | Not realistic by 22 Nov | It would mean porting FocusForest to an XO template and running an invitation on Chipnet or Mainnet. There are no Chipnet coins, and a faucet needs a CAPTCHA. |
 
@@ -60,7 +60,7 @@ unless the owner wants to make a video anyway.
 
 It is automatic for every eligible Mainnet or Media entry that lists a CashTokens address able to
 receive EMBER2026. The winner is the entry with the most EMBER2026 tokens. The only blocker is the
-voting address, which the owner must confirm.
+voting address. The owner confirmed it on 20 Nov.
 
 ## Build with XO / Migrate to XO (General Protocols)
 
