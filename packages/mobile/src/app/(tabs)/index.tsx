@@ -174,7 +174,8 @@ export default function FocusScreen() {
               <Text numberOfLines={1} className="text-footnote text-ink-2">Growing a {size} · {tag.label}{blocking ? ' · apps blocked' : ''}</Text>
             </View>
           </View>
-          {onChain === 'failed' ? <Notice tone="error">{`Not verified on Bitcoin Cash. Your ${size} still grows here.`}</Notice> : null}
+          {/* Say why, so a missing fee coin can be fixed before the next plant. */}
+          {onChain === 'failed' ? <Notice tone="error">{`Not verified on Bitcoin Cash. Your ${size} still grows here.${rewards.notice ? ` ${rewards.notice}` : ''}`}</Notice> : null}
           <Button variant="destructive" size="medium" label="Give up" onPress={confirmGiveUp} />
         </Animated.View> : null}
 
