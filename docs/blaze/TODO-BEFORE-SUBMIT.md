@@ -56,6 +56,13 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    `DEMO.md` script. It's not required for the Mainnet track. You decide where it is hosted
    (YouTube or similar). Publishing it is your call.
 
+8b. 🧑 **Two disclosure questions from the reviews.** (a) Were `PomodoroRewards` v3 (with the
+    enforced lock) and the credit policy written before the 14 Nov kickoff? Git can't tell, because
+    all 2026 code first landed on 17 Nov. If yes, they join the pre-existing list. (b) The live BCMR
+    text says each tree came from "verified focus". Changing it means a BCMR republish, which is a
+    mainnet transaction signed with your metadata key. Leave it, or approve a republish with "a
+    time-locked focus pledge".
+
 9. Not recommended: **Media-track entry** (a separate BUIDL and its own piece) and the **XO bounties**
    (no XO template or invitation, plus your personally written feedback; `XO-FEEDBACK.md` is a
    placeholder). See `ELIGIBILITY.md`.
