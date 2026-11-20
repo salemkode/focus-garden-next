@@ -54,7 +54,9 @@ Everything is hosted on Cloudflare (account "Salem.m.s2030@gmail.com's Account",
 | Landing page | https://focus.salemkode.com | `cd packages/landing && bun run build && cf deploy ./dist` (config: `packages/landing/cloudflare.config.ts`, Worker `focus-garden`) |
 | Web app (Expo web export, shown as a phone on desktop) | https://focus-app.salemkode.com | `cd packages/mobile && bun run export:web`, then `cd ../../deploy/web-app && cf deploy ../../packages/mobile/dist-web` (Worker `focus-garden-app`, single-page-app fallback) |
 | iPhone | https://appdrop.app/d/prvhsh4gyx | `packages/mobile/scripts/appdrop.sh <next build number>` |
-| Android | https://appdrop.app/d/njfetdhs4s | `./gradlew assembleRelease` in `packages/mobile/android`, then `npx appdrop app-release.apk --update https://appdrop.app/d/njfetdhs4s` |
+| Android | https://focus.salemkode.com/android | `packages/mobile/scripts/android-release.sh <next versionCode>`, then deploy the landing page. Builds an arm64 APK signed with the release key, uploads it to the R2 bucket `focus-garden-downloads` (https://focus-download.salemkode.com/android/) and points `/android` at it. |
+
+**Android signing.** Since versionCode 4 (20 November 2026) the APK is signed with the Focus Garden release key, not the shared React Native debug key. The key is `~/.focus-garden/android-release.keystore` on the release Mac; its passwords are in `~/.gradle/gradle.properties` (`FOCUS_GARDEN_RELEASE_*`, read by `packages/mobile/plugins/withReleaseSigning.js`). Back both up: without them no update can be installed over an existing install. Certificate SHA-256: `59904efde3e1bec54a5e4f33e969062b97766f9077b5a0d4baaf39df7199e915`. Phones with an earlier, debug-signed install must uninstall it once before installing versionCode 4. The old AppDrop link (https://appdrop.app/d/njfetdhs4s, versionCode 3) is no longer updated.
 
 The landing page reads the public deployment record (`packages/contracts/deployments/mainnet.json`) at build time and the leaderboard live from public Electrum servers. Netlify is no longer used for hosting.
 

@@ -5,8 +5,8 @@
 export const DOWNLOADS = {
 	/** iPhone install link (AppDrop share link; recipients sign with their own Apple ID). */
 	ios: "https://appdrop.app/d/prvhsh4gyx",
-	/** Android download (AppDrop share link for the release APK). */
-	android: "https://appdrop.app/d/njfetdhs4s",
+	/** Android APK, hosted on our own R2 bucket; /android redirects to the latest version (public/_redirects). */
+	android: "https://focus.salemkode.com/android",
 	/** Web version of the app (Expo web build). */
 	web: "https://focus-app.salemkode.com",
 } as const;

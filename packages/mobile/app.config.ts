@@ -44,9 +44,11 @@ export default {
       LSApplicationQueriesSchemes: ['wiz', 'wc', 'paytaca', 'bitcoincash'],
     },
   },
-  android: { ...app.expo.android, package: identity, allowBackup: false },
+  // ANDROID_VERSION_CODE must grow with every published APK (scripts/android-release.sh sets it).
+  android: { ...app.expo.android, package: identity, allowBackup: false, versionCode: Number(process.env.ANDROID_VERSION_CODE ?? 1) },
   // Keeps Expo native view constructors in minified release builds (see the plugin for the crash it prevents).
+  // withReleaseSigning signs Android release builds with the Focus Garden key (see the plugin).
   // With app blocking on, targets/activity adds the extension that lifts the shield when a session's
   // time is up even if the app was closed (Device Activity Monitor, bundle <id>.activity).
-  plugins: [...app.expo.plugins, './plugins/withExpoViewKeepRules', ...(shield ? ['@bacons/apple-targets'] : [])],
+  plugins: [...app.expo.plugins, './plugins/withExpoViewKeepRules', './plugins/withReleaseSigning', ...(shield ? ['@bacons/apple-targets'] : [])],
 };
