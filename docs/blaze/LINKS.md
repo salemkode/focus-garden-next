@@ -7,13 +7,13 @@
 | **BUIDL** | https://dorahacks.io/buidl/51334 | Exists. Linked to BCH BLAZE 2026 on the **Media** track; switch to Mainnet. Its text points to old links. The replacement text is in `SUBMISSION.md`. |
 | 2025 BUIDL (before) | https://dorahacks.io/buidl/36811 | Public. 3rd place, BitcoinCash Innovation Award, BLAZE 2025 |
 | Duplicate 2025 BUIDL | https://dorahacks.io/buidl/36810 | Public, the same content as 36811 (2025). Leave it alone; mention it only if asked. |
-| **Demo (after)** | https://focus-app.salemkode.com | Live on mainnet from `main`. Redeploy from this branch for the fee wallet and banner. |
-| Judge guide | https://focus.salemkode.com/#blaze | The section exists on this branch. Deploy the landing page to publish it. |
+| **Demo (after)** | https://focus-app.salemkode.com | Live on mainnet, deployed from `main` at `5f5a52e` (20 Nov, after PR #4 and PR #5 were merged). |
+| Judge guide | https://focus.salemkode.com/#blaze | Live, deployed from `main` (20 Nov). |
 | **Demo (before)** | https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s | BLAZE 2025 organizer showcase of Crypto Focus Garden. The 2025 dApp itself is no longer hosted. |
-| **Source (after)** | https://github.com/salemkode/focus-garden-next/tree/docs/blaze-2026-submission | Public repo. The branch is pushed when the PR is opened. Use a commit link (`/tree/<sha>`) in the BUIDL so it never moves. |
-| Source (after, main) | https://github.com/salemkode/focus-garden-next | Public, default branch `main` (b6c5533) |
+| **Source (after)** | https://github.com/salemkode/focus-garden-next/tree/5f5a52ea3c83d9b6df178d53d7eab5c26a32ab56 | Public. The submitted code, pinned: `main` after PR #4 and PR #5 were merged. Use this link in the BUIDL so it never moves. |
+| Source (after, main) | https://github.com/salemkode/focus-garden-next | Public, default branch `main` |
 | **Source (before)** | https://github.com/salemkode/crypto-focus-garden/tree/de708cd | Public, the last 2025 commit |
-| Source diff | https://github.com/salemkode/focus-garden-next/compare/de708cd...docs/blaze-2026-submission | Everything built since 2025 |
+| Source diff | https://github.com/salemkode/focus-garden-next/compare/de708cd...5f5a52e | Everything built since 2025 |
 | Libauth adapter (pre-existing from 13 Nov 2026) | https://github.com/salemkode/react-native-libauth | Public |
 | Mainnet deployment record | https://github.com/salemkode/focus-garden-next/blob/main/packages/contracts/deployments/mainnet.json | Public |
 | BCMR registry | https://focus.salemkode.com/.well-known/bitcoin-cash-metadata-registry.json | Live |

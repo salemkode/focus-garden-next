@@ -21,7 +21,7 @@ read straight from the chain.
 
 > **🔥 BCH BLAZE 2026 · Mainnet track**
 > Try it: **https://focus-app.salemkode.com** (web, with a five-minute judge guide at https://focus.salemkode.com/#blaze)
-> Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf · Source: https://github.com/salemkode/focus-garden-next (branch `docs/blaze-2026-submission`)
+> Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf · Source: https://github.com/salemkode/focus-garden-next (submitted code: commit `5f5a52e`)
 > EMBER2026 votes: `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`
 
 **The problem.** Phones win the fight for attention. Focus timers lose because breaking one costs nothing
@@ -52,10 +52,10 @@ small enough to plant one tree per session.
 **Status, honestly.**
 
 - **Done on Mainnet:** both contracts deployed on 19 Nov 2026 (block 977999), 100 creator trees and BCMR metadata.
+- **Done on Mainnet, from the website (20 Nov 2026):** a 9-minute plant (`814ded89…d9db`, block 978132), its release to the linked wallet (`b1cc265d…332a`, block 978179) and a profile card (`bc279c21…53f8`). Full txids are in the evidence table.
 - **Done on Mainnet, read-only:** the web app reads balances, gardens and the leaderboard from mainnet.
-- **Tested on the mainnet web build:** WizardConnect pairing.
+- **Tested on the mainnet web build:** WizardConnect pairing (and the tree above went to that WizardConnect-linked wallet).
 - **Tested locally:** the plant, merge, claim, profile and tip transactions (the contracts suite of 76 tests, which also covers the earlier PomodoroRewards and CreditPolicy contracts, plus 27 protocol tests).
-- **Pending:** a funded judge-path run on mainnet, before the deadline. Its txids will be added here.
 - **Planned:** pUSD-backed promises and group gardens.
 
 **Built on our 2025 entry.** See "Pre-existing work" below for the links and the full timeline.
@@ -92,7 +92,9 @@ All of the 2026 commits in `salemkode/focus-garden-next` after `de708cd` (17–2
 | 7 | Contract rules (tier minimums, time locks, merge, claim authorization, profile cards) | Local VM | 76 tests (`bun run test:contracts`), run 20 Nov | `bun run check` |
 | 8 | On-device building, policy checks, garden reader, leaderboard | Local | 27 protocol tests + 71 app tests, run 20 Nov on the submission branch | `bun run check` |
 | 9 | WizardConnect linking works on the mainnet web build | Mainnet relay (no transaction) | 20 Nov: a dedicated test wallet paired over `relay.riften.net` / `relay.cauldron.quest`; the app linked `bitcoincash:zp0ldgxx7k4j8xh98j588levmlqf5rfmg5v49vs0ws` | Repeat with Selene: Connect wallet → Selene |
-| 10 | The browser fee wallet is created and reads its mainnet balance | Mainnet (read) | 20 Nov, local build of this branch | Profile → Focus Garden wallet |
+| 10 | The browser fee wallet is created, funded and pays fees | Mainnet | Funded by `f7046d3e5c69eda66c75d1920ca1e9a52cc7a9fa6f9ef71a1c27c545f9d85ae6`; it paid #12–#14 | Profile → Focus Garden wallet |
 | 11a | A withered session forfeits its automatic release | Local | `tests/auto-release.test.ts` (one of the 71 app tests) | `bun run test:mobile` |
 | 11 | A plant with an empty fee wallet refuses before signing | Mainnet build | "Your Focus Garden wallet needs one coin of at least 8,000 sats" | Plant with Verify on and no funds |
-| 12 | **A judge-path plant, profile or tip made from the app** | **Mainnet** | **pending** (needs ~15,000 sats; owner approval) | Explorer, plus the tree arriving in the linked wallet |
+| 12 | **Plant from the website**: FocusForest mints a time-locked Seedling oak (1,000-sat deposit) and returns its minting baton; 9-minute session kept with the tab in front | **Mainnet** | `814ded899f98264f7fdb58c4ada15b48eb45588414ebc3bc106e828143abd9db` (block 978132, 20 Nov 07:03 UTC; 2,000-sat fee) | Explorer: output 1 is the tree NFT at the contract, category `cb351f41…4ae1` |
+| 13 | **Release from the website**: when the lock matured, the app sent the grown tree (same commitment, now immutable) to the WizardConnect-linked test wallet `bitcoincash:zp0ldgxx7k4j8xh98j588levmlqf5rfmg5v49vs0ws` | **Mainnet** | `b1cc265d64ef49728fc5b65e638025a871430b27499c6ccd3367f3bbf866332a` (block 978179, 20 Nov 14:44 UTC; 2,000-sat fee) | Explorer: output 0 carries the NFT to `qp0ldgxx…`. The release went out late because a browser confirm dialog left open in the same tab paused the page's scripts; it was sent within minutes of the dialog closing. |
+| 14 | **Profile card from the website**: FocusDirectory mints the immutable card "BLAZE Demo" (About text in an OP_RETURN) and returns its baton | **Mainnet** | `bc279c21a41bf4e8b4170419a3c0c71e7f4a6003f244eb04b504c48240c153f8` (20 Nov; 2,000-sat fee + 1,000-sat card) | Explorer; Leaders tab in the app |
