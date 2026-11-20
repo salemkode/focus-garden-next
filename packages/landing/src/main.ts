@@ -41,12 +41,27 @@ document.documentElement.classList.add("js");
 	].filter(Boolean);
 	const banner = document.querySelector<HTMLElement>("[data-blaze-banner]");
 	if (banner) {
-		const vote = blaze.votingAddress ? `<span class="sep">|</span>EMBER2026 votes (Mainnet CashTokens): <code>${escape(blaze.votingAddress)}</code><button type="button" data-copy-vote>Copy</button>` : "";
-		banner.innerHTML = `<strong>🔥 ${escape(blaze.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote}`;
-		banner.querySelector("[data-copy-vote]")?.addEventListener("click", (event) => {
-			void navigator.clipboard?.writeText(blaze.votingAddress!);
-			(event.currentTarget as HTMLElement).textContent = "Copied";
-		});
+		const copy = (label: string) => (blaze.votingAddress ? `<button type="button" data-copy-vote>${label}</button>` : "");
+		const vote = blaze.votingAddress ? `<span class="sep">|</span>EMBER2026 votes (Mainnet CashTokens): <code>${escape(blaze.votingAddress)}</code>${copy("Copy")}` : "";
+		const mini = [link(blaze.deck, "Slides"), link(blaze.source, "Source"), link(blaze.before.source, "2025"), `<a href="#blaze">Judge guide</a>`].filter(Boolean).join(" · ");
+		banner.innerHTML =
+			`<div class="bb-full"><strong>🔥 ${escape(blaze.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote}<button type="button" class="toggle" data-blaze-toggle aria-label="Collapse the BLAZE banner">Less ▴</button></div>` +
+			`<div class="bb-mini"><span class="bb-links"><strong>🔥 BCH BLAZE 2026</strong>${mini}</span>${copy("Copy vote address")}<button type="button" class="toggle" data-blaze-toggle aria-label="Expand the BLAZE banner">More ▾</button></div>`;
+		// Collapsed to one line on request (remembered); narrow screens start collapsed.
+		const saved = (() => { try { return localStorage.getItem("blaze-banner"); } catch { return null; } })();
+		banner.classList.toggle("min", saved === "min" || (saved === null && innerWidth < 600));
+		for (const button of banner.querySelectorAll<HTMLElement>("[data-blaze-toggle]")) {
+			button.addEventListener("click", () => {
+				const min = banner.classList.toggle("min");
+				try { localStorage.setItem("blaze-banner", min ? "min" : "full"); } catch { /* private mode */ }
+			});
+		}
+		for (const button of banner.querySelectorAll<HTMLElement>("[data-copy-vote]")) {
+			button.addEventListener("click", () => {
+				void navigator.clipboard?.writeText(blaze.votingAddress!);
+				button.textContent = "Copied";
+			});
+		}
 	}
 }
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -368,8 +383,8 @@ const contracts = $("[data-contracts]");
 const short = (value: string) => (value.length > 26 ? `${value.slice(0, 14)}...${value.slice(-8)}` : value);
 function row(label: string, value: string, link: string) {
 	return `<div><dt>${label}</dt><dd><code title="${value}">${short(value)}</code>
-		<button class="mini" type="button" data-copy="${value}" aria-label="Copy ${label.toLowerCase()}">${copyIcon}</button>
-		<a class="mini" href="${link}" target="_blank" rel="noopener" aria-label="Open ${label.toLowerCase()} in a block explorer">${openIcon}</a></dd></div>`;
+		<button class="bb-mini" type="button" data-copy="${value}" aria-label="Copy ${label.toLowerCase()}">${copyIcon}</button>
+		<a class="bb-mini" href="${link}" target="_blank" rel="noopener" aria-label="Open ${label.toLowerCase()} in a block explorer">${openIcon}</a></dd></div>`;
 }
 if (info.deployed && info.forest && info.directory) {
 	contracts.innerHTML = `<span class="network-pill">${info.network === "mainnet" ? "Bitcoin Cash" : "Chipnet test network"}</span>` +

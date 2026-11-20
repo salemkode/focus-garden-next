@@ -434,3 +434,12 @@ details p { padding: 0 24px 22px; color: var(--ink-2); }
 .blaze-steps { margin: 20px 0 0; padding-left: 1.4em; display: grid; gap: 12px; color: var(--ink-2); max-width: 80ch; }
 .blaze-steps b { color: var(--ink); }
 .blaze-steps a { color: var(--moss, #2a6e27); font-weight: 700; }
+.blaze-banner { position: relative; }
+.blaze-banner .bb-full { padding-right: 72px; }
+.blaze-banner .bb-full .toggle { position: absolute; top: 7px; right: 10px; margin: 0; }
+.blaze-banner .bb-mini { display: none; align-items: center; gap: 8px; white-space: nowrap; text-align: left; }
+.blaze-banner .bb-mini .bb-links { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.blaze-banner .bb-mini button { flex: none; margin: 0; }
+.blaze-banner.min { padding: 4px 12px; }
+.blaze-banner.min .bb-full { display: none; }
+.blaze-banner.min .bb-mini { display: flex; }

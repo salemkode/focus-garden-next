@@ -33,16 +33,31 @@ const parts = [
 	`2025 version: ${[link(config.before.source, "source"), link(config.before.demo, "demo"), link(config.before.entry, "entry")].filter(Boolean).join(" · ")}`,
 	link(config.guide, "Judge guide"),
 ].filter(Boolean);
+const copy = (label) =>
+	`<button type="button" class="copy" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.dataset.a);this.textContent='Copied'" data-a="${esc(config.votingAddress)}">${label}</button>`;
 const vote = config.votingAddress
-	? `<span class="vote">EMBER2026 votes (Mainnet CashTokens): <code>${esc(config.votingAddress)}</code> <button type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.dataset.a);this.textContent='Copied'" data-a="${esc(config.votingAddress)}">Copy</button></span>`
+	? `<span class="vote">EMBER2026 votes (Mainnet CashTokens): <code>${esc(config.votingAddress)}</code> ${copy("Copy")}</span>`
 	: "";
+// Collapsing is remembered in localStorage; phones start collapsed so the app keeps its height.
+const toggle = (label, title) =>
+	`<button type="button" class="toggle" title="${title}" aria-label="${title}" onclick="var m=document.documentElement.classList.toggle('blaze-min');try{localStorage.setItem('blaze-banner',m?'min':'full')}catch(e){}">${label}</button>`;
 const BANNER_CSS =
-	"#blaze-banner{box-sizing:border-box;width:100%;padding:8px 14px;background:#15241b;color:#e8efe9;font:500 12.5px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;text-align:center}" +
+	"#blaze-banner{box-sizing:border-box;width:100%;padding:7px 12px;background:#15241b;color:#e8efe9;font:500 12.5px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;text-align:center;position:relative}" +
 	"#blaze-banner strong{color:#ffd27a;margin-right:6px}#blaze-banner a{color:#9ad86f;font-weight:700;text-decoration:none;margin:0 2px}#blaze-banner a:hover{text-decoration:underline}" +
 	"#blaze-banner .sep{opacity:.5;margin:0 6px}#blaze-banner .vote{display:inline-block;margin-left:4px}#blaze-banner code{font:600 11.5px ui-monospace,Menlo,monospace;overflow-wrap:anywhere;color:#fff}" +
 	"#blaze-banner button{margin-left:6px;padding:1px 8px;border:1px solid #9ad86f;border-radius:999px;background:transparent;color:#9ad86f;font:600 11px inherit;cursor:pointer}" +
+	"#blaze-banner .full{padding-right:64px}#blaze-banner .full .toggle{position:absolute;top:6px;right:8px;margin:0}" +
+	"#blaze-banner .mini{display:none;align-items:center;gap:6px;white-space:nowrap;text-align:left}#blaze-banner .mini .links{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}#blaze-banner .mini button{flex:none;margin:0}" +
+		"html.blaze-min #blaze-banner{padding:4px 10px;font-size:11.5px}html.blaze-min #blaze-banner .full{display:none}html.blaze-min #blaze-banner .mini{display:flex}" +
 	"@media (max-width:600px){#blaze-banner{padding:6px 10px;font-size:11px;line-height:1.4}#blaze-banner code{font-size:10px}#blaze-banner .sep{margin:0 3px}}";
-const BANNER = `<div id="blaze-banner" role="region" aria-label="BCH BLAZE 2026 entry"><strong>🔥 ${esc(config.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote ? '<span class="sep">|</span>' + vote : ""}</div>`;
+const mini = [link(config.deck, "Slides"), link(config.source, "Source"), link(config.before.source, "2025"), link(config.guide, "Judge guide")].filter(Boolean).join(" · ");
+const BANNER =
+	`<div id="blaze-banner" role="region" aria-label="BCH BLAZE 2026 entry">` +
+	`<div class="full"><strong>🔥 ${esc(config.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote ? '<span class="sep">|</span>' + vote : ""}${toggle("Less ▴", "Collapse the BLAZE banner")}</div>` +
+	`<div class="mini"><span class="links"><strong>🔥 BCH BLAZE 2026</strong>${mini}</span>${config.votingAddress ? copy("Copy vote address") : ""}${toggle("More ▾", "Expand the BLAZE banner")}</div>` +
+	`</div>`;
+/** Runs before the banner is drawn: a saved choice wins, otherwise narrow screens start collapsed. */
+const BANNER_STATE = "try{var b=localStorage.getItem('blaze-banner');if(b==='min'||(b===null&&window.innerWidth<600))document.documentElement.classList.add('blaze-min')}catch(e){}";
 
 // Kept dependency-free and small: it runs before anything else on the page.
 const frame = `${MARK}
@@ -66,13 +81,14 @@ const frame = `${MARK}
     '<style>' + ${JSON.stringify(BANNER_CSS)} + 'body{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px}.phone{--h:min(932px,calc(100vh - 150px))}</style>' +
     '<body>' + ${JSON.stringify(BANNER)} + '<div class="phone"><iframe title="Focus Garden" allow="clipboard-write" src="' + src.replace(/"/g, '&quot;') + '"></iframe></div>' +
     '<p>Focus Garden on the web, shown as on a phone. <a href="https://focus.salemkode.com/#download">Get the iPhone or Android app</a></p></body>';
+  ${BANNER_STATE}
 })();
 </script>`;
 
 // Phones and narrow windows: the banner sits above the app, which keeps the rest of the height.
 // Inside the desktop phone frame it is hidden (the outer page already shows it).
 const inline = `<style>${BANNER_CSS}body{display:flex;flex-direction:column}#root{height:auto;min-height:0}html.in-frame #blaze-banner{display:none}</style>`;
-const marker = `<script>if (window.self !== window.top) document.documentElement.classList.add('in-frame');</script>`;
+const marker = `<script>if (window.self !== window.top) document.documentElement.classList.add('in-frame');${BANNER_STATE}</script>`;
 writeFileSync(
 	file,
 	// The page's own head and root first; the frame script (which contains its own head) goes last.
