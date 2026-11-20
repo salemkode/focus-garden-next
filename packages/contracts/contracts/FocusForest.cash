@@ -8,7 +8,10 @@ pragma cashscript ^0.13.0;
 //   Species 1..6 (oak, cherry, pine, maple, birch, cash) are the planter's chosen style.
 // Merges keep the value: 3 Sprouts -> Tree, 2 Trees -> Big Tree, 2 Big Trees -> House.
 // planter tag = first 12 bytes of hash160(app wallet locking bytecode); only that wallet may merge.
-// stamp = planting time for planted trees, or a lineage fingerprint of the burned trees for merges.
+// stamp = planting time (unsigned 32-bit, caller-supplied metadata; indexers rank by block time),
+// or a lineage fingerprint of the burned trees for merges.
+// Deposits always follow the tree: a merge keeps the sum of its ingredients' values, and a claim
+// releases the full value to the owner. Only the owner or the planting app wallet may claim.
 contract FocusForest(bytes32 categoryId) {
     function plantTree(int plantedAt, int units, int tier, int species, bytes20 ownerPkh) {
         require(this.activeInputIndex == 0);
@@ -19,7 +22,9 @@ contract FocusForest(bytes32 categoryId) {
         if (tier == 4) { require(units >= 11); }
         else if (tier == 3) { require(units >= 6); }
         else if (tier == 2) { require(units >= 3); }
-        require(plantedAt >= 500000000);
+        // Unsigned 32-bit seconds; bytes4() alone would reject values from 2^31 (January 2038).
+        require(plantedAt >= 500000000 && plantedAt <= 4294967295);
+        bytes stamp = bytes5(plantedAt).split(4)[0];
         require(tx.inputs[0].tokenCategory == categoryId + 0x02);
         require(tx.inputs[0].nftCommitment == 0x);
         require(tx.inputs[0].tokenAmount == 0);
@@ -47,7 +52,7 @@ contract FocusForest(bytes32 categoryId) {
         require(tx.outputs[1].tokenCategory == categoryId + 0x01);
         require(tx.outputs[1].tokenAmount == 0);
         require(tx.outputs[1].value >= 1000);
-        require(tx.outputs[1].nftCommitment == 0x05 + ownerPkh + tag + bytes4(plantedAt) + bytes1(units) + bytes1(tier * 16 + species));
+        require(tx.outputs[1].nftCommitment == 0x05 + ownerPkh + tag + stamp + bytes1(units) + bytes1(tier * 16 + species));
         if (tx.outputs.length > 2) {
             int o = 2;
             do {
@@ -83,6 +88,7 @@ contract FocusForest(bytes32 categoryId) {
             if (tier == 1) { count = 3; }
             require(tx.inputs.length == count + 1);
             bytes lineage = 0x;
+            int deposits = 0;
             int i = 0;
             do {
                 bytes entry = tx.inputs[i].nftCommitment;
@@ -94,6 +100,7 @@ contract FocusForest(bytes32 categoryId) {
                 require(entry.split(33)[0] == head);
                 require(int(entry.split(38)[1]) / 16 == tier);
                 lineage = lineage + entry;
+                deposits = deposits + tx.inputs[i].value;
                 i = i + 1;
             } while (i < count);
             // The app wallet that planted the trees must sign its funding input.
@@ -108,7 +115,8 @@ contract FocusForest(bytes32 categoryId) {
             require(tx.outputs[0].lockingBytecode == self);
             require(tx.outputs[0].tokenCategory == categoryId + 0x01);
             require(tx.outputs[0].tokenAmount == 0);
-            require(tx.outputs[0].value >= 1000);
+            // The merged tree carries every ingredient's deposit; the planter only pays the fee.
+            require(tx.outputs[0].value == deposits);
             require(tx.outputs[0].nftCommitment == head + stamp + 0x00 + bytes1(result));
             int o = 1;
             do {
@@ -136,7 +144,17 @@ contract FocusForest(bytes32 categoryId) {
         int units = int(commitment.split(37)[1].split(1)[0]);
         // BIP68 time flag; consensus measures age from confirmation using MTP.
         require(this.age >= 4194304 + units);
-        require(tx.outputs[0].lockingBytecode == new LockingBytecodeP2PKH(ownerPkh));
+        // Only the owner or the planting app wallet may release a tree, so nobody else can
+        // pull matured trees out before their planter merges them. Spending a P2PKH input
+        // requires that key's signature.
+        bytes owner = new LockingBytecodeP2PKH(ownerPkh);
+        bytes payer = tx.inputs[1].lockingBytecode;
+        require(tx.inputs[1].tokenCategory == 0x);
+        require(payer.length == 25);
+        require(payer.split(3)[0] == 0x76a914);
+        require(payer.split(23)[1] == 0x88ac);
+        require(payer == owner || hash160(payer).split(12)[0] == commitment.split(21)[1].split(12)[0]);
+        require(tx.outputs[0].lockingBytecode == owner);
         require(tx.outputs[0].tokenCategory == categoryId);
         require(tx.outputs[0].tokenAmount == 0);
         require(tx.outputs[0].nftCommitment == commitment);
@@ -145,6 +163,7 @@ contract FocusForest(bytes32 categoryId) {
             int o = 1;
             do {
                 require(tx.outputs[o].tokenCategory == 0x);
+                require(tx.outputs[o].lockingBytecode != self);
                 o = o + 1;
             } while (o < tx.outputs.length);
         }
