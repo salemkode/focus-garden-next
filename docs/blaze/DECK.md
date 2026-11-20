@@ -1,152 +1,166 @@
-# Focus Garden — Widget Factory deck (BCH BLAZE 2026)
+# Focus Garden — Widget Factory deck (BCH BLAZE 2026), v2
 
-Source of truth for the Google Slides copy of the mandatory Widget Factory template
-(https://docs.google.com/presentation/d/1Yfuk9CJkf4U9M_WukcELhumWgj3Ak6345Ewy8hSp-Hk/edit).
-Never edit the original. Work only in a copy named **Focus Garden — BCH BLAZE 2026**.
+Deck: https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/edit
+(a copy of the mandatory template; never edit the original). v1 was built on 20 Nov. v2 applies the
+lead, Sol, Astra and Fable reviews (`reviews/`, summary in `REVIEW.md`).
 
 Template order (kept): cover → one-sentence pitch with link → story → benefits → BCH usage →
-vision → thank you. Extra slides (walkthrough, evidence, before/after, limitations) sit where the
-story needs them; deep detail goes to speaker notes and the appendix.
+vision → thank you. The walkthrough, evidence and before/after slides sit where the story needs
+them. Deep detail goes in the speaker notes and the appendix.
+
+## Wording rules (from the reviews)
+
+- The **chain enforces a time lock**, not attention. The **app** tracks whether you stay. Say:
+  "The app tracks whether you stay. Bitcoin Cash time-locks your tree. Finish the session and the
+  app delivers it to your wallet."
+- Never say "exactly that long", "unforgeable proof of focus" or "on-chain forfeiture". Tree locks
+  count in 512-second steps from confirmation and mature by median block time.
+- Use the app's size names: **Seedling · Sapling · Grand tree** (sessions up to 1 hour). Merging
+  in the valley continues to Grove, Cabin … Sky Citadel. The on-chain tiers (Sprout, Tree, Big
+  tree, House) appear only in the appendix.
+- The leaderboard ranks **pledged focus**: points for confirmed planted trees.
+- Fees in sats: plant = 2,000-sat fee + 1,000-sat deposit that travels with the tree; release =
+  2,000-sat fee.
+- WizardConnect: "pairing tested with a dedicated WizardConnect test wallet". Selene and Paytaca
+  were not re-tested for this entry.
+- "No server we run": the app uses public Electrum servers and the public pairing relays.
+- Labels: **Done on Mainnet** · **Done on Mainnet (read-only)** · **Tested locally** ·
+  **Tested (test wallet)** · **Simulated** · **Planned** · **Pending**.
 
 ## Visual identity
 
-- Keep the template's layout, fonts and title positions. Replace its widget imagery with Focus Garden's.
-- Colours from the app: moss green `#3F7233` (primary), deep forest `#15241B` (dark panels),
-  sun `#FFD27A` (highlights, step numbers), leaf `#9AD86F` (links / "done" chips),
-  paper `#EEF3F0` (light background), ink `#1B2A21`.
-- Icon: `assets/app-icon.png` (voxel tree). Screens: `assets/screen-*.png` (real captures of the
-  mainnet web build, 20 Nov 2026). Walkthrough: `assets/walkthrough.png` (annotated, 1920×1080).
-- Every factual claim carries one of five labels, as a small chip or a bracketed tag:
-  **Done on Mainnet** · **Done on Chipnet** · **Tested locally** · **Simulated** · **Planned**.
+The template's layouts, fonts and title positions stay. Colours: moss `#3F7233`, deep forest
+`#15241B`, sun `#FFD27A`, leaf `#9AD86F`, paper `#EEF3F0`. Assets in `assets/`: `app-icon.png`,
+`walkthrough.png` (v2, 1920×1080), `story-stay-leave.png` (new, 1200×900), `screen-*.png`.
+Aim for one idea per slide and big type: judges give each entry about two minutes.
 
 ---
 
-## Slide 1 — Cover (template cover)
+## 1 — Cover
 
-- Title: **Focus Garden**
-- Subtitle: Keep your word. Grow your forest.
-- Team line: Team Focus Garden: Salem Mohammed Shamakh (@salemkode) — solo builder
-- Links (small): focus-app.salemkode.com · github.com/salemkode/focus-garden-next · focus.salemkode.com
-- Image: `assets/screen-valley.png` in a phone shape on the right; `assets/app-icon.png` near the title.
-- Notes: Focus Garden is the 2026 upgrade of Crypto Focus Garden (BLAZE 2025: 3rd place, BitcoinCash Innovation Award, the Chipnet track).
+- **Focus Garden**
+- Keep your word. Grow your forest.
+- One short team line: **Salem Mohammed Shamakh (@salemkode)**
+- ONE large link: **focus-app.salemkode.com**. Move the other URLs to the closing slide.
+- Image: `screen-valley.png` (current). Icon: `app-icon.png`.
+- Notes: The 2026 upgrade of Crypto Focus Garden (BLAZE 2025: 3rd place, BitcoinCash Innovation Award).
 
-## Slide 2 — One-sentence pitch (template "TITLE HERE" slide)
+## 2 — One-sentence pitch
 
-- Big line: **Promise a focus session on Bitcoin Cash: stay, and a tree grows into your wallet as a CashTokens NFT; leave, and it withers.**
-- Link under it: **Try it: focus-app.salemkode.com** (also iPhone and Android builds via focus.salemkode.com)
-- Notes: Works in any browser. Judges need a BCH wallet (Selene or Paytaca) and ~15,000 sats.
+- **A focus timer with stakes: while you focus, Bitcoin Cash time-locks a tree; stay, and the app
+  delivers it to your wallet as a CashTokens NFT. Leave, and it withers.**
+- Large link right below: **Try it → focus-app.salemkode.com** (any modern browser plus a BCH wallet; about 15,000 sats)
+- Status next to the link, not at the bottom: `[Contracts live on Mainnet · first app plant: Pending]`
+- Notes: The website is the app's web build in a phone frame. The judge guide is at focus.salemkode.com/#blaze.
 
-## Slide 3 — The story (template story slide)
+## 3 — Story
 
 Title: The Story of Focus Garden
 
-Body:
-> Amina has an exam on Monday. She opens her notes and, four minutes later, she is scrolling.
-> Focus timers don't help: nothing happens when she quits, and nobody can see that she kept going.
->
-> With Focus Garden she promises 26 minutes. A tree is locked on Bitcoin Cash for exactly that long.
-> If she leaves the app for more than 10 seconds, the tree withers. If she stays, the grown tree is
-> sent to her own wallet, where anyone can verify it. Three sprouts merge into a tree, two trees into
-> a big tree, and her garden shows the focus she actually kept.
+- One sentence: **Amina sits down to study. Four minutes later she's scrolling, because quitting
+  a timer costs nothing.**
+- One sentence: **With Focus Garden she pledges a session. Stay, and her tree grows and comes to
+  her wallet. Leave for 10 seconds, and it withers.**
+- Image: `story-stay-leave.png` ("Stay: it grows" / "Leave for 10 s: it withers").
+- Label: `[Illustrative story · real app screens]`
+- Notes: The problem is attention. Timers fail because breaking them is free and keeping them
+  proves nothing anyone else can see.
 
-Notes: The problem is attention, not time management. Apps like Forest proved people pay for this
-loop; Focus Garden adds ownership and public, unforgeable proof.
+## 4 — How it works (walkthrough)
 
-## Slide 4 — How it works (walkthrough, new slide after the story)
+- Full-bleed `walkthrough.png` v2: four steps with honest chips (1 Tested: WizardConnect test
+  wallet · 2 Tested: created, balance read · 3 Pending: first mainnet plant · 4 Pending: first
+  mainnet release). The QR code is blurred.
+- Notes: 1 Connect: WizardConnect shares a receive key branch, and the app uses the first receive
+  address; it never asks the wallet to sign. 2 Fund the fee wallet with one coin of ≥8,000 sats
+  (≈15,000 covers a plant and a release). 3 Plant with Verify on: the app builds the FocusForest
+  `plantTree` transaction, checks it in the BCH 2026 VM, signs and broadcasts. 4 Stay. When the
+  lock matures, the app sends the tree to the linked wallet. A withered session doesn't get the
+  automatic delivery.
 
-- Full-bleed image: `assets/walkthrough.png` (four annotated steps with status chips).
-- Notes: 1 Connect (WizardConnect/WalletConnect; only the address is read). 2 Fund the small fee
-  wallet (on the web its key lives in the browser; hold only a little BCH). 3 Plant with
-  *Verify on Bitcoin Cash*: the app builds, checks and signs a FocusForest `plantTree` transaction.
-  4 Stay; when the CSV lock matures, the app releases the tree to the linked wallet.
-
-## Slide 5 — Benefits (template benefits slide)
+## 5 — Benefits (three rows, one status each)
 
 Title: Benefits of Focus Garden
-- A reason to stay: leave for 10 seconds and the tree withers
-- Proof you can show: every verified tree is a CashTokens NFT in your own wallet
-- Rewards grow with focus: sprout → tree → big tree → house, and small trees merge into bigger ones
-- No account, no server: the app talks to Bitcoin Cash directly through public Electrum servers
-- Block distractions: Screen Time on iPhone, usage access on Android [native apps only]
-- Social: public profile cards, a leaderboard read from the chain, and tips by name
+- **A reason to stay.** Leave for 10 seconds and your tree withers. `[Tested locally]`
+- **A reward you own.** Kept sessions become CashTokens NFTs in your own wallet, with pictures from our BCMR registry. `[Contracts and metadata: Done on Mainnet · first delivery: Pending]`
+- **No account, no server we run.** The app talks to Bitcoin Cash through public Electrum servers. `[Done on Mainnet (read-only)]`
+- Notes (moved off the slide): app blocking (Screen Time / usage access) in the native apps, not
+  re-verified for this entry; profile cards, a leaderboard of pledged focus, and tips.
 
-## Slide 6 — BCH usage (template BCH Usage slide)
+## 6 — BCH Usage
 
 Title: BCH Usage
-- **FocusForest contract (CashScript, P2SH32):** `plantTree` mints a tree NFT and locks it with a
-  relative time lock (BIP68, 512-second steps) for the whole session; `mergeTrees` combines matured
-  trees; `claimTree` releases the tree and its deposit to the owner. [Tested locally: 76 contract tests]
-- **FocusDirectory contract:** anyone can mint one public profile card (name + optional bio). [Tested locally]
-- **Live on mainnet since 19 Nov 2026:** both contracts deployed with their minting batons, 100 creator
-  trees minted at genesis, BCMR metadata so wallets show every tree. [Done on Mainnet — txids in the appendix]
-- **WizardConnect + WalletConnect** wallet linking; **XO engine** (`@xo-cash/engine`, p2pkh template)
-  runs the native fee wallet. [WizardConnect pairing verified 20 Nov on the mainnet web build with a
-  dedicated test wallet]
-- Why BCH: sub-cent fees per tree, native tokens with no extra contract, and covenant time locks
-  enforced by every node.
+- A simple diagram made of native shapes: **Plant** (mint tree NFT, 2,000-sat fee + 1,000-sat deposit) →
+  **Time lock** (BIP68, 512-second steps, matures by median block time) → **Release** (NFT and deposit to
+  your wallet, 2,000-sat fee). Below it: **Merge** (matured trees combine inside the contract).
+- Three short lines:
+  - **FocusForest + FocusDirectory** (CashScript, P2SH32), live on mainnet since 19 Nov 2026 (block 977999). `[Done on Mainnet]`
+  - **WizardConnect** wallet linking (WalletConnect too). `[Tested (test wallet)]`
+  - Every transaction is built, VM-checked and signed in the app; contract + protocol tests. `[Tested locally]`
+- Remove the small repeated screenshot.
+- Notes: Why BCH: native tokens without a token contract, covenant time locks that every node
+  enforces, and fees of a few thousand sats. The XO engine (`@xo-cash/engine`, stock p2pkh
+  template) runs the native fee wallet only; the web uses a single-key wallet.
 
-## Slide 7 — Evidence and honest limits (new slide)
+## 7 — Evidence and honest limits
 
-| Claim | Label | Proof |
-|---|---|---|
-| FocusForest + FocusDirectory deployed, 100 creator trees, BCMR | Done on Mainnet | block 977999; genesis `2d84dd8d…a68f`, `9cd1a61b…29b5` |
-| Web app on mainnet reads balances, garden and leaderboard | Done on Mainnet (read-only) | focus-app.salemkode.com |
-| WizardConnect pairing returns the wallet's address | Tested on the mainnet web build | 20 Nov, dedicated test wallet |
-| Plant / merge / claim / profile / tip transactions | Tested locally | contract + protocol tests in the BCH 2026 VM |
-| A judge-run plant on mainnet | Pending — see appendix | requires ~15,000 sats |
-| Native app blocking (Screen Time / usage access) | Built into the iPhone and Android apps | not re-verified for this entry |
+Title: Evidence and honest limits
+- Compact table (four rows):
 
-Limits to say out loud: the chain verifies *time*, not attention. Staying is enforced by the app:
-a withered session's tree is not delivered and stays locked, and app blocking helps. The leaderboard
-counts trees locked on chain, so it measures promised time; release
-waits for median block time, so it can lag the session by an hour or more; on the web the fee
-wallet key lives in browser storage.
+| Claim | Status |
+|---|---|
+| Contracts, 100 creator trees, BCMR metadata | Done on Mainnet — block 977999 |
+| App reads gardens, balances and leaderboard from mainnet | Done on Mainnet (read-only) |
+| WizardConnect pairing | Tested with a dedicated test wallet, 20 Nov |
+| Plant → release from the website | Pending — first mainnet run |
 
-## Slide 8 — Vision (template Vision slide)
+- Visible box: **Limits:** the chain checks time, not attention; the app checks that you stay.
+  The leaderboard counts pledged time. Delivery waits for the lock to mature (up to about an hour
+  after the session) and for the app to be open. On the web, the fee wallet's key lives in the browser.
+- Notes: test counts and per-claim details are in the appendix and `SUBMISSION.md`.
+
+## 8 — Vision
 
 Title: The Vision for Focus Garden
-- **Promises with stakes [Planned]:** put pUSD behind a promise; keep it and it comes back, break it and it goes to a cause you chose.
-- **Focus together [Planned]:** study groups and classrooms with shared gardens and team leaderboards.
-- **A market for proof [Planned]:** tutors, employers and communities reward verified focus with CashTokens.
-- **Business [Planned]:** free to use; optional premium tree styles and group plans, paid in BCH/pUSD.
-- Target: one million kept promises on Bitcoin Cash.
+- **First buyer: study groups.** A shared garden for a class or study circle, paid per group in BCH or pUSD. `[Planned]`
+- **Promises with stakes.** Put pUSD behind a pledge: keep it and it comes back; break it and it goes to a cause you chose. `[Planned]`
+- **Success measure:** groups that come back for a second week.
+- Remove the "million promises" target and the employer market.
 
-## Slide 9 — Before and after (new slide, required disclosure)
+## 9 — Before and after
 
-| | 2025 (Crypto Focus Garden, BLAZE 2025) | 2026 (this entry) |
-|---|---|---|
-| Platform | Next.js web dApp | One Expo app: iPhone, Android, web |
-| Network | Chipnet | Bitcoin Cash mainnet |
-| Contract | `PomodoroRewards` (time check relaxed) | `FocusForest` + `FocusDirectory`, time lock enforced |
-| Rewards | One NFT per session | Four sizes, six styles, merging |
-| Wallets | WalletConnect | WizardConnect, WalletConnect, XO-based fee wallet |
+Same table as v1, with these changes:
+- Labelled links, no raw URLs: "2025 source", "2025 demo (organizer showcase)", "2026 source".
+- Network row, 2026 column: "Mainnet: contract deployment and reads; first web plant pending".
+- Wallets row, 2026 column: "WizardConnect, WalletConnect; XO-engine fee wallet (native)".
 
-Links: 2025 source github.com/salemkode/crypto-focus-garden/tree/de708cd · 2025 demo (organizer
-showcase) youtube.com/watch?v=R2xhv0Vq_Us&t=4664s · 2026 source github.com/salemkode/focus-garden-next
-
-## Slide 10 — Thank you (template closing slide)
+## 10 — Thank you
 
 - **THANK YOU!**
-- Try it: focus-app.salemkode.com · Source: github.com/salemkode/focus-garden-next
-- EMBER2026 votes: `<voting address — confirm with the owner before sharing>`
+- The largest line: **Plant a 9-minute tree → focus-app.salemkode.com**
+- Small: Judge guide focus.salemkode.com/#blaze · Source github.com/salemkode/focus-garden-next
+- `EMBER2026 votes: address to be confirmed` (unchanged until the owner confirms)
 
----
+## A1 — Mainnet transactions
 
-## Appendix (after Thank you)
+Short txids (first 8 … last 4), each linked to `https://blockchair.com/bitcoin-cash/transaction/<txid>`.
+Heading: "Deployment (operator) — Done on Mainnet". An empty second heading,
+"Judge path (app) — Pending", gets the plant and release txids later.
 
-A1. Mainnet transactions (all confirmed in block 977999, 19 Nov 2026 09:35 UTC):
+## A2 — Architecture
 
-| Step | txid |
-|---|---|
-| Forest category prep | cb351f415f5cbf974e0f5f661cdccf5b83e1827a9135d9429316e30ca13d4ae1 |
-| Directory category prep | b4abb87c910f2489ea6ef1435dbc2e08074ddfc5a8424ec4a09bfa13054e795b |
-| Forest genesis (baton + 100 creator trees) | 2d84dd8d230073be1d903d3796a008b1f392a740af1963de403ff5c53abca68f |
-| Directory genesis | 9cd1a61b315698a3365965c2e2060694b9b2aaf732e69755b373d75dcf2229b5 |
-| Forest BCMR publication | 4e882f3aa5203dedb3031f293079672f092755df1b4b6fc49f06e4b4d0d8a16a |
-| Directory BCMR publication | 948ee3d758b8c3c466e76512861e599b7de4156d4d8249ea05aa0497fbecbe72 |
+One line: **public Electrum → `packages/protocol` builder → app policy check, signing and BCH VM
+check → broadcast.** Signers: XO-engine wallet on iPhone and Android, single-key wallet in the
+browser. Commitment (39 bytes): `05 | owner pkh (where the tree goes) | planter tag (who planted)
+| stamp | units (lock length) | look (tier × 16 + species)`. On-chain tiers: Sprout (≥1 unit,
+8.5 min) · Tree (≥3) · Big tree (≥6) · House (≥11); 3 sprouts → tree, 2 trees → big tree, 2 big
+trees → house.
 
-A2. Architecture: Expo SDK 58 / React Native 0.88 app; `packages/protocol` builds, validates and
-signs every transaction on the device and re-checks it in the BCH 2026 VM before broadcast; public
-Fulcrum servers; no backend. Tree commitment (39 bytes): `05 | owner pkh | planter tag | stamp | units | look`.
+## A3 — What was built during BLAZE
 
-A3. What was built during BLAZE (14–22 Nov 2026) vs before — see `SUBMISSION.md`.
+Three dated rows:
+- **Nov 2025 (BLAZE 2025):** Crypto Focus Garden: Next.js web dApp, one Chipnet contract with a relaxed time check. Public.
+- **9–13 Nov 2026 (before kickoff):** a private Expo prototype reusing the 2025 contract on Chipnet (9–10 Nov); the React Native Libauth adapter started (13 Nov, public repo).
+- **14–22 Nov 2026 (BLAZE):** the FocusForest and FocusDirectory contracts and their mainnet deployment with BCMR; the Expo app for iPhone, Android and the web; on-device transaction building; WizardConnect and WalletConnect linking; leaderboard, profiles and tips; the web fee wallet and the banner.
+
+Link: "Everything since 2025" → https://github.com/salemkode/focus-garden-next/compare/de708cd...docs/blaze-2026-submission

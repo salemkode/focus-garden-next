@@ -13,7 +13,7 @@ Keep your word, grow your forest: focus promises locked on Bitcoin Cash.
 ## Short description (≈ 50 words)
 
 Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest
-contract locks a tree for exactly that long. Leave the app and it withers; stay and the grown tree is
+contract time-locks a tree for the session. Leave the app and it withers; stay and the grown tree is
 sent to your own wallet as a CashTokens NFT. Trees merge into bigger ones, and the leaderboard is
 read straight from the chain.
 
@@ -30,11 +30,11 @@ and keeping one proves nothing.
 **What Focus Garden does.** You promise a session, from 9 minutes to over an hour. With *Verify on
 Bitcoin Cash* on, pressing **Plant** sends a transaction to the **FocusForest** contract. The contract
 mints a tree NFT and locks it with a relative time lock for the whole session. Leave the app for more
-than 10 seconds and the tree withers, and the app will not deliver it. Stay, and when the lock
+than 10 seconds and the tree withers and skips automatic delivery. Stay, and when the lock
 matures the app releases the grown tree to the wallet you linked. Longer sessions grow bigger trees (seedling → sapling → grand tree). Three
 small trees merge into a bigger one inside the contract, and the score never changes. A second
 contract, **FocusDirectory**, lets anyone mint a public profile card. The leaderboard and tips are read
-from and sent on chain. There is no server: the app builds, checks (in the BCH 2026 VM) and signs
+from and sent on chain. There is no backend of our own: the app builds, checks (in the BCH 2026 VM) and signs
 every transaction itself and talks to public Electrum servers.
 
 **Try it (judges).**
@@ -54,7 +54,7 @@ small enough to plant one tree per session.
 - **Done on Mainnet:** both contracts deployed on 19 Nov 2026 (block 977999), 100 creator trees and BCMR metadata.
 - **Done on Mainnet, read-only:** the web app reads balances, gardens and the leaderboard from mainnet.
 - **Tested on the mainnet web build:** WizardConnect pairing.
-- **Tested locally:** the plant, merge, claim, profile and tip transactions (76 contract tests and 26 protocol tests).
+- **Tested locally:** the plant, merge, claim, profile and tip transactions (the contracts suite of 76 tests, which also covers the earlier PomodoroRewards and CreditPolicy contracts, plus 27 protocol tests).
 - **Pending:** a funded judge-path run on mainnet, before the deadline. Its txids will be added here.
 - **Planned:** pUSD-backed promises and group gardens.
 
@@ -72,7 +72,7 @@ small enough to plant one tree per session.
 
 All of the 2026 commits in `salemkode/focus-garden-next` after `de708cd` (17–20 Nov) are event work:
 
-- **Contracts:** `FocusForest` (plant with an enforced time lock, merge, claim) and `FocusDirectory` (profile cards), with review hardening and 76 contract tests. Deployed to **mainnet** on 19 Nov with BCMR metadata (a picture for every tree style).
+- **Contracts:** `FocusForest` (plant with an enforced time lock, merge, claim) and `FocusDirectory` (profile cards), with review hardening, tested in the 76-test contracts suite. Deployed to **mainnet** on 19 Nov with BCMR metadata (a picture for every tree style).
 - **App:** one Expo SDK 58 / React Native 0.88 app for iPhone, Android and the web. Onboarding demos, a voxel valley (native Filament renderer, three.js on the web), focus sessions that wither when you leave, merging, stats, a leaderboard, profile cards, tips, and app blocking (Screen Time / usage access).
 - **On-device chain code** (`packages/protocol`): transaction building, policy checks, VM verification, the garden reader and the leaderboard over public Electrum. The old "garden service" backend was removed.
 - **Wallets:** WizardConnect and WalletConnect linking, plus an XO-engine fee wallet on native.
@@ -90,9 +90,9 @@ All of the 2026 commits in `salemkode/focus-garden-next` after `de708cd` (17–2
 | 5 | BCMR metadata published (forest, directory) | Mainnet | `4e882f3aa5203dedb3031f293079672f092755df1b4b6fc49f06e4b4d0d8a16a`, `948ee3d758b8c3c466e76512861e599b7de4156d4d8249ea05aa0497fbecbe72` | registry at https://focus.salemkode.com/.well-known/bitcoin-cash-metadata-registry.json |
 | 6 | The contracts in the record match the source | — | `packages/contracts/deployments/mainnet.json` (artifact hashes, locking bytecode) | `deploymentFromRecord` checks the address against the bytecode at app start |
 | 7 | Contract rules (tier minimums, time locks, merge, claim authorization, profile cards) | Local VM | 76 tests (`bun run test:contracts`), run 20 Nov | `bun run check` |
-| 8 | On-device building, policy checks, garden reader, leaderboard | Local | 26 protocol tests + 70 app tests, run 20 Nov | `bun run check` |
+| 8 | On-device building, policy checks, garden reader, leaderboard | Local | 27 protocol tests + 71 app tests, run 20 Nov on the submission branch | `bun run check` |
 | 9 | WizardConnect linking works on the mainnet web build | Mainnet relay (no transaction) | 20 Nov: a dedicated test wallet paired over `relay.riften.net` / `relay.cauldron.quest`; the app linked `bitcoincash:zp0ldgxx7k4j8xh98j588levmlqf5rfmg5v49vs0ws` | Repeat with Selene: Connect wallet → Selene |
 | 10 | The browser fee wallet is created and reads its mainnet balance | Mainnet (read) | 20 Nov, local build of this branch | Profile → Focus Garden wallet |
-| 11a | A withered session forfeits its automatic release | Local | `tests/auto-release.test.ts` (71 app tests pass) | `bun run test:mobile` |
+| 11a | A withered session forfeits its automatic release | Local | `tests/auto-release.test.ts` (one of the 71 app tests) | `bun run test:mobile` |
 | 11 | A plant with an empty fee wallet refuses before signing | Mainnet build | "Your Focus Garden wallet needs one coin of at least 8,000 sats" | Plant with Verify on and no funds |
 | 12 | **A judge-path plant, profile or tip made from the app** | **Mainnet** | **pending** (needs ~15,000 sats; owner approval) | Explorer, plus the tree arriving in the linked wallet |

@@ -14,7 +14,7 @@ runs 23–27 November, and results are announced on 28 November.
 
 | Track | Verdict | One-line reason |
 |---|---|---|
-| **Mainnet** | **Reachable before the deadline.** Recommended. | Most requirements are met. Two things remain: deploy the branch, and do one funded mainnet run that proves the judge journey. |
+| **Mainnet** | **Reachable before the deadline.** Recommended. | The branch is deployed and most requirements are met. Still needed: one funded mainnet run that proves the judge journey, the shared deck link in the banner, the confirmed voting address, and the BUIDL moved to the Mainnet track. |
 | Media | Eligible as an entry type, but not recommended | It would need its own media piece. The existing BUIDL is on the Media track, and its content is out of date. |
 | Community Choice | Eligible automatically once the Mainnet entry is valid and shows a confirmed voting address | Needs only the owner-confirmed EMBER2026 address |
 | Build with XO | Not realistic | No new XO template or invitation exists, and the feedback must be personally written |
@@ -29,7 +29,7 @@ reliable, not adding features. Skip the XO bounties this round.
 | Requirement (official wording, shortened) | Status | Evidence / what is left |
 |---|---|---|
 | A feature that sends BCH **mainnet** transactions that anyone, judges included, can make with the app | **Code ready; needs deploy and one funded proof run** | The web app could not send any transaction before today. The browser build refused to store keys, so the fee wallet could not be created. Branch `docs/blaze-2026-submission` (commit `560acb6`) adds a browser fee wallet. On the mainnet web build, wallet creation and the mainnet balance read are verified. A plant with an empty wallet stops cleanly at "needs one coin of at least 8,000 sats". The planting, profile, tip and claim transactions pass the contract and protocol tests in the BCH 2026 VM (tested locally). **No app-made transaction exists on mainnet yet.** The FocusForest contract's history shows only its genesis. |
-| A live, usable website demo judges can click | **Live, but the deployed build is behind** | https://focus-app.salemkode.com is the mainnet build from `main` (redeployed 20 Nov by the "Switch App to Mainnet" thread). It still has the typed-address option and no web fee wallet. Deploy this branch so judges get the fee wallet and the banner. |
+| A live, usable website demo judges can click | **Live** | https://focus-app.salemkode.com has run the mainnet build of this branch since 20 Nov: fee wallet, banner, connection-only linking. Earlier the same day it ran `main`, without these. |
 | Original or significantly improved during the hackathon | **Yes** | The 2025 dApp (one Chipnet contract with a relaxed time check) became a three-platform Expo app with two new mainnet contracts, merging, a leaderboard and BCMR. See `SUBMISSION.md` → "What was built during BLAZE". |
 | Top-of-page banner on the home page: deck link, GitHub source, EMBER2026 CashTokens address. Pre-existing projects also need old and new repo links and a "before" demo link. | **Built; two values are pending** | `packages/mobile/blaze-banner.json` feeds the web app (above the phone frame on desktop and above the app on phones) and the landing page. **Pending:** the deck link, which has to be shared first, and the owner's confirmation of the voting address. The "before" demo is the organizers' 2025 showcase video. The 2025 dApp is no longer hosted. |
 | **WizardConnect or XO Template integration** | **Met (WizardConnect)** | `packages/mobile/src/features/wallet-link/wizardconnect.ts` uses `@wizardconnect/dapp` 0.2.7. On 20 Nov, on the mainnet web build, a dedicated test wallet built on `@wizardconnect/wallet` 0.2.5 completed the relay pairing. The app received the receive key and linked the address ("Linked to Focus Garden."). Selene is the wallet the UI recommends. The native fee wallet uses the XO engine with XO's stock `p2pkh` template. That is an XO *library* integration, not a custom XO Template, so it is not claimed as one. |
@@ -43,7 +43,7 @@ reliable, not adding features. Skip the XO bounties this round.
 
 - **Innovation:** promises enforced by a covenant time lock, with the reward owned as a CashTokens NFT. Few BCH apps show non-financial use of covenants.
 - **Design and usability:** a polished app (onboarding demos, valley, sheets). The weak point is the extra step of funding a second "fee" wallet. The judge guide covers it, but it costs judges time.
-- **Technical strength:** two CashScript contracts on mainnet, transactions built and VM-checked on the device, no server, BCMR metadata, WizardConnect.
+- **Technical strength:** two CashScript contracts on mainnet, transactions built and VM-checked on the device, no backend of our own, BCMR metadata, WizardConnect.
 - **Business potential:** the vision slide argues for pUSD-backed promises and group plans, marked as **Planned**.
 
 ## Media track

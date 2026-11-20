@@ -73,4 +73,4 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
 - The judge guide is live at https://focus.salemkode.com/#blaze
 - WizardConnect pairing was verified on the mainnet web build with a dedicated test wallet.
 - Submission text, evidence table, demo script and BUIDL draft are in this folder.
-- Deck: a Widget Factory copy is being built by Codex (see `LINKS.md` and `REVIEW.md`).
+- Deck: a Widget Factory copy (13 slides, private), revised after four reviews (`REVIEW.md`).

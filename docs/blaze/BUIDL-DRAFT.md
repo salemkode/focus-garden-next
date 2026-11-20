@@ -30,23 +30,24 @@ Replace the `<…>` placeholders before pasting.
 ```
 🔥 BCH BLAZE 2026 · Mainnet track
 
-Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, works in any browser)
+Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phone frame; needs a BCH wallet and about 15,000 sats)
 Judge guide (5 minutes): https://focus.salemkode.com/#blaze
 Slides: <deck read-only link>
 Source (2026): https://github.com/salemkode/focus-garden-next/tree/<submission commit>
 EMBER2026 votes: <owner-confirmed voting address>
 
-Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest contract mints a tree NFT and locks it for exactly that long. Leave the app for more than 10 seconds and the tree withers, and the app will not deliver it. Stay, and when the lock matures the grown tree is sent to your own wallet as a CashTokens NFT. Longer sessions grow bigger trees, small trees merge into bigger ones, and a second contract, FocusDirectory, gives everyone a public profile card for the on-chain leaderboard and tips. There is no server: the app builds, checks (in the BCH 2026 VM) and signs every transaction itself and talks to public Electrum servers.
+Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest contract mints a tree NFT and time-locks it for the session. The app tracks whether you stay: leave for more than 10 seconds and the tree withers and skips automatic delivery. Stay, and when the lock matures the grown tree is sent to your own wallet as a CashTokens NFT. Longer sessions grow bigger trees, small trees merge into bigger ones, and a second contract, FocusDirectory, gives everyone a public profile card for the on-chain leaderboard and tips. There is no backend of our own: the app builds, checks (in the BCH 2026 VM) and signs every transaction itself and talks to public Electrum servers.
 
 How to try it (about 15,000 sats):
 1. Open the web app and connect Selene (WizardConnect) or Paytaca (WalletConnect).
-2. Profile → set up the Focus Garden wallet → send it about 15,000 sats (it pays the fees).
-3. Profile → Public profile → Join to mint your profile card, or Next session → 9 min → Verify on Bitcoin Cash → Plant to lock a tree.
-4. Stay. The tree reaches your wallet after the lock matures; BCH time locks use median block time, so allow an hour or more.
+2. Profile → set up the Focus Garden wallet → send it about 15,000 sats in one payment (it pays the fees).
+3. Quickest result: Profile → Public profile → Join mints your profile card.
+4. Plant: Next session → 9 min → Verify on Bitcoin Cash → Plant. Keep the tab in front (leaving for 10 seconds withers the tree); use another device for the explorer.
+5. When the lock matures, the app sends the tree to your wallet. Allow up to about an hour, with the app open.
 
 Why Bitcoin Cash: native CashTokens make each tree a real NFT, covenant time locks (BIP68) make every node enforce the session, and fees are small enough for one tree per session.
 
-Status: both contracts are live on mainnet since 19 Nov 2026 (block 977999), with 100 creator trees and BCMR metadata. The app reads gardens and the leaderboard from mainnet, and WizardConnect pairing is verified on the mainnet build. Plant, merge, claim, profile and tip transactions pass 76 contract tests and 26 protocol tests in the BCH VM. <Add the judge-path mainnet txid here once it is made.> Planned: pUSD-backed promises and group gardens.
+Status: both contracts are live on mainnet since 19 Nov 2026 (block 977999), with 100 creator trees and BCMR metadata. The app reads gardens and the leaderboard from mainnet, and WizardConnect pairing is verified on the mainnet build. Plant, merge, claim, profile and tip transactions pass the 76-test contracts suite and 27 protocol tests in the BCH VM. <Add the judge-path mainnet txid here once it is made.> Planned: pUSD-backed promises and group gardens.
 
 Pre-existing work: this upgrades our BCH BLAZE 2025 entry, Crypto Focus Garden (3rd place, BitcoinCash Innovation Award): a Next.js web dApp with one Chipnet contract.
 2025 entry: https://dorahacks.io/buidl/36811
