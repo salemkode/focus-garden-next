@@ -38,6 +38,8 @@ EMBER2026 votes: bitcoincash:zzzyq9g0n2ywatt0eajwre5h89aju3kk0svl94s4k9
 
 Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest contract mints a tree NFT and time-locks it for the session. The app tracks whether you stay: leave for more than 10 seconds and the tree withers and skips automatic delivery. Stay, and when the lock matures the grown tree is sent to your own wallet as a CashTokens NFT. Longer sessions grow bigger trees, small trees merge into bigger ones, and a second contract, FocusDirectory, gives everyone a public profile card for the on-chain leaderboard and tips. There is no backend of our own: the app builds, checks (in the BCH 2026 VM) and signs every transaction itself and talks to public Electrum servers.
 
+Mobile app: React Native (Expo) for iPhone and Android. Libauth and the XO engine run on the phone through our native Libauth adapter (packages/mobile/modules/libauth-native).
+
 How to try it (about 15,000 sats):
 1. Open the web app and connect Selene (WizardConnect) or Paytaca (WalletConnect).
 2. Profile → set up the Focus Garden wallet → send it about 15,000 sats in one payment (it pays the fees).
@@ -53,8 +55,10 @@ Pre-existing work: this upgrades our BCH BLAZE 2025 entry, Crypto Focus Garden (
 2025 entry: https://dorahacks.io/buidl/36811
 2025 source: https://github.com/salemkode/crypto-focus-garden/tree/de708cd
 2025 demo (organizer showcase): https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s
-Before the 14 Nov kickoff we also had a private Expo prototype (9–10 Nov 2026, reusing the 2025 Chipnet contract) and started the React Native Libauth adapter on 13 Nov 2026.
-Libauth adapter: https://github.com/salemkode/react-native-libauth
+Before the 14 Nov kickoff we also had a private Expo prototype (9–10 Nov 2026, reusing the 2025 Chipnet contract) with our native Libauth adapter for React Native, which the app still uses to run Libauth and the XO engine on the phone.
+Related open source by the same author, published 13–14 Nov 2026 (separate projects, not installed by this app):
+React Native Libauth adapter: https://github.com/salemkode/react-native-libauth
+XO React Native wallet template: https://github.com/salemkode/xo-react-native-wallet
 Everything else was built during BLAZE (17–20 Nov 2026 commits): the FocusForest and FocusDirectory contracts and their mainnet deployment, the Expo app for iPhone, Android and the web, on-device transaction building, WizardConnect and WalletConnect linking, the leaderboard, profiles and tips, and BCMR metadata.
 Everything since 2025: https://github.com/salemkode/focus-garden-next/compare/de708cd...5f5a52e
 ```

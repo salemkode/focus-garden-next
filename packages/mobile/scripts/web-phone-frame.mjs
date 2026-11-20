@@ -38,6 +38,10 @@ const copy = (label) =>
 const vote = config.votingAddress
 	? `<span class="vote">EMBER2026 votes (CashTokens): <code>${esc(config.votingAddress)}</code> ${copy("Copy")}</span>`
 	: "";
+// The mobile stack, on its own small line in the expanded banner.
+const stack = config.stack
+	? `<div class="stack">${esc(config.stack.text)} (${link(config.stack.adapter, "libauth-native")}). Related open source by the same author: ${config.stack.related.map((r) => link(r.href, r.label)).join(" · ")}</div>`
+	: "";
 // Collapsing is remembered in localStorage; phones start collapsed so the app keeps its height.
 const toggle = (label, title) =>
 	`<button type="button" class="toggle" title="${title}" aria-label="${title}" onclick="var m=document.documentElement.classList.toggle('blaze-min');try{localStorage.setItem('blaze-banner',m?'min':'full')}catch(e){}">${label}</button>`;
@@ -46,6 +50,7 @@ const BANNER_CSS =
 	"#blaze-banner strong{color:#ffd27a;margin-right:6px}#blaze-banner a{color:#9ad86f;font-weight:700;text-decoration:none;margin:0 2px}#blaze-banner a:hover{text-decoration:underline}" +
 	"#blaze-banner .sep{opacity:.5;margin:0 6px}#blaze-banner .vote{display:inline-block;margin-left:4px}#blaze-banner code{font:600 11.5px ui-monospace,Menlo,monospace;overflow-wrap:anywhere;color:#fff}" +
 	"#blaze-banner button{margin-left:6px;padding:1px 8px;border:1px solid #9ad86f;border-radius:999px;background:transparent;color:#9ad86f;font:600 11px inherit;cursor:pointer}" +
+	"#blaze-banner .stack{margin-top:2px;font-size:11.5px;color:#a9b8ae}#blaze-banner .stack a{font-weight:600}" +
 	"#blaze-banner .full{padding-right:64px}#blaze-banner .full .toggle{position:absolute;top:6px;right:8px;margin:0}" +
 	"#blaze-banner .mini{display:none;align-items:center;gap:6px;white-space:nowrap;text-align:left}#blaze-banner .mini .links{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}#blaze-banner .mini button{flex:none;margin:0}" +
 		"html.blaze-min #blaze-banner{padding:4px 10px;font-size:11.5px}html.blaze-min #blaze-banner .full{display:none}html.blaze-min #blaze-banner .mini{display:flex}" +
@@ -53,7 +58,7 @@ const BANNER_CSS =
 const mini = [link(config.deck, "Slides"), link(config.source, "Source"), `2025: ${link(config.before.source, "source")} ${link(config.before.demo, "demo")}`, link(config.guide, "Judge guide")].filter(Boolean).join(" · ");
 const BANNER =
 	`<div id="blaze-banner" role="region" aria-label="BCH BLAZE 2026 entry">` +
-	`<div class="full"><strong>🔥 ${esc(config.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote ? '<span class="sep">|</span>' + vote : ""}${toggle("Less ▴", "Collapse the BLAZE banner")}</div>` +
+	`<div class="full"><strong>🔥 ${esc(config.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote ? '<span class="sep">|</span>' + vote : ""}${toggle("Less ▴", "Collapse the BLAZE banner")}${stack}</div>` +
 	`<div class="mini"><span class="links"><strong>🔥 BCH BLAZE 2026</strong>${mini}</span>${config.votingAddress ? copy("Copy vote address") : ""}${toggle("More ▾", "Expand the BLAZE banner")}</div>` +
 	`</div>`;
 /** Runs before the banner is drawn: a saved choice wins, otherwise narrow screens start collapsed. */

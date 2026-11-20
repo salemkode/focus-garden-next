@@ -9,5 +9,19 @@
     "entry": "https://dorahacks.io/buidl/36811"
   },
   "votingAddress": "bitcoincash:zzzyq9g0n2ywatt0eajwre5h89aju3kk0svl94s4k9",
-  "guide": "https://focus.salemkode.com/#blaze"
+  "guide": "https://focus.salemkode.com/#blaze",
+  "stack": {
+    "text": "React Native (Expo) app: Libauth and the XO engine run on the phone through our native Libauth adapter",
+    "adapter": "https://github.com/salemkode/focus-garden-next/tree/main/packages/mobile/modules/libauth-native",
+    "related": [
+      {
+        "label": "react-native-libauth",
+        "href": "https://github.com/salemkode/react-native-libauth"
+      },
+      {
+        "label": "xo-react-native-wallet",
+        "href": "https://github.com/salemkode/xo-react-native-wallet"
+      }
+    ]
+  }
 }
