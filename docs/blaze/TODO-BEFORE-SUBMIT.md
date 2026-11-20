@@ -14,20 +14,18 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    `814ded89…d9db` (block 978132), release of the grown tree to the linked test wallet
    `b1cc265d…332a` (block 978179), profile card "BLAZE Demo" `bc279c21…53f8`. Full txids are in
    `SUBMISSION.md` (#12–#14). The evidence, the deck, its PDF and the BUIDL draft are updated.
-   🧑 **Leftover funds:** you sent 975,039 sats, against about 20,000 needed. After the three
-   transactions, the browser fee wallet `bitcoincash:qqlyrhns0m75u00c2sec326f77gh75k3fgmpj3wacx`
-   holds about 967,000 sats. Its key lives only in the Ardia browser's storage for
-   focus-app.salemkode.com. Tell me where to send it back. I'll sweep it with a single transaction
-   to the address you name.
+   ✅ **Leftover funds returned** (21 Nov): 966,539 sats went back in one transaction,
+   `1a260eac64d14fe61b044ca5b5571c64048786f3daacde0ba5610e6b1938fd6a`, to
+   `bitcoincash:qzxajy7s8h5qk0tajmr2rmus40ypcs9csvmdpmqwu7`. That is the plain-BCH form of your
+   voting address, converted with libauth (same hash160 `8dd913d0…b883`). The 500-sat fee was the
+   only cost. The fee wallet keeps only the 1,000-sat "BLAZE Demo" profile card.
 
 3. ✅ **Deck link** (20 Nov): as you asked, the Google deck stays private. Its PDF export is hosted on your Cloudflare site at https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf and linked from both banners. If the deck changes, ask Codex to export it again, then redeploy the landing page.
 
-4. 🧑 **Approve the DoraHacks changes** to BUIDL #51334:
-   - switch the track **Media → Mainnet** (hackathon page → Manage Submission)
-   - replace the fields with `BUIDL-DRAFT.md`: logo, tagline, links and details
-
-   The BUIDL is already public, so Save publishes immediately. 🤖 I fill and save it in your browser
-   once you approve.
+4. ✅ **BUIDL #51334 saved and on the Mainnet Track** (21 Nov, on the coordinator's "do it"):
+   new logo (the app icon), tagline, three links (pinned source, app, judge guide) and the
+   `BUIDL-DRAFT.md` details. The public record and the hackathon Builds grid show the icon and
+   "Mainnet Track". The team is unchanged (owner @salemkode, the same account as 2025).
 
 5. 🧑 **Telegram "real project" check-in: do it now.** You weren't sure whether it's done, and no
    record of it is reachable from here. The rules require it unless the organizers waive it. Post
@@ -47,9 +45,10 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    and both sites were redeployed from `main`. Until judging ends (27 Nov), avoid redeploying from
    an older branch.
 
-7. 🧑 **The old Media "interactive piece"** at focusgarden.salemkode.com/blaze (and its pitch.pdf)
-   still says "test network" and "garden service". Option: 🤖 I point it to
-   focus.salemkode.com/#blaze. Otherwise it stays as it is, but it is removed from the BUIDL in step 4.
+7. ✅ **Old Media page redirected** (21 Nov): focusgarden.salemkode.com (Worker
+   `focus-garden-blaze`) now sends `/blaze` to https://focus.salemkode.com/#blaze,
+   `/blaze/pitch.pdf` to the current deck PDF, and everything else to https://focus.salemkode.com.
+   The old address `zzm8exh8…wlr7s` is no longer public. Cloudflare keeps the old version for rollback.
 
 8. Optional 🧑 + 🤖 **Video.** After step 2, I record about a 2.5-minute walkthrough from the
    `DEMO.md` script. It's not required for the Mainnet track. You decide where it is hosted

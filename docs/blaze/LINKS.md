@@ -4,7 +4,7 @@
 |---|---|---|
 | **Deck (Widget Factory copy)**, edit | https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/edit | Private copy, 13 slides, v2 (after four reviews), 20 Nov. Thumbnails in `deck-renders/v2/`. |
 | **Deck link (public, in the banner)** | https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf | Live since 20 Nov: the deck exported to PDF (13 pages, clickable links) and hosted on your Cloudflare site, as you asked. The Google deck itself stays private. |
-| **BUIDL** | https://dorahacks.io/buidl/51334 | Exists. Linked to BCH BLAZE 2026 on the **Media** track; switch to Mainnet. Its text points to old links. The replacement text is in `SUBMISSION.md`. |
+| **BUIDL** | https://dorahacks.io/buidl/51334 | Saved 21 Nov with the `BUIDL-DRAFT.md` text, app-icon logo and pinned links. On the **Mainnet Track** (checked on the public record and the Builds grid). |
 | 2025 BUIDL (before) | https://dorahacks.io/buidl/36811 | Public. 3rd place, BitcoinCash Innovation Award, BLAZE 2025 |
 | Duplicate 2025 BUIDL | https://dorahacks.io/buidl/36810 | Public, the same content as 36811 (2025). Leave it alone; mention it only if asked. |
 | **Demo (after)** | https://focus-app.salemkode.com | Live on mainnet, deployed from `main` at `5f5a52e` (20 Nov, after PR #4 and PR #5 were merged). |
@@ -19,7 +19,7 @@
 | BCMR registry | https://focus.salemkode.com/.well-known/bitcoin-cash-metadata-registry.json | Live |
 | iPhone build | https://appdrop.app/d/prvhsh4gyx | Build 9 from `main` (mainnet), per the "Switch App to Mainnet" thread |
 | Android build | https://appdrop.app/d/njfetdhs4s | Updated from `main` on 20 Nov (same thread) |
-| Old "interactive piece" | https://focusgarden.salemkode.com/blaze/ | Stale: it says "test network" and "garden service". Remove it from the BUIDL. |
+| Old "interactive piece" | https://focusgarden.salemkode.com/blaze/ | Redirects (301) since 21 Nov: `/blaze` → focus.salemkode.com/#blaze, `pitch.pdf` → the current deck PDF, everything else → focus.salemkode.com. |
 
 ## Banner contents
 
