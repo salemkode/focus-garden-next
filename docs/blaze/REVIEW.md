@@ -60,4 +60,4 @@ because only GPT models have the Google Drive connector.
 
 - `tsc` and `eslint` clean. 71 app tests pass, and 27 protocol tests pass, including the new weekly-board test.
 - Web app and landing page rebuilt and redeployed (20 Nov). The BCMR registry hash is unchanged (`279f1f4a…`).
-- Deck v2: being applied by GPT-6.2 Sol. Its renders go to `deck-renders/v2/`, followed by a visual check.
+- Deck v2 applied in place by GPT-6.2 Sol (13 slides, 15 links checked). I inspected all 13 renders in `deck-renders/v2/`: no overflow or overlaps, every claim labelled, and slide 10 still has no voting address. Codex hit one 400 error on its first batch (missing field mask on a table update) and resubmitted successfully.

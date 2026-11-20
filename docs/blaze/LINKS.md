@@ -2,7 +2,7 @@
 
 | What | Link | State on 20 Nov 2026 |
 |---|---|---|
-| **Deck (Widget Factory copy)**, edit | https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/edit | Private copy, 13 slides, built 20 Nov by Codex (GPT-6.2 Sol). Thumbnails in `deck-renders/`. |
+| **Deck (Widget Factory copy)**, edit | https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/edit | Private copy, 13 slides, v2 (after four reviews), 20 Nov. Thumbnails in `deck-renders/v2/`. |
 | **Deck read-only share link** | https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/view (works only after sharing is set to "Anyone with the link: Viewer") | **Not shared**: needs the owner's approval |
 | **BUIDL** | https://dorahacks.io/buidl/51334 | Exists. Linked to BCH BLAZE 2026 on the **Media** track; switch to Mainnet. Its text points to old links. The replacement text is in `SUBMISSION.md`. |
 | 2025 BUIDL (before) | https://dorahacks.io/buidl/36811 | Public. 3rd place, BitcoinCash Innovation Award, BLAZE 2025 |
