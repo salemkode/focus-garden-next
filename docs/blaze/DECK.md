@@ -1,8 +1,9 @@
-# Focus Garden — Widget Factory deck (BCH BLAZE 2026), v2
+# Focus Garden — Widget Factory deck (BCH BLAZE 2026), v3
 
 Deck: https://docs.google.com/presentation/d/16sSdxHkranTg2wpwybkcenF869Gxal0JiMUsRLNKylk/edit
 (a copy of the mandatory template; never edit the original). v1 was built on 20 Nov. v2 applies the
-lead, Sol, Astra and Fable reviews (`reviews/`, summary in `REVIEW.md`).
+lead, Sol, Astra and Fable reviews (`reviews/`, summary in `REVIEW.md`). v3 (20 Nov) replaces
+every "Pending" about the judge path with the mainnet txids; renders in `deck-renders/v3/`.
 
 Template order (kept): cover → one-sentence pitch with link → story → benefits → BCH usage →
 vision → thank you. The walkthrough, evidence and before/after slides sit where the story needs
@@ -50,7 +51,7 @@ Aim for one idea per slide and big type: judges give each entry about two minute
 - **A focus timer with stakes: while you focus, Bitcoin Cash time-locks a tree; stay, and the app
   delivers it to your wallet as a CashTokens NFT. Leave, and it withers.**
 - Large link right below: **Try it → focus-app.salemkode.com** (any modern browser plus a BCH wallet; about 15,000 sats)
-- Status next to the link, not at the bottom: `[Contracts live on Mainnet · first app plant: Pending]`
+- Status next to the link, not at the bottom: `[Done on Mainnet: contracts, and a plant → release from the website]` (v3)
 - Notes: The website is the app's web build in a phone frame. The judge guide is at focus.salemkode.com/#blaze.
 
 ## 3 — Story
@@ -69,8 +70,8 @@ Title: The Story of Focus Garden
 ## 4 — How it works (walkthrough)
 
 - Full-bleed `walkthrough.png` v2: four steps with honest chips (1 Tested: WizardConnect test
-  wallet · 2 Tested: created, balance read · 3 Pending: first mainnet plant · 4 Pending: first
-  mainnet release). The QR code is blurred.
+  wallet · 2 Done on Mainnet: funded, paid 3 txs · 3 Done on Mainnet: 814ded89… · 4 Done on
+  Mainnet: b1cc265d…; v3, 20 Nov). The QR code is blurred.
 - Notes: 1 Connect: WizardConnect shares a receive key branch, and the app uses the first receive
   address; it never asks the wallet to sign. 2 Fund the fee wallet with one coin of ≥8,000 sats
   (≈15,000 covers a plant and a release). 3 Plant with Verify on: the app builds the FocusForest
@@ -82,7 +83,7 @@ Title: The Story of Focus Garden
 
 Title: Benefits of Focus Garden
 - **A reason to stay.** Leave for 10 seconds and your tree withers. `[Tested locally]`
-- **A reward you own.** Kept sessions become CashTokens NFTs in your own wallet, with pictures from our BCMR registry. `[Contracts and metadata: Done on Mainnet · first delivery: Pending]`
+- **A reward you own.** Kept sessions become CashTokens NFTs in your own wallet, with pictures from our BCMR registry. `[Done on Mainnet: contracts, metadata, first delivery]` (v3)
 - **No account, no server we run.** The app talks to Bitcoin Cash through public Electrum servers. `[Done on Mainnet (read-only)]`
 - Notes (moved off the slide): app blocking (Screen Time / usage access) in the native apps, not
   re-verified for this entry; profile cards, a leaderboard of pledged focus, and tips.
@@ -112,7 +113,8 @@ Title: Evidence and honest limits
 | Contracts, 100 creator trees, BCMR metadata | Done on Mainnet — block 977999 |
 | App reads gardens, balances and leaderboard from mainnet | Done on Mainnet (read-only) |
 | WizardConnect pairing | Tested with a dedicated test wallet, 20 Nov |
-| Plant → release from the website | Pending — first mainnet run |
+| Plant → release from the website | Done on Mainnet — 814ded89…d9db → b1cc265d…332a (v3) |
+| Profile card from the website | Done on Mainnet — bc279c21…53f8 (v3) |
 
 - Visible box: **Limits:** the chain checks time, not attention; the app checks that you stay.
   The leaderboard counts pledged time. Delivery waits for the lock to mature (up to about an hour
@@ -131,7 +133,7 @@ Title: The Vision for Focus Garden
 
 Same table as v1, with these changes:
 - Labelled links, no raw URLs: "2025 source", "2025 demo (organizer showcase)", "2026 source".
-- Network row, 2026 column: "Mainnet: contract deployment and reads; first web plant pending".
+- Network row, 2026 column: "Mainnet: contract deployment and reads; plants, releases and profile cards from the website" (v3).
 - Wallets row, 2026 column: "WizardConnect, WalletConnect; XO-engine fee wallet (native)".
 
 ## 10 — Thank you
@@ -144,8 +146,8 @@ Same table as v1, with these changes:
 ## A1 — Mainnet transactions
 
 Short txids (first 8 … last 4), each linked to `https://blockchair.com/bitcoin-cash/transaction/<txid>`.
-Heading: "Deployment (operator) — Done on Mainnet". An empty second heading,
-"Judge path (app) — Pending", gets the plant and release txids later.
+Heading: "Deployment (operator) — Done on Mainnet". Second heading (v3):
+"Judge path (app) — Done on Mainnet, 20 Nov": Plant 814ded89…d9db · Release b1cc265d…332a · Profile card bc279c21…53f8.
 
 ## A2 — Architecture
 

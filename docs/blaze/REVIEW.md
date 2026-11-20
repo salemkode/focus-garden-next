@@ -33,7 +33,7 @@ because only GPT models have the Google Drive connector.
 
 | # | Finding (who) | Severity | Action |
 |---|---|---|---|
-| 1 | No app-made mainnet transaction; the judge path is unproven (all) | Blocker | **Owner approval and funds needed** (`TODO-BEFORE-SUBMIT.md` step 2). Labelled **Pending** everywhere. |
+| 1 | No app-made mainnet transaction; the judge path is unproven (all) | Blocker | **Fixed 20 Nov:** plant `814ded89…d9db`, release `b1cc265d…332a` and profile card `bc279c21…53f8` made from the website on mainnet; labels changed to **Done on Mainnet**. |
 | 2 | No deck link in the banner; voting address unconfirmed (all) | Blocker | The banner and deck are ready. **Owner approval** needed to share the deck and confirm the address (steps 1, 3). |
 | 3 | BUIDL on Media with stale text (all) | Blocker | `BUIDL-DRAFT.md` updated. **Owner approval** needed to save and switch the track (step 4). |
 | 4 | The pitch overstates what the chain proves: "exactly", "unforgeable proof", "garden shows the focus she kept" (Sol, Astra, Fable) | Major | Rewritten as "the app tracks whether you stay, Bitcoin Cash time-locks the tree, finish and the app delivers it" in deck v2, the BUIDL draft, the submission text and the landing page. "Proof" and "no servers" were removed from the landing page. |
@@ -48,7 +48,7 @@ because only GPT models have the Google Drive connector.
 | 13 | WizardConnect was tested only with a test wallet, not real Selene or Paytaca (Fable, Sol) | Major | Wording made exact everywhere. Real Selene and Paytaca are part of the funded run (owner). |
 | 14 | Pre-kickoff work (9–10 Nov prototype, 13 Nov adapter) belongs on a slide (Astra) | Major | Deck v2 A3 and `SUBMISSION.md`. **Open:** Fable asks when the PomodoroRewards "v3" and CreditPolicy were written. Git can't tell, because all 2026 code first landed on 17 Nov. **The owner should confirm.** |
 | 15 | One minting baton serializes every plant (Fable) | Major | Not changed. Listed as a known limit; the plan is several batons. Deck v2 dropped the "million promises" target. |
-| 16 | The live sites run unmerged PR #5 (Fable, Sol) | Major | **Owner decision:** merge PR #5, or freeze deploys from `main` (step 6). |
+| 16 | The live sites run unmerged PR #5 (Fable, Sol) | Major | **Fixed 20 Nov:** PR #5 (and #4) merged; both sites deployed from `main`. |
 | 17 | The vision is too broad (Sol, Astra) | Minor | Deck v2: one first buyer (study groups) and one success measure, marked Planned. |
 | 18 | Test counts were inconsistent; the 76-test suite includes legacy contracts (Sol, Fable) | Minor | Fixed to "76-test contracts suite (also covers PomodoroRewards/CreditPolicy), 27 protocol, 71 app". |
 | 19 | The collapsed banner omits the 2025 demo; the landing page's 2025 link isn't pinned (Fable) | Minor | Both fixed and deployed. |

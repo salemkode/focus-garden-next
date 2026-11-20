@@ -13,7 +13,7 @@ immediately. Saving is treated as the final-submit approval point. Nothing below
 | Name of your Build | Focus Garden | Focus Garden |
 | Brief description | Stay focused. Grow a forest. | Keep your word, grow your forest: focus promises locked on Bitcoin Cash. |
 | Tags | Crypto / Web3, Bitcoin Cash | Crypto / Web3, Bitcoin Cash (add: Productivity, NFT, if offered) |
-| Link 1 (GitHub Repo) | github.com/salemkode/crypto-focus-garden/tree/release/blaze-web-preview | `https://github.com/salemkode/focus-garden-next/tree/<submission commit>` |
+| Link 1 (GitHub Repo) | github.com/salemkode/crypto-focus-garden/tree/release/blaze-web-preview | `https://github.com/salemkode/focus-garden-next/tree/5f5a52ea3c83d9b6df178d53d7eab5c26a32ab56` |
 | Link 2 (Website) | focusgarden.salemkode.com/blaze/ | https://focus-app.salemkode.com |
 | Link 3 (Website) | — | https://focus.salemkode.com/#blaze (judge guide) |
 | Link 4 (Video) | — | `<video link, if recorded>` |
@@ -25,7 +25,7 @@ immediately. Saving is treated as the final-submit approval point. Nothing below
 
 ## Details text, ready to paste
 
-Replace the `<…>` placeholders before pasting.
+All placeholders are filled (20 Nov).
 
 ```
 🔥 BCH BLAZE 2026 · Mainnet track
@@ -33,7 +33,7 @@ Replace the `<…>` placeholders before pasting.
 Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phone frame; needs a BCH wallet and about 15,000 sats)
 Judge guide (5 minutes): https://focus.salemkode.com/#blaze
 Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf
-Source (2026): https://github.com/salemkode/focus-garden-next/tree/<submission commit>
+Source (2026): https://github.com/salemkode/focus-garden-next/tree/5f5a52ea3c83d9b6df178d53d7eab5c26a32ab56
 EMBER2026 votes: bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd
 
 Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant and the FocusForest contract mints a tree NFT and time-locks it for the session. The app tracks whether you stay: leave for more than 10 seconds and the tree withers and skips automatic delivery. Stay, and when the lock matures the grown tree is sent to your own wallet as a CashTokens NFT. Longer sessions grow bigger trees, small trees merge into bigger ones, and a second contract, FocusDirectory, gives everyone a public profile card for the on-chain leaderboard and tips. There is no backend of our own: the app builds, checks (in the BCH 2026 VM) and signs every transaction itself and talks to public Electrum servers.
@@ -47,12 +47,12 @@ How to try it (about 15,000 sats):
 
 Why Bitcoin Cash: native CashTokens make each tree a real NFT, covenant time locks (BIP68) make every node enforce the session, and fees are small enough for one tree per session.
 
-Status: both contracts are live on mainnet since 19 Nov 2026 (block 977999), with 100 creator trees and BCMR metadata. The app reads gardens and the leaderboard from mainnet, and WizardConnect pairing is verified on the mainnet build. Plant, merge, claim, profile and tip transactions pass the 76-test contracts suite and 27 protocol tests in the BCH VM. <Add the judge-path mainnet txid here once it is made.> Planned: pUSD-backed promises and group gardens.
+Status: both contracts are live on mainnet since 19 Nov 2026 (block 977999), with 100 creator trees and BCMR metadata. The app reads gardens and the leaderboard from mainnet, and WizardConnect pairing is verified on the mainnet build. Plant, merge, claim, profile and tip transactions pass the 76-test contracts suite and 27 protocol tests in the BCH VM. Made from the website on mainnet, 20 Nov 2026: a plant (814ded899f98264f7fdb58c4ada15b48eb45588414ebc3bc106e828143abd9db), the release of the grown tree to the linked wallet (b1cc265d64ef49728fc5b65e638025a871430b27499c6ccd3367f3bbf866332a) and a profile card (bc279c21a41bf4e8b4170419a3c0c71e7f4a6003f244eb04b504c48240c153f8). Planned: pUSD-backed promises and group gardens.
 
 Pre-existing work: this upgrades our BCH BLAZE 2025 entry, Crypto Focus Garden (3rd place, BitcoinCash Innovation Award): a Next.js web dApp with one Chipnet contract.
 2025 entry: https://dorahacks.io/buidl/36811
 2025 source: https://github.com/salemkode/crypto-focus-garden/tree/de708cd
 2025 demo (organizer showcase): https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s
 Before the 14 Nov kickoff we also had a private Expo prototype (9–10 Nov 2026, reusing the 2025 Chipnet contract) and started the React Native Libauth adapter (13 Nov 2026, https://github.com/salemkode/react-native-libauth). Everything else was built during BLAZE (17–20 Nov 2026 commits): the FocusForest and FocusDirectory contracts and their mainnet deployment, the Expo app for iPhone, Android and the web, on-device transaction building, WizardConnect and WalletConnect linking, the leaderboard, profiles and tips, and BCMR metadata.
-Everything since 2025: https://github.com/salemkode/focus-garden-next/compare/de708cd...<submission commit>
+Everything since 2025: https://github.com/salemkode/focus-garden-next/compare/de708cd...5f5a52e
 ```

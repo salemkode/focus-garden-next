@@ -10,18 +10,15 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
 
 1. ✅ **EMBER2026 voting address confirmed** (20 Nov): `bitcoincash:zzxajy7s8h5qk0tajmr2rmus40ypcs9csvu8j9wgrd`, shared with Venn. It is in the banner, the deck and the BUIDL draft.
 
-2. 🧑 **Approve and fund one judge-path run on mainnet.** This is the core Mainnet-track proof. No
-   app-made transaction exists on mainnet yet (the FocusForest contract has only its genesis). My
-   rules exclude your existing wallets and funds, so a funding source has to come from you. Two options:
-   - **(a) You run it** (about 15 minutes of attention plus waiting). Follow `DEMO.md` → "Judge
-     instructions" on https://focus-app.salemkode.com with your own wallet and about 15,000 sats, then
-     send me the txids.
-   - **(b) I run it.** Send about 20,000 sats to a dedicated browser fee wallet I create for this. I
-     mint a profile card, plant a 9-minute verified tree, wait for the release (about 1–1.5 h) and
-     record every txid.
-
-   🤖 Either way, I then update the evidence (`SUBMISSION.md` #12), the deck chips ("mainnet
-   pending" → "Done on Mainnet") and the BUIDL text.
+2. ✅ **Judge-path run on mainnet** (20 Nov), funded by you and run from the live site: plant
+   `814ded89…d9db` (block 978132), release of the grown tree to the linked test wallet
+   `b1cc265d…332a` (block 978179), profile card "BLAZE Demo" `bc279c21…53f8`. Full txids are in
+   `SUBMISSION.md` (#12–#14). The evidence, the deck, its PDF and the BUIDL draft are updated.
+   🧑 **Leftover funds:** you sent 975,039 sats, against about 20,000 needed. After the three
+   transactions, the browser fee wallet `bitcoincash:qqlyrhns0m75u00c2sec326f77gh75k3fgmpj3wacx`
+   holds about 967,000 sats. Its key lives only in the Ardia browser's storage for
+   focus-app.salemkode.com. Tell me where to send it back. I'll sweep it with a single transaction
+   to the address you name.
 
 3. ✅ **Deck link** (20 Nov): as you asked, the Google deck stays private. Its PDF export is hosted on your Cloudflare site at https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf and linked from both banners. If the deck changes, ask Codex to export it again, then redeploy the landing page.
 
@@ -46,11 +43,9 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
    nothing can change that now. Posting the project in the group also helps "word of mouth", which
    the rules name as the way out of that queue.
 
-6. 🧑 **Keep the deployed build until judging ends (27 Nov).** focus-app.salemkode.com and
-   focus.salemkode.com now run branch `docs/blaze-2026-submission`. A deploy from `main` drops the
-   fee wallet and banner until PR #5 is merged. Two ways to avoid it:
-   - merge https://github.com/salemkode/focus-garden-next/pull/5 (I won't merge it), or
-   - tell other threads not to redeploy the web app or landing page from `main`.
+6. ✅ **PRs merged and deployed** (20 Nov): PR #4 and PR #5 are merged into `main` (`5f5a52e`),
+   and both sites were redeployed from `main`. Until judging ends (27 Nov), avoid redeploying from
+   an older branch.
 
 7. 🧑 **The old Media "interactive piece"** at focusgarden.salemkode.com/blaze (and its pitch.pdf)
    still says "test network" and "garden service". Option: 🤖 I point it to
@@ -82,7 +77,7 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
 
 - Rules re-verified on 20 Nov from DoraHacks and bchblaze.com (`ELIGIBILITY.md`, `sources/`)
 - Web fee wallet; connection-only wallet linking; withered sessions keep their tree locked. All are
-  committed, pushed, deployed, and in PR #5.
+  committed, merged into `main` (PR #5) and deployed.
 - The BLAZE banner is live on the web app and landing page. The deck link appears after step 3.
 - The judge guide is live at https://focus.salemkode.com/#blaze
 - WizardConnect pairing was verified on the mainnet web build with a dedicated test wallet.
