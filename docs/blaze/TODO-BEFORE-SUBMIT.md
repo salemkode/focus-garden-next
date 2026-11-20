@@ -76,24 +76,19 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
     browser, check that the deck link, demo, judge guide and source commit all open, and that the
     BUIDL shows the Mainnet track.
 
-## 🧑 Needs the user's DoraHacks login
+## ✅ React Native line saved on BUIDL #51334 (21 Nov, 06:00 UTC)
 
-The banners on focus.salemkode.com and focus-app.salemkode.com already carry it (PR #13).
-Optional: the live BUIDL already shows the 2025-wallet voting address and names React Native and react-native-libauth. This edit only makes it precise: the app uses its own in-repo adapter, and the two repos are related work.
-DoraHacks had signed this browser out, and signing back in with Google asks for **your passkey**, so
-the BUIDL wasn't saved. Sign in to DoraHacks and ask me to "save the BUIDL", or edit it yourself.
-In the Details text, add after the first paragraph:
+DoraHacks was signed in again (the coordinator's Venn thread used "Continue with GitHub"; no
+password or passkey). The Details text now has the line "Mobile app: React Native (Expo) for iPhone
+and Android. Libauth and the XO engine run on the phone through our native Libauth adapter
+(packages/mobile/modules/libauth-native)." and the corrected prior-work lines from `BUIDL-DRAFT.md`.
+Nothing else changed: tagline, the three links, logo, Mainnet Track and the 2025-wallet voting
+address `zzzyq9g0…4s4k9`.
 
-> Mobile app: React Native (Expo) for iPhone and Android. Libauth and the XO engine run on the phone through our native Libauth adapter (packages/mobile/modules/libauth-native).
-
-and replace the line "…started the React Native Libauth adapter on 13 Nov 2026. / Libauth adapter: …" in the
-prior-work part with the four lines in `BUIDL-DRAFT.md` (prototype with our native Libauth adapter;
-related open source: react-native-libauth, xo-react-native-wallet).
-
-Checked against the code: the app depends on its in-repo adapter `libauth-native` (already in the
-9 Nov prototype), `@bitauth/libauth` and `@xo-cash/engine`/`templates`. It does **not** install
-`react-native-libauth` or `xo-react-native-wallet`, so they are named as related open source by the
-same author, not as dependencies.
+Checked logged out: the text matches the draft, the old addresses are absent, and every link
+answers. That's the app, judge guide, deck PDF, pinned source, compare view, 2025 source, 2025
+entry (DoraHacks blocks curl, so it was read in the browser), 2025 showcase video,
+react-native-libauth and xo-react-native-wallet. BUIDL #51333 (Venn) was not touched.
 
 ## Overnight QA, 20–21 Nov (coordinator request; user asleep)
 
