@@ -65,8 +65,8 @@ small enough to plant one tree per session.
 | When | What | Where | Public |
 |---|---|---|---|
 | 1–23 Nov 2025 | **Crypto Focus Garden**, our BCH BLAZE 2025 entry (3rd place, BitcoinCash Innovation Award — the Chipnet track; verified on https://dorahacks.io/hackathon/bchblaze2025/winner). Next.js web dApp, one `PomodoroRewards` CashScript contract on Chipnet with the time check relaxed for the demo, WalletConnect, Three.js scene. | https://github.com/salemkode/crypto-focus-garden/tree/de708cd · https://dorahacks.io/buidl/36811 · demo in the organizer showcase: https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s | Yes. The 2025 dApp is no longer hosted. |
-| 9–10 Nov 2026 | A local Expo prototype (`focus-garden-native`) that reused the 2025 contract on Chipnet. It was later folded into this repository (`docs/history/expo-rebuild-2026-11-17/`). | not published | No |
-| 13 Nov 2026 | Work started on a separate React Native Libauth adapter (native C crypto so Libauth and the XO engine run on phones). Most of it was done 14–17 Nov. | https://github.com/salemkode/react-native-libauth | Yes |
+| 9–10 Nov 2026 | A local Expo (React Native) prototype (`focus-garden-native`) that reused the 2025 contract on Chipnet. It already had our native Libauth adapter (`libauth-native`: C secp256k1 and hashes, so Libauth and the XO engine run on the phone), which the app still uses (`packages/mobile/modules/libauth-native`). The prototype was folded into this repository (`docs/history/expo-rebuild-2026-11-17/`). | not published | No |
+| 13–14 Nov 2026 | Related open source by the same author, published separately and not installed by this app: a packaged React Native Libauth adapter and an XO React Native wallet template. | https://github.com/salemkode/react-native-libauth · https://github.com/salemkode/xo-react-native-wallet | Yes |
 
 ## What was built during BLAZE (14–22 Nov 2026)
 

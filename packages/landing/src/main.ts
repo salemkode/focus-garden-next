@@ -44,8 +44,11 @@ document.documentElement.classList.add("js");
 		const copy = (label: string) => (blaze.votingAddress ? `<button type="button" data-copy-vote>${label}</button>` : "");
 		const vote = blaze.votingAddress ? `<span class="sep">|</span>EMBER2026 votes (CashTokens): <code>${escape(blaze.votingAddress)}</code>${copy("Copy")}` : "";
 		const mini = [link(blaze.deck, "Slides"), link(blaze.source, "Source"), `2025: ${link(blaze.before.source, "source")} ${link(blaze.before.demo, "demo")}`, `<a href="#blaze">Judge guide</a>`].filter(Boolean).join(" · ");
+		const stack = blaze.stack
+			? `<div class="bb-stack">${escape(blaze.stack.text)} (${link(blaze.stack.adapter, "libauth-native")}). Related open source by the same author: ${blaze.stack.related.map((r) => link(r.href, r.label)).join(" · ")}</div>`
+			: "";
 		banner.innerHTML =
-			`<div class="bb-full"><strong>🔥 ${escape(blaze.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote}<button type="button" class="toggle" data-blaze-toggle aria-label="Collapse the BLAZE banner">Less ▴</button></div>` +
+			`<div class="bb-full"><strong>🔥 ${escape(blaze.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote}<button type="button" class="toggle" data-blaze-toggle aria-label="Collapse the BLAZE banner">Less ▴</button>${stack}</div>` +
 			`<div class="bb-mini"><span class="bb-links"><strong>🔥 BCH BLAZE 2026</strong>${mini}</span>${copy("Copy vote address")}<button type="button" class="toggle" data-blaze-toggle aria-label="Expand the BLAZE banner">More ▾</button></div>`;
 		// Collapsed to one line on request (remembered); narrow screens start collapsed.
 		const saved = (() => { try { return localStorage.getItem("blaze-banner"); } catch { return null; } })();
