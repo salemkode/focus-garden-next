@@ -43,7 +43,7 @@ document.documentElement.classList.add("js");
 	if (banner) {
 		const copy = (label: string) => (blaze.votingAddress ? `<button type="button" data-copy-vote>${label}</button>` : "");
 		const vote = blaze.votingAddress ? `<span class="sep">|</span>EMBER2026 votes (Mainnet CashTokens): <code>${escape(blaze.votingAddress)}</code>${copy("Copy")}` : "";
-		const mini = [link(blaze.deck, "Slides"), link(blaze.source, "Source"), link(blaze.before.source, "2025"), `<a href="#blaze">Judge guide</a>`].filter(Boolean).join(" · ");
+		const mini = [link(blaze.deck, "Slides"), link(blaze.source, "Source"), `2025: ${link(blaze.before.source, "source")} ${link(blaze.before.demo, "demo")}`, `<a href="#blaze">Judge guide</a>`].filter(Boolean).join(" · ");
 		banner.innerHTML =
 			`<div class="bb-full"><strong>🔥 ${escape(blaze.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote}<button type="button" class="toggle" data-blaze-toggle aria-label="Collapse the BLAZE banner">Less ▴</button></div>` +
 			`<div class="bb-mini"><span class="bb-links"><strong>🔥 BCH BLAZE 2026</strong>${mini}</span>${copy("Copy vote address")}<button type="button" class="toggle" data-blaze-toggle aria-label="Expand the BLAZE banner">More ▾</button></div>`;

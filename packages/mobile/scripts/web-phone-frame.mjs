@@ -50,7 +50,7 @@ const BANNER_CSS =
 	"#blaze-banner .mini{display:none;align-items:center;gap:6px;white-space:nowrap;text-align:left}#blaze-banner .mini .links{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}#blaze-banner .mini button{flex:none;margin:0}" +
 		"html.blaze-min #blaze-banner{padding:4px 10px;font-size:11.5px}html.blaze-min #blaze-banner .full{display:none}html.blaze-min #blaze-banner .mini{display:flex}" +
 	"@media (max-width:600px){#blaze-banner{padding:6px 10px;font-size:11px;line-height:1.4}#blaze-banner code{font-size:10px}#blaze-banner .sep{margin:0 3px}}";
-const mini = [link(config.deck, "Slides"), link(config.source, "Source"), link(config.before.source, "2025"), link(config.guide, "Judge guide")].filter(Boolean).join(" · ");
+const mini = [link(config.deck, "Slides"), link(config.source, "Source"), `2025: ${link(config.before.source, "source")} ${link(config.before.demo, "demo")}`, link(config.guide, "Judge guide")].filter(Boolean).join(" · ");
 const BANNER =
 	`<div id="blaze-banner" role="region" aria-label="BCH BLAZE 2026 entry">` +
 	`<div class="full"><strong>🔥 ${esc(config.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote ? '<span class="sep">|</span>' + vote : ""}${toggle("Less ▴", "Collapse the BLAZE banner")}</div>` +
