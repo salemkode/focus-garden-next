@@ -61,3 +61,24 @@ export function nextRelease(consents: readonly ReleaseConsent[], sessions: reado
 export function spendConsent(consents: readonly ReleaseConsent[], id: string, commitment: string): ReleaseConsent[] {
   return consents.map((consent) => consent.id === id && consent.usedFor === null ? { ...consent, usedFor: commitment } : consent);
 }
+
+/** Marks the release consent of each focus session that withered (left or given up) as forfeited. */
+export const FORFEITED = 'forfeited:withered';
+/** A consent belongs to the session whose timer started within this window of the Plant tap. */
+const SESSION_MATCH_MS = 60_000;
+
+/**
+ * Leaving withers the tree, so a withered session's verified tree is not sent to the wallet: its
+ * consent is used up without a release. The tree stays locked in the contract (the owner's own
+ * wallet can still recover it there by signing a claim itself). Returns the same list if nothing
+ * changed.
+ */
+export function forfeitWithered(consents: readonly ReleaseConsent[], witheredStarts: readonly number[]): readonly ReleaseConsent[] {
+  let changed = false;
+  const next = consents.map((consent) => {
+    if (consent.usedFor !== null || !witheredStarts.some((start) => Math.abs(consent.approvedAt - start) <= SESSION_MATCH_MS)) return consent;
+    changed = true;
+    return { ...consent, usedFor: FORFEITED };
+  });
+  return changed ? next : consents;
+}
