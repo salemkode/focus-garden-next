@@ -53,6 +53,8 @@ Pre-existing work: this upgrades our BCH BLAZE 2025 entry, Crypto Focus Garden (
 2025 entry: https://dorahacks.io/buidl/36811
 2025 source: https://github.com/salemkode/crypto-focus-garden/tree/de708cd
 2025 demo (organizer showcase): https://www.youtube.com/watch?v=R2xhv0Vq_Us&t=4664s
-Before the 14 Nov kickoff we also had a private Expo prototype (9–10 Nov 2026, reusing the 2025 Chipnet contract) and started the React Native Libauth adapter (13 Nov 2026, https://github.com/salemkode/react-native-libauth). Everything else was built during BLAZE (17–20 Nov 2026 commits): the FocusForest and FocusDirectory contracts and their mainnet deployment, the Expo app for iPhone, Android and the web, on-device transaction building, WizardConnect and WalletConnect linking, the leaderboard, profiles and tips, and BCMR metadata.
+Before the 14 Nov kickoff we also had a private Expo prototype (9–10 Nov 2026, reusing the 2025 Chipnet contract) and started the React Native Libauth adapter on 13 Nov 2026.
+Libauth adapter: https://github.com/salemkode/react-native-libauth
+Everything else was built during BLAZE (17–20 Nov 2026 commits): the FocusForest and FocusDirectory contracts and their mainnet deployment, the Expo app for iPhone, Android and the web, on-device transaction building, WizardConnect and WalletConnect linking, the leaderboard, profiles and tips, and BCMR metadata.
 Everything since 2025: https://github.com/salemkode/focus-garden-next/compare/de708cd...5f5a52e
 ```
