@@ -1,4 +1,5 @@
 import '../../global.css';
+import '../features/socket-guard';
 import '../features/web-alert';
 import { useEffect } from 'react';
 import { router, Stack } from 'expo-router';
