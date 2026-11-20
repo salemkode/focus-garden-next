@@ -417,3 +417,20 @@ details p { padding: 0 24px 22px; color: var(--ink-2); }
 	.js .steps .reveal:nth-child(2) { transition-delay: 0.08s; }
 	.js .steps .reveal:nth-child(3) { transition-delay: 0.16s; }
 }
+
+/* BCH BLAZE 2026: the required top-of-page banner and the judge guide. */
+.blaze-banner { background: #15241b; color: #e8efe9; padding: 8px 16px; text-align: center; font-size: 0.82rem; line-height: 1.5; }
+.blaze-banner:empty { display: none; }
+.blaze-banner strong { color: #ffd27a; margin-right: 6px; }
+.blaze-banner a { color: #9ad86f; font-weight: 700; text-decoration: none; margin: 0 2px; }
+.blaze-banner a:hover { text-decoration: underline; }
+.blaze-banner .sep { opacity: 0.5; margin: 0 6px; }
+.blaze-banner code { color: #fff; overflow-wrap: anywhere; font-size: 0.78rem; }
+.blaze-banner button { margin-left: 6px; padding: 1px 9px; border: 1px solid #9ad86f; border-radius: 999px; background: transparent; color: #9ad86f; font: inherit; font-weight: 700; cursor: pointer; }
+.blaze { max-width: 1180px; margin: 0 auto; padding: 24px 24px 8px; }
+.blaze-panel { padding: 32px; border-radius: 32px; }
+.blaze-panel h2 { margin: 8px 0 8px; }
+.blaze-panel > p { color: var(--ink-2); max-width: 70ch; }
+.blaze-steps { margin: 20px 0 0; padding-left: 1.4em; display: grid; gap: 12px; color: var(--ink-2); max-width: 80ch; }
+.blaze-steps b { color: var(--ink); }
+.blaze-steps a { color: var(--moss, #2a6e27); font-weight: 700; }

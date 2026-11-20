@@ -21,11 +21,34 @@ import pauseIcon from "@phosphor-icons/core/assets/fill/pause-fill.svg" with { t
 import playIcon from "@phosphor-icons/core/assets/fill/play-fill.svg" with { type: "text" };
 import flagIcon from "@phosphor-icons/core/assets/fill/flag-fill.svg" with { type: "text" };
 import deployment from "./deployment.json";
+import blaze from "../../mobile/blaze-banner.json";
 import { DOWNLOADS, EXPLORER, NETWORK } from "./config";
 import { Stage } from "./stage";
 import { mountLeaderboard, type LeaderboardDeployment } from "./leaderboard";
 
 document.documentElement.classList.add("js");
+
+// ------------------------------------------------------------------ BCH BLAZE 2026 banner
+
+{
+	const escape = (value: string) => value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+	const link = (href: string | null | undefined, label: string) => (href ? `<a href="${escape(href)}" target="_blank" rel="noopener">${escape(label)}</a>` : "");
+	const parts = [
+		link(blaze.deck, "Slides"),
+		link(blaze.source, "Source (2026)"),
+		`2025 version: ${[link(blaze.before.source, "source"), link(blaze.before.demo, "demo"), link(blaze.before.entry, "entry")].filter(Boolean).join(" · ")}`,
+		`<a href="#blaze">Judge guide</a>`,
+	].filter(Boolean);
+	const banner = document.querySelector<HTMLElement>("[data-blaze-banner]");
+	if (banner) {
+		const vote = blaze.votingAddress ? `<span class="sep">|</span>EMBER2026 votes (Mainnet CashTokens): <code>${escape(blaze.votingAddress)}</code><button type="button" data-copy-vote>Copy</button>` : "";
+		banner.innerHTML = `<strong>🔥 ${escape(blaze.event)}</strong>${parts.join('<span class="sep">|</span>')}${vote}`;
+		banner.querySelector("[data-copy-vote]")?.addEventListener("click", (event) => {
+			void navigator.clipboard?.writeText(blaze.votingAddress!);
+			(event.currentTarget as HTMLElement).textContent = "Copied";
+		});
+	}
+}
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = <T extends Element = HTMLElement>(selector: string, root: ParentNode = document) => root.querySelector<T>(selector)!;
 const $$ = <T extends Element = HTMLElement>(selector: string, root: ParentNode = document) => [...root.querySelectorAll<T>(selector)];
