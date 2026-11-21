@@ -6,6 +6,7 @@ import { RewardActions } from '../components/RewardActions';
 import { useSampleForest } from '../features/forest/samples';
 import { useRewards } from '../features/rewards/RewardProvider';
 import { mergeableTrees } from '../services/garden';
+import { IS_MAINNET } from '../services/network';
 import { color, Group, icons, Row, Screen } from '../ui';
 
 export default function ChainScreen() {
@@ -21,7 +22,7 @@ export default function ChainScreen() {
     void rewards.refresh().finally(() => setRefreshing(false));
   }
   return <Screen onRefresh={rewards.account ? refresh : undefined} refreshing={refreshing}>
-    <Text className="px-4 text-subhead text-ink-2">Grow trees on the Bitcoin Cash test network and keep them in your wallet.</Text>
+    <Text className="px-4 text-subhead text-ink-2">{IS_MAINNET ? 'Grow trees on Bitcoin Cash and keep them in your wallet.' : 'Grow trees on the Bitcoin Cash test network and keep them in your wallet.'}</Text>
     <OnChainSession />
     <RewardActions />
     {grown || samples !== null ? <Group footer="Merge before sending: trees in your wallet can't be merged.">
