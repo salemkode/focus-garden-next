@@ -16,7 +16,7 @@ immediately. Saving is treated as the final-submit approval point. Nothing below
 | Link 1 (GitHub Repo) | github.com/salemkode/crypto-focus-garden/tree/release/blaze-web-preview | `https://github.com/salemkode/focus-garden-next/tree/5f5a52ea3c83d9b6df178d53d7eab5c26a32ab56` |
 | Link 2 (Website) | focusgarden.salemkode.com/blaze/ | https://focus-app.salemkode.com |
 | Link 3 (Website) | — | https://focus.salemkode.com/#blaze (judge guide) |
-| Link 4 (Video) | — | `<video link, if recorded>` |
+| Link 4 (Video) | — | https://focus.salemkode.com/blaze/focus-garden-demo.mp4 (67 s, recorded 21 Nov from the live web app) |
 | Details (rich text) | old Media-track text | The "Long description" in `SUBMISSION.md`, followed by its "Pre-existing work" table as plain lines. Paste the deck link and the voting address into the placeholders first. |
 | Contact info (private to organizers) | Telegram and WhatsApp already set | leave as is |
 | **Hackathon track** (Manage Submission dialog on the hackathon page) | **Media Track** | **Mainnet Track** |
@@ -29,6 +29,19 @@ All placeholders are filled (20 Nov).
 
 ```
 🔥 BCH BLAZE 2026 · Mainnet track
+
+Judges in 2 minutes
+① Watch the 1-minute demo of a real mainnet session: https://focus.salemkode.com/blaze/focus-garden-demo.mp4
+② Check the mainnet proof, all made from the live web app (each link opens the transaction in an explorer):
+Plant (FocusForest mints and time-locks a tree NFT): https://explorer.salemkode.com/tx/814ded899f98264f7fdb58c4ada15b48eb45588414ebc3bc106e828143abd9db
+Release of the grown tree to the linked wallet: https://explorer.salemkode.com/tx/b1cc265d64ef49728fc5b65e638025a871430b27499c6ccd3367f3bbf866332a
+Public profile card (FocusDirectory): https://explorer.salemkode.com/tx/bc279c21a41bf4e8b4170419a3c0c71e7f4a6003f244eb04b504c48240c153f8
+A real user's 9-minute session, plant: https://explorer.salemkode.com/tx/b4563d02730123cea7554d8730847a6fb564ca18de5f8dde09eec1b27f2263ab
+…and its release to the user's own wallet (Cashonize, WizardConnect): https://explorer.salemkode.com/tx/ffda7e9b90626f68f90c11266adfe4b53af3f9552a790ce1b9f5624bfa153025
+③ See the live leaderboard (Leaders tab, read straight from the chain): https://focus-app.salemkode.com
+④ Practice tree with no BCH: open the web app, connect any BCH wallet (no funds needed), turn off "Verify on Bitcoin Cash" and plant.
+
+Full mainnet try (optional, about 15,000 sats and 10 minutes, plus up to an hour for the automatic release):
 
 Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phone frame; needs a BCH wallet and about 15,000 sats)
 Judge guide (5 minutes): https://focus.salemkode.com/#blaze
