@@ -12,6 +12,7 @@ import { cachedGardenSchema, gardenCacheKey, loadGarden } from '../../services/g
 import { assertNameAvailable, rewardOwners } from '../../services/community';
 import { DEPLOYMENT } from '../../services/network';
 import { consentsSchema, forfeitWithered, newConsent, nextRelease, RELEASE_FEE_CEILING_SATS, spendConsent, type ReleaseConsent } from './auto-release';
+import { refreshInterval } from './refresh-policy';
 
 const CONSENTS_KEY = 'focusgarden.autorelease.v1';
 function readConsents(): ReleaseConsent[] {
@@ -159,11 +160,19 @@ function useRewardStore() {
     // Read-only status recovery. No grant, plant, claim, or broadcast is retried.
     void refresh();
     const listener = AppState.addEventListener('change', (state) => { if (state === 'active') void refresh(); });
-    const interval = setInterval(() => { if (AppState.currentState === 'active') void refresh(); }, 60000);
-    return () => { listener.remove(); clearInterval(interval); };
+    return () => { listener.remove(); };
     // The stable account ref prevents background callbacks reading an old wallet.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account?.address, recipient]);
+  // Re-read the garden on a timer: often while a tree waits for the next block, so it is released
+  // as soon as Bitcoin Cash allows (see refresh-policy.ts).
+  const every = refreshInterval(data.state === 'connected' ? data.sessions : []);
+  useEffect(() => {
+    if (!account) return;
+    const interval = setInterval(() => { if (AppState.currentState === 'active') void refresh(); }, every);
+    return () => { clearInterval(interval); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account?.address, recipient, every]);
   async function selectWallet(kind: 'foundation' | 'xo') {
     await refreshing.current;
     if (mutation.current || savedOperation()) throw new GardenWalletError({ message: 'Finish the saved operation before changing app wallets.' });

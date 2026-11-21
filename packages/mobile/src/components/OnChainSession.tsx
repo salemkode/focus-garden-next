@@ -17,8 +17,8 @@ const lockLabel = (seconds: number) => REWARD_PRESETS.find((preset) => preset.se
 
 /** What is happening, in plain words (display only; the session state is unchanged). */
 const MESSAGE: Partial<Record<string, string>> = {
-  confirming: 'Waiting for Bitcoin Cash to confirm the planting. Your tree is safe.',
-  locked: 'Locked on Bitcoin Cash. It keeps growing while the app is closed.',
+  confirming: 'Waiting for the next Bitcoin Cash block (about 10 minutes on average). Keep the app open and the grown tree is sent to your wallet right after.',
+  locked: 'Locked on Bitcoin Cash until the chain\'s clock passes the lock, usually one block. Keep the app open and it is sent to your wallet automatically.',
   claiming: 'On its way to your wallet. Waiting for Bitcoin Cash to confirm it.',
   merging: 'Your merge is waiting for Bitcoin Cash to confirm it.',
 };
