@@ -32,7 +32,7 @@ automatic release. Answer dialogs promptly and keep the tab in front.
 
 ## Judge instructions (short)
 
-You need a BCH wallet (Selene or Paytaca) holding about **15,000 sats**. Everything below uses real BCH on mainnet.
+You need a BCH wallet (Selene, Paytaca or Cashonize) and **4,000–12,000 sats**: 4,000 for a profile card, 8,000 for a verified tree, 12,000 for both. Everything below uses real BCH on mainnet.
 
 1. **Open** https://focus-app.salemkode.com and press **Skip** (or read the four short intro pages).
 2. **Connect wallet** → **Selene** (WizardConnect), **Paytaca** (WalletConnect), or one of the
@@ -40,7 +40,7 @@ You need a BCH wallet (Selene or Paytaca) holding about **15,000 sats**. Everyth
    wallet shares its receive key branch, and the app uses its first receive address. Your trees are
    sent there; the app never asks the wallet to sign. (Verified on 20 Nov with a dedicated
    WizardConnect test wallet. Selene and Paytaca themselves weren't re-tested for this entry.)
-3. **Profile → Focus Garden wallet → Set up.** Copy its address and send it **~15,000 sats**. This
+3. **Profile → Focus Garden wallet → Set up.** Copy its address and send it **8,000 sats** in one payment (12,000 to also mint a profile card). This
    small wallet pays the network fees. On the web its key stays in your browser, so keep only a
    little BCH in it.
 4. **Make a mainnet transaction.** Pick one or both:
@@ -52,7 +52,7 @@ You need a BCH wallet (Selene or Paytaca) holding about **15,000 sats**. Everyth
 5. **Stay on the tab.** If you leave for more than 10 seconds, the tree withers. A withered session's
    tree skips automatic delivery: it stays in the contract unless the owner sends it by hand. If you stay, the app sends the
    grown tree to your wallet as a CashTokens NFT once the time lock matures. Bitcoin Cash time locks
-   use median block time, so this can take about an hour after the session ends. Keep the tab open,
+   use median block time; the shortest lock usually matures with the first block after the plant (about 10 minutes on average), and the app releases the tree within 15 seconds of that. Keep the tab open,
    or reopen it later; the release happens while the app is open.
 
 What it costs:
