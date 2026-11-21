@@ -76,6 +76,20 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
     browser, check that the deck link, demo, judge guide and source commit all open, and that the
     BUIDL shows the Mainnet track.
 
+## ✅ Demo video and "Judges in 2 minutes" (21 Nov)
+
+- **Video:** https://focus.salemkode.com/blaze/focus-garden-demo.mp4 (67 s, 1920×1080), assembled from
+  real frames of the live web app on mainnet. It shows a new plant `0f253da8c7c1b124f8a82272265b4772aa03985f1f63a425049cfc0f6eb163b7`,
+  the 9-minute session sped up, the earlier release `ffda7e9b…` in the explorer, the tree in
+  Cashonize, and the leaderboard at 26 min. It is set as the BUIDL's demo video (DoraHacks
+  `demo_video_url`) and embedded in the judge guide.
+- **BUIDL #51334** now opens with "Judges in 2 minutes": the video, five mainnet txids linked to
+  explorer.salemkode.com, the live leaderboard, and a no-BCH practice tree. "Full mainnet try" follows
+  as the optional path. Everything else is unchanged (logo, links, Mainnet Track, voting address
+  `zzzyq9g0…4s4k9`). Checked logged out; all 16 links answer.
+- **Faster judge path:** no app change. The 9-minute minimum lock and the release wait come from the
+  deployed contract and median block time, so the BUIDL leads with the proof instead.
+
 ## 🧑 Telegram leaderboard bot: needs the user's bot token
 
 Built on 21 Nov at the coordinator's request (`packages/telegram-bot`). It's a Cloudflare Worker,
