@@ -10,10 +10,24 @@ export const NETWORKS = ['mainnet', 'chipnet'] as const;
 export const PREFIX = { mainnet: 'bitcoincash', chipnet: 'bchtest' } as const satisfies Record<NetworkName, string>;
 export type Prefix = (typeof PREFIX)[NetworkName];
 
-/** Public Fulcrum servers (WSS). The first one that answers is used. */
+/**
+ * Public Fulcrum servers (WSS on 50004), in order of preference; see ./failover.ts. Mainnet servers were
+ * checked on 21 Nov 2026 (handshake, BCH fork block, same tip). electroncash.de stopped answering and
+ * was removed.
+ */
 export const ELECTRUM_SERVERS: Record<NetworkName, readonly string[]> = {
-  mainnet: ['bch.imaginary.cash', 'electroncash.de', 'bch.loping.net'],
+  mainnet: ['bch.imaginary.cash', 'cashnode.bch.ninja', 'fulcrum.greyh.at', 'electrum.imaginary.cash', 'bch.loping.net'],
   chipnet: ['chipnet.bch.ninja', 'chipnet.imaginary.cash'],
+};
+
+/**
+ * A block only this network's chain has. A server is used only if its header at `height` hashes to
+ * `hash`, so a server on another chain (for example BTC, which shares the genesis block) is skipped.
+ * Mainnet: block 478559, the first block after the August 2017 split.
+ */
+export const CHAIN_CHECKPOINTS: Record<NetworkName, { height: number; hash: string } | null> = {
+  mainnet: { height: 478559, hash: '000000000000000000651ef99cb9fcbe0dadde1d424bd9f15ff20136191a5eec' },
+  chipnet: null,
 };
 
 const hash = z.string().regex(/^[0-9a-f]{64}$/);
