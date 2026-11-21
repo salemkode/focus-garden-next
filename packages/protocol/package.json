@@ -11,6 +11,7 @@
     "./leaderboard": "./src/leaderboard.ts",
     "./network": "./src/network.ts",
     "./chain": "./src/chain.ts",
+    "./failover": "./src/failover.ts",
     "./build": "./src/build.ts",
     "./garden": "./src/garden.ts",
     "./bcmr": "./src/bcmr.ts"

@@ -1,4 +1,6 @@
 import { connect } from 'cloudflare:sockets';
+import { failoverRequest } from '@focus-garden/protocol/failover';
+import { CHAIN_CHECKPOINTS, ELECTRUM_SERVERS } from '@focus-garden/protocol/network';
 import { electrumClient, lineSplitter, type LineConnection } from './electrum';
 import { readLeaderboard } from './leaderboard';
 import { formatLeaderboard, rankingKey, shouldPost, type PostState } from './message';
@@ -16,8 +18,6 @@ interface Env {
   STATE: KVNamespace;
 }
 
-/** Public Fulcrum servers that answer Electrum over TLS on port 50002 (checked 21 Nov 2026). */
-const SERVERS = ['bch.imaginary.cash', 'bch.loping.net', 'electroncash.de'];
 const LAST_POST = 'last-post';
 const DRY_RUN_CACHE = 'dry-run';
 const DRY_RUN_TTL_SECONDS = 600;
@@ -41,21 +41,27 @@ function tcpConnection(hostname: string): LineConnection {
   };
 }
 
-/** The current weekly leaderboard, from the first server that answers. */
+/**
+ * The current weekly leaderboard. Same servers, chain checkpoint and failover as the app
+ * (@focus-garden/protocol), over TCP/TLS on port 50002, which every listed server offers.
+ */
 async function leaderboard() {
-  let lastError: unknown = null;
-  for (const host of SERVERS) {
-    const client = electrumClient(tcpConnection(host));
-    try {
+  const opened: (() => void)[] = [];
+  const request = failoverRequest({
+    hosts: ELECTRUM_SERVERS.mainnet,
+    checkpoint: CHAIN_CHECKPOINTS.mainnet,
+    async connect(host) {
+      const client = electrumClient(tcpConnection(host));
+      opened.push(client.done);
       await client.request('server.version', 'focus-garden-telegram', '1.5');
-      return await readLeaderboard(client.request, 'week');
-    } catch (error) {
-      lastError = error;
-    } finally {
-      client.done();
-    }
+      return { request: client.request, close: client.done };
+    },
+  });
+  try {
+    return await readLeaderboard(request, 'week');
+  } finally {
+    for (const close of opened) close();
   }
-  throw lastError instanceof Error ? lastError : new Error('No Electrum server answered');
 }
 
 async function sendMessage(env: Required<Pick<Env, 'TELEGRAM_BOT_TOKEN' | 'TELEGRAM_CHAT_ID'>>, text: string) {
