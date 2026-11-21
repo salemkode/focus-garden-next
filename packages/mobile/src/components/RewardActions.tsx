@@ -101,7 +101,7 @@ export const RewardActions = nativeAware(function RewardActions() {
       {matured.length ? <Row title="Check again" icon={icons.refresh} value={working === 'check' ? 'Checking…' : undefined} disabled={!enabled} onPress={check} /> : null}
     </Group> : null}
 
-    {rewards.account ? <Group title="Fees" footer="Your Focus Garden wallet pays 2,000 sats per transaction, plus a 1,000-sat deposit that stays with each tree. Planting needs one coin of at least 8,000 sats: send BCH to this address from your wallet.">
+    {rewards.account ? <Group title="Fees" footer="One verified tree: send this wallet at least 8,000 sats in one payment. Planting pays a 2,000-sat network fee and puts a 1,000-sat deposit in the tree, which comes back to you inside the tree NFT. Sending the grown tree to your wallet pays another 2,000 sats. The rest (about 3,000) stays here for your next tree.">
       {rewards.data.state === 'connected' ? <Row title="Focus Garden wallet" value={`${rewards.data.balanceSatoshis.toLocaleString()} sats`} /> : null}
       <Row title="Address" detail={rewards.account.address} trailingIcon={icons.copy} accessibilityLabel="Focus Garden wallet address. Copy"
         onPress={() => { void Clipboard.setStringAsync(rewards.account!.address); void Haptics.selectionAsync(); }} />

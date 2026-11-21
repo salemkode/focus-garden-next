@@ -80,9 +80,11 @@ export default function ProfileScreen() {
 
   const isPublic = profile?.state === 'public';
   const status = isPublic ? 'Public profile' : profile?.state === 'pending' ? 'Confirming profile' : 'Private';
-  const fees = rewards.data.state === 'connected'
-    ? `Focus Garden wallet: ${rewards.data.balanceSatoshis.toLocaleString()} sats for network fees.`
-    : 'The Focus Garden wallet pays network fees for your trees.';
+  const balance = rewards.data.state === 'connected' ? rewards.data.balanceSatoshis : null;
+  // One verified tree needs a single payment of at least 8,000 sats (see Focus → Fees for what each part pays for).
+  const fees = balance === null ? 'The Focus Garden wallet pays network fees for your trees.'
+    : balance < 8000 ? `Focus Garden wallet: ${balance.toLocaleString()} sats. To plant a verified tree, send it at least 8,000 sats in one payment.`
+    : `Focus Garden wallet: ${balance.toLocaleString()} sats for network fees.`;
   // On the web, the fee wallet's key lives in this browser, so it should only ever hold a little BCH.
   const footer = BROWSER_HOT_WALLET ? `${fees} This browser keeps its key: hold only a little BCH here.` : fees;
 
