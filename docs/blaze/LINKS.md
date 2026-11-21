@@ -17,8 +17,8 @@
 | Libauth adapter (pre-existing from 13 Nov 2026) | https://github.com/salemkode/react-native-libauth | Public |
 | Mainnet deployment record | https://github.com/salemkode/focus-garden-next/blob/main/packages/contracts/deployments/mainnet.json | Public |
 | BCMR registry | https://focus.salemkode.com/.well-known/bitcoin-cash-metadata-registry.json | Live |
-| iPhone build | https://appdrop.app/d/prvhsh4gyx | 1.0.0 build 11 from `main` `d47affb` (mainnet, socket guard and public leaderboard), uploaded 20 Nov 20:54 UTC. Not yet opened on a physical iPhone. |
-| Android build | https://focus.salemkode.com/android | 1.0.0 (5) from `main` `ad02adc`, release-signed, hosted on R2 (focus-download.salemkode.com), 20 Nov. The old AppDrop link is retired. |
+| iPhone build | https://appdrop.app/d/prvhsh4gyx | 1.0.0 build 12 from `main` `1283dbb` (Electrum failover, socket guard, public leaderboard), 21 Nov. Not yet opened on a physical iPhone. |
+| Android build | https://focus.salemkode.com/android | 1.0.0 (7) from `main` `1283dbb`, release-signed, hosted on R2 (focus-download.salemkode.com), 21 Nov. Installed from the public URL on an emulator. |
 | Old "interactive piece" | https://focusgarden.salemkode.com/blaze/ | Redirects (301) since 21 Nov: `/blaze` → focus.salemkode.com/#blaze, `pitch.pdf` → the current deck PDF, everything else → focus.salemkode.com. |
 
 ## Banner contents
