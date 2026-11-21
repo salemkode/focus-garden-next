@@ -41,7 +41,7 @@ every transaction itself and talks to public Electrum servers.
 
 1. Open https://focus-app.salemkode.com.
 2. Connect Selene (WizardConnect) or Paytaca (WalletConnect).
-3. Profile → set up the Focus Garden wallet → send it about 15,000 sats.
+3. Profile → set up the Focus Garden wallet → send it 8,000 sats in one payment (4,000 is enough for a profile card only).
 4. Profile → Public profile → Join to mint your profile card. Or: Next session → 9 min → *Verify on Bitcoin Cash* → Plant.
 5. Stay on the tab. The tree reaches your wallet after the lock matures. Bitcoin Cash time locks follow median block time, so this can take an hour or more.
 

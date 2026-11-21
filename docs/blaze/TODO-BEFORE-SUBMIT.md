@@ -76,6 +76,36 @@ Legend: 🧑 only you can do or decide this · 🤖 I do it once you say yes · 
     browser, check that the deck link, demo, judge guide and source commit all open, and that the
     BUIDL shows the Mainnet track.
 
+## ✅ Faster, cheaper judge path (21 Nov, PR #24)
+
+Measured against the deployed contract (unchanged): the shortest lock is one 512-second unit,
+counted from the plant's confirmation by median block time. It usually matures with the first or
+second block after the plant, so plant → release is bounded by block arrival (about 10 minutes on
+average), not by the app. A 1-minute "judge tree" was not added, because the NFT and the leaderboard
+would claim 8.5 minutes of verified focus for 1 minute.
+
+| Change | Where |
+|---|---|
+| The garden refreshes every 15 s (was 60 s) while a tree is confirming, locked or on its way, so the release goes out within seconds of the lock maturing | web app (PR #24) |
+| Waiting messages state the real wait (the next block, about 10 minutes on average) | web app |
+| Funding guidance uses the true minimum (8,000 sats for a tree, 4,000 for a profile card, 12,000 for both) and says what each part pays for and what comes back | web app, judge guide, BUIDL |
+| The judge guide and the BUIDL's "Judges in 2 minutes" start with the fastest real mainnet transaction (profile card, about 2 minutes), then the tree, then the video | landing, BUIDL #51334 |
+
+**Real run on the live web app, 21 Nov, following the new guide with the 8,000-sat minimum:**
+
+| Step | Time (UTC) | Transaction |
+|---|---|---|
+| Fund the Focus Garden wallet with 8,000 sats (from Cashonize) | 10:52:31 | `c681f8a9c94fc5f4412dcfe328361a61737e54defb2ab00c5c9d2cdcc998fc19` |
+| Plant, 9 min, Verify on | 10:53:40 | `42feca1f62d86df304f7468bae86395cd8158dcc7729aaf4669da8592d446e11` |
+| Session kept | 11:02:18 | — |
+| Plant confirmed, block 978304 (no block from 10:44:38 to 11:18:47) | 11:18:47 | — |
+| Lock matured, block 978305 (MTP 10:40:48 ≥ 10:39:40 required) | 11:21:15 | — |
+| Release to the linked Cashonize wallet `qq57pxa2…`, ≤ 4 s after the lock matured | 11:21:19 | `f41bb69d0ace98e202447335212e3d41058b50f43aa63c56ab0d52cedbb08578` |
+
+Plant → release: 27 min 39 s, almost all of it waiting for an unusually slow block. Cost: 2,000
+(plant fee) + 2,000 (release fee) + 1,000 deposit, which arrived in the wallet with the tree; 3,000 of
+the 8,000 stay in the Focus Garden wallet.
+
 ## ✅ Demo video and "Judges in 2 minutes" (21 Nov)
 
 - **Video:** https://focus.salemkode.com/blaze/focus-garden-demo.mp4 (67 s, 1920×1080), assembled from

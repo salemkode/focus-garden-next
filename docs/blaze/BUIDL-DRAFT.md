@@ -31,19 +31,21 @@ All placeholders are filled (20 Nov).
 🔥 BCH BLAZE 2026 · Mainnet track
 
 Judges in 2 minutes
-① Watch the 1-minute demo of a real mainnet session: https://focus.salemkode.com/blaze/focus-garden-demo.mp4
-② Check the mainnet proof, all made from the live web app (each link opens the transaction in an explorer):
+① Make your own mainnet transaction in about 2 minutes (4,000 sats): open the web app, connect any BCH wallet, then Profile → set up the Focus Garden wallet → send it 4,000 sats → Public profile → Join. FocusDirectory mints your profile card and the app shows the transaction id. Web app: https://focus-app.salemkode.com
+② Grow a verified tree (8,000 sats, about 10–20 minutes): Next session → 9 min → Verify on Bitcoin Cash → Plant, and keep the tab open. The contract's shortest lock usually matures with the first block after the plant, and the app sends the grown tree to your wallet right then. Costs: 2,000-sat plant fee, 1,000-sat deposit (comes back inside the tree NFT), 2,000-sat release fee.
+③ Watch the 1-minute demo of a real mainnet session: https://focus.salemkode.com/blaze/focus-garden-demo.mp4
+④ Check the mainnet proof, all made from the live web app (each link opens the transaction in an explorer):
 Plant (FocusForest mints and time-locks a tree NFT): https://explorer.salemkode.com/tx/814ded899f98264f7fdb58c4ada15b48eb45588414ebc3bc106e828143abd9db
 Release of the grown tree to the linked wallet: https://explorer.salemkode.com/tx/b1cc265d64ef49728fc5b65e638025a871430b27499c6ccd3367f3bbf866332a
 Public profile card (FocusDirectory): https://explorer.salemkode.com/tx/bc279c21a41bf4e8b4170419a3c0c71e7f4a6003f244eb04b504c48240c153f8
 A real user's 9-minute session, plant: https://explorer.salemkode.com/tx/b4563d02730123cea7554d8730847a6fb564ca18de5f8dde09eec1b27f2263ab
 …and its release to the user's own wallet (Cashonize, WizardConnect): https://explorer.salemkode.com/tx/ffda7e9b90626f68f90c11266adfe4b53af3f9552a790ce1b9f5624bfa153025
-③ See the live leaderboard (Leaders tab, read straight from the chain): https://focus-app.salemkode.com
-④ Practice tree with no BCH: open the web app, connect any BCH wallet (no funds needed), turn off "Verify on Bitcoin Cash" and plant.
+Judge path on 21 Nov with the minimum 8,000 sats, plant: https://explorer.salemkode.com/tx/42feca1f62d86df304f7468bae86395cd8158dcc7729aaf4669da8592d446e11
+…and its release, sent 4 seconds after the lock matured (28 minutes after the plant, which waited 25 minutes for a slow block): https://explorer.salemkode.com/tx/f41bb69d0ace98e202447335212e3d41058b50f43aa63c56ab0d52cedbb08578
+⑤ See the live leaderboard (Leaders tab, read straight from the chain): https://focus-app.salemkode.com
+⑥ Practice tree with no BCH: open the web app, connect any BCH wallet (no funds needed), turn off "Verify on Bitcoin Cash" and plant.
 
-Full mainnet try (optional, about 15,000 sats and 10 minutes, plus up to an hour for the automatic release):
-
-Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phone frame; needs a BCH wallet and about 15,000 sats)
+Try it: https://focus-app.salemkode.com (Bitcoin Cash mainnet, web app in a phone frame; needs a BCH wallet and 4,000–12,000 sats)
 Judge guide (5 minutes): https://focus.salemkode.com/#blaze
 Slides: https://focus.salemkode.com/blaze/focus-garden-blaze-2026.pdf
 Source (2026): https://github.com/salemkode/focus-garden-next/tree/5f5a52ea3c83d9b6df178d53d7eab5c26a32ab56
@@ -53,12 +55,12 @@ Focus Garden turns a focus session into a promise on Bitcoin Cash. Press Plant a
 
 Mobile app: React Native (Expo) for iPhone and Android. Libauth and the XO engine run on the phone through our native Libauth adapter (packages/mobile/modules/libauth-native).
 
-How to try it (about 15,000 sats):
-1. Open the web app and connect Selene (WizardConnect) or Paytaca (WalletConnect).
-2. Profile → set up the Focus Garden wallet → send it about 15,000 sats in one payment (it pays the fees).
+How to try it (4,000–12,000 sats):
+1. Open the web app and connect Selene (WizardConnect), or Paytaca or Cashonize (WalletConnect).
+2. Profile → set up the Focus Garden wallet → send it one payment: 4,000 sats for a profile card, 8,000 for a verified tree, 12,000 for both. It pays the network fees.
 3. Quickest result: Profile → Public profile → Join mints your profile card.
 4. Plant: Next session → 9 min → Verify on Bitcoin Cash → Plant. Keep the tab in front (leaving for 10 seconds withers the tree); use another device for the explorer.
-5. When the lock matures, the app sends the tree to your wallet. Allow up to about an hour, with the app open.
+5. The app sends the grown tree to your wallet as soon as its lock matures, usually with the first block after the plant (about 10 minutes on average). Keep the app open.
 
 Why Bitcoin Cash: native CashTokens make each tree a real NFT, covenant time locks (BIP68) make every node enforce the session, and fees are small enough for one tree per session.
 
